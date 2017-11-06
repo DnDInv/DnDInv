@@ -3,7 +3,16 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Backpack</ion-title>
+    <button ion-button menuToggle class="button-min" (tap)="deleteBackpack()">
+      <ion-icon name="trash"></ion-icon>
+    </button>
+    <button ion-button menuToggle class="button-plus" (tap)="addBackpack()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+    <button ion-button menuToggle class="button-info" (tap)="info()">
+      <ion-icon name="information-circle"></ion-icon>
+    </button>
   </ion-navbar>
 </ion-header>
 
@@ -11,11 +20,9 @@
   <h3>D&D Inventory App</h3>
 
   <p>
-    Welcome to the D&D Inventory App.
-    You are on the Backpack Page. Please use the following button to test if the modal pops up.
+    Welcome to the Backpack.
   </p>
 
-  <button ion-button (tap)="deleteBackpack()">Delete Backpack Modal</button>
-  <button ion-button (tap)="addBackpack()">Add Backpack Modal</button>
-  
+
+
 </ion-content>

@@ -40,7 +40,21 @@ export class BackPackPage {
       addBackpack.present();
     }
 
-
+    info() {
+        let info = this.alertCtrl.create({
+            title: "About",
+            message: "This is the About page currently under contstruction.",
+            buttons: [
+                {
+                    text: "Cancel",
+                    handler: data => {
+                        console.log("Cancel clicked")
+                    }
+                }
+            ]
+        });
+        info.present();
+    }
 
     deleteBackpack() {
         let deleteBackpack = this.alertCtrl.create({
