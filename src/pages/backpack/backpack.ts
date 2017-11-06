@@ -11,7 +11,7 @@ export class BackPackPage {
     constructor(public alertCtrl: AlertController) {
     }
 
-
+//function for the modal confirmation for the Adding backpack
     addBackpack() {
       let addBackpack = this.alertCtrl.create({
           title: "Add Backpack",
@@ -37,9 +37,11 @@ export class BackPackPage {
               }
           ]
       });
+      //materialize the popup
       addBackpack.present();
     }
 
+    //function of the Modal confirmation for the about page
     info() {
         let info = this.alertCtrl.create({
             title: "About",
@@ -53,9 +55,11 @@ export class BackPackPage {
                 }
             ]
         });
+        //materialize the popup
         info.present();
     }
 
+    //function for the modal confirmation for the delete
     deleteBackpack() {
         let deleteBackpack = this.alertCtrl.create({
             title: 'Delete Backpack',
@@ -75,6 +79,7 @@ export class BackPackPage {
                 }
             ]
         });
+        //materialize the popup
         deleteBackpack.present();
     }
 }
