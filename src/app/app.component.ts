@@ -5,11 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { BackPackPage} from '../pages/backpack/backpack';
-<<<<<<< HEAD
-
 import { SettingsProvider } from "../providers/settings/settings";
-=======
->>>>>>> origin/master
 
 //import { ListPage } from '../pages/list/list';
 
