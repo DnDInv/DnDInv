@@ -1,0 +1,37 @@
+.light-theme {
+  ion-content {
+    background-color: #090f2f;
+    color: #fff;
+  }
+
+  .toolbar-title {
+    color: #fff;
+  }
+
+  .toolbar-background {
+    border-color: #ff0fff;
+    background-color: #090f2f;
+  }
+
+  .item-md {
+    background-color: #090f2f;
+    color: #fff;
+  }
+
+  .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
+    color: #fff;
+  }
+
+  .toolbar-background-md {
+    background-color: #090f2f;
+  }
+
+  .content-md {
+    background-color: #090f2f;
+    color: #fff;
+  }
+
+  .ion-backdrop {
+    background-color: #090f2f;
+  }
+}

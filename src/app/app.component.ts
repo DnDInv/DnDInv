@@ -5,7 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { BackPackPage} from '../pages/backpack/backpack';
-import { SettingsPage} from "../pages/settings/settings";
+
+import { SettingsProvider } from "../providers/settings/settings";
 
 //import { ListPage } from '../pages/list/list';
 
@@ -16,12 +17,16 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
-
+  selectedTheme: String;
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
-    this.initializeApp();
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private settings: SettingsProvider) {
+      this.settings.getActiveTheme().subscribe(val => this.selectedTheme = val);
 
+      this.platform.ready().then(() => {
+          this.statusBar.styleDefault();
+          this.splashScreen.hide();
+      });
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
@@ -29,15 +34,6 @@ export class MyApp {
       //{ title: 'List', component: ListPage }
     ];
 
-  }
-
-  initializeApp() {
-    this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    });
   }
 
   openPage(page) {
