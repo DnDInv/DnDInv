@@ -84,8 +84,8 @@ export class BackPackPage {
                     }
                 }
             ]
-        });
-        //materialize the popup
-        deleteBackpack.present();
+      });
+      //materialize the popup
+      deleteBackpack.present();
     }
 }
