@@ -14,6 +14,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SettingsProvider } from '../providers/settings/settings';
 import { AboutProvider } from '../providers/about/about';
 
+import {Storage} from "@ionic/storage";
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -42,7 +45,8 @@ import { AboutProvider } from '../providers/about/about';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SettingsProvider,
-    AboutProvider
+    AboutProvider,
+    Storage
   ]
 })
 export class AppModule {}

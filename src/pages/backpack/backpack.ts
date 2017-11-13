@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { AlertController, NavController } from 'ionic-angular';
 import { AboutPage} from "../about/about";
-
+import { StorageProvider } from "../../providers/storage/storage";
 
 @Component({
   selector: 'page-backpack',
-  templateUrl: 'backpack.html'
+  templateUrl: 'backpack.html',
+  providers:[
+      [StorageProvider]
+    ]
 })
 export class BackPackPage {
 
