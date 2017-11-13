@@ -49,24 +49,6 @@ export class BackPackPage {
       addBackpack.present();
     }
 
-    //function of the Modal confirmation for the about page
-    info() {
-        let info = this.alertCtrl.create({
-            title: "About",
-            message: "This is the About page currently under contstruction.",
-            buttons: [
-                {
-                    text: "Cancel",
-                    handler: data => {
-                        console.log("Cancel clicked")
-                    }
-                }
-            ]
-        });
-        //materialize the popup
-        info.present();
-    }
-
     //function for the modal confirmation for the delete
     deleteBackpack() {
         let deleteBackpack = this.alertCtrl.create({
@@ -88,8 +70,8 @@ export class BackPackPage {
                     }
                 }
             ]
-        });
-        //materialize the popup
-        deleteBackpack.present();
+      });
+      //materialize the popup
+      deleteBackpack.present();
     }
 }
