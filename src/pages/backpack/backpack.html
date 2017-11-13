@@ -19,7 +19,9 @@
 <ion-content padding>
   <h3>D&D Inventory App</h3>
 
-  <p>
-    Welcome to the Backpack.
-  </p>
+  <!--backpacks lodaing-->
+  <div *ngFor="let b of info">
+    {{ b.name }}
+  </div>
+
 </ion-content>

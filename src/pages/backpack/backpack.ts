@@ -1,19 +1,22 @@
 import { Component } from '@angular/core';
 import { AlertController, NavController } from 'ionic-angular';
 import { AboutPage} from "../about/about";
-import { StorageProvider } from "../../providers/storage/storage";
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-backpack',
-  templateUrl: 'backpack.html',
-  providers:[
-      [StorageProvider]
-    ]
+  templateUrl: 'backpack.html'
 })
 export class BackPackPage {
 
-    constructor(public alertCtrl: AlertController, public navCtrl: NavController) {
+    info: any = [];
+
+    constructor(public alertCtrl: AlertController, public navCtrl: NavController, public storage: Storage) {
         this.navCtrl = navCtrl;
+        this.storage.get('backpacks').then((val) => {
+            this.info = val;
+            console.log(val);
+        });
     }
 
     //open about Page with a push
@@ -27,7 +30,7 @@ export class BackPackPage {
           message: "Please enter the following requirements.",
           inputs: [
               {
-                  name: 'Backpack Name',
+                  name: 'name',
                   placeholder: 'enter backpack name here...'
               },
           ],
@@ -43,31 +46,21 @@ export class BackPackPage {
                   text: 'Save',
                   role: 'submit',
                   handler: data => {
-                      console.log(JSON.stringify(data)); //to see the object
+                      //save into object
+                      this.storage.get('backpacks').then((val) => {
+                          val.push(data);
+                          this.info = val;
+                          this.storage.set("backpacks", val);
+                      }).catch((err) => {
+                          this.storage.set("backpacks", [data]);
+                          this.info = [data];
+                      });
                   }
               }
           ]
       });
       //materialize the popup
       addBackpack.present();
-    }
-
-    //function of the Modal confirmation for the about page
-    info() {
-        let info = this.alertCtrl.create({
-            title: "About",
-            message: "This is the About page currently under contstruction.",
-            buttons: [
-                {
-                    text: "Cancel",
-                    handler: data => {
-                        console.log("Cancel clicked")
-                    }
-                }
-            ]
-        });
-        //materialize the popup
-        info.present();
     }
 
     //function for the modal confirmation for the delete
