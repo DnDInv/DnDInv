@@ -1,4 +1,4 @@
-.light-theme {
+.dark-theme {
   ion-content {
     background-color: #090f2f;
     color: #fff;
@@ -8,8 +8,12 @@
     color: #fff;
   }
 
-  .toolbar-background {
+  /*.toolbar-background {
     border-color: #ff0fff;
+    background-color: #090f2f;
+  }*/
+
+  .md .menu-inner {
     background-color: #090f2f;
   }
 
@@ -22,8 +26,12 @@
     color: #fff;
   }
 
+  .toolbar-title-md {
+    color: #fff;
+  }
+
   .toolbar-background-md {
-    background-color: #090f2f;
+    background: #090f2f;
   }
 
   .content-md {
@@ -31,7 +39,13 @@
     color: #fff;
   }
 
+  .alert-md .alert-head .alert-wrapper{
+    background-color: #090f2f;
+    color: #fff;
+  }
+
   .ion-backdrop {
     background-color: #090f2f;
   }
+
 }

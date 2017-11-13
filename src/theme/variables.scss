@@ -41,7 +41,6 @@ $colors: (
   dark:       #222
 );
 
-
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
@@ -70,8 +69,8 @@ $colors: (
 // so that the above variables are used and Ionic's
 // default are overridden.
 
-@import 'theme.light';
 @import 'theme.dark';
+@import 'theme.light';
 
 // Ionicons
 // --------------------------------------------------
