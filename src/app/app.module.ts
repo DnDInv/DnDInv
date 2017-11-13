@@ -6,18 +6,21 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { BackPackPage} from '../pages/backpack/backpack';
 import { SettingsPage} from "../pages/settings/settings";
+import { AboutPage} from "../pages/about/about";
 //import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SettingsProvider } from '../providers/settings/settings';
+import { AboutProvider } from '../providers/about/about';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     BackPackPage,
-    SettingsPage
+    SettingsPage,
+    AboutPage
     //ListPage
 
   ],
@@ -30,14 +33,16 @@ import { SettingsProvider } from '../providers/settings/settings';
     MyApp,
     HomePage,
     BackPackPage,
-    SettingsPage
+    SettingsPage,
+    AboutPage
     //ListPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    SettingsProvider
+    SettingsProvider,
+    AboutProvider
   ]
 })
 export class AppModule {}

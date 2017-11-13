@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AlertController } from 'ionic-angular';
+import { AlertController, NavController } from 'ionic-angular';
+import { AboutPage} from "../about/about";
 
 
 @Component({
@@ -8,9 +9,14 @@ import { AlertController } from 'ionic-angular';
 })
 export class BackPackPage {
 
-    constructor(public alertCtrl: AlertController) {
+    constructor(public alertCtrl: AlertController, public navCtrl: NavController) {
+        this.navCtrl = navCtrl;
     }
 
+    //open about Page with a push
+    openaboutPage() {
+        this.navCtrl.push(AboutPage);
+    }
 //function for the modal confirmation for the Adding backpack
     addBackpack() {
       let addBackpack = this.alertCtrl.create({
@@ -18,21 +24,23 @@ export class BackPackPage {
           message: "Please enter the following requirements.",
           inputs: [
               {
-                  name: 'Backpack Name*',
+                  name: 'Backpack Name',
                   placeholder: 'enter backpack name here...'
               },
           ],
           buttons: [
               {
                   text: 'Cancel',
+                  role: 'cancel',
                   handler: data => {
                       console.log('Cancel clicked');
                   }
               },
               {
                   text: 'Save',
+                  role: 'submit',
                   handler: data => {
-                      console.log('Saved clicked');
+                      console.log(JSON.stringify(data)); //to see the object
                   }
               }
           ]
@@ -67,12 +75,14 @@ export class BackPackPage {
             buttons: [
                 {
                     text: 'Cancel',
+                    role: 'cancel',
                     handler: data => {
                         console.log('Cancel clicked');
                     }
                 },
                 {
                     text: 'Delete',
+                    role: 'submit',
                     handler: data => {
                         console.log('Saved clicked');
                     }
