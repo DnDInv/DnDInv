@@ -20,8 +20,8 @@
   <h3>D&D Inventory App</h3>
 
   <!--backpacks lodaing-->
-  <div *ngFor="let b of info">
-    {{ b.name }}
-  </div>
+    <li class="listAttr" *ngFor="let b of info; let i = index" >
+      <p  [attr.id]="i">{{ b.name }}</p>
+    </li>
 
 </ion-content>

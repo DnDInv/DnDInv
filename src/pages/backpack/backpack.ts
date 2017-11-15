@@ -33,28 +33,41 @@ export class BackPackPage {
                   name: 'name',
                   placeholder: 'enter backpack name here...'
               },
+              {
+                  name: 'strength',
+                  placeholder: 'Enter strength of the backpack....',
+                  type: "number",
+                  min: 1,
+                  max: 50
+              }
           ],
           buttons: [
               {
                   text: 'Cancel',
                   role: 'cancel',
                   handler: data => {
-                      console.log('Cancel clicked');
                   }
               },
               {
                   text: 'Save',
                   role: 'submit',
                   handler: data => {
-                      //save into object
-                      this.storage.get('backpacks').then((val) => {
-                          val.push(data);
-                          this.info = val;
-                          this.storage.set("backpacks", val);
-                      }).catch((err) => {
-                          this.storage.set("backpacks", [data]);
-                          this.info = [data];
-                      });
+                    //save into object
+                      if (data.name.length == 0 || data.strength > 50 || data.strength < 1) {
+                          console.log("Incorrect Values");
+                          return false;
+                      }
+                      else {
+                          console.log(data);
+                          this.storage.get('backpacks').then((val) => {
+                              val.push(data);
+                              this.info = val;
+                              this.storage.set("backpacks", val);
+                          }).catch((err) => {
+                              this.storage.set("backpacks", [data]);
+                              this.info = [data];
+                          });
+                      }
                   }
               }
           ]
@@ -80,7 +93,14 @@ export class BackPackPage {
                     text: 'Delete',
                     role: 'submit',
                     handler: data => {
-                        console.log('Saved clicked');
+                        this.storage.get('backpacks').then(val => {
+                            val = [];
+                            this.info = val;
+                            this.storage.set("backpacks", val);
+                            console.log("Cleared.");
+                        }).catch((err) =>{
+                            console.log("Cleared????");
+                        });
                     }
                 }
             ]

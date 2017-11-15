@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { SettingsPage } from '../settings/settings';
 import { AboutPage} from "../about/about";
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-home',
@@ -10,7 +11,9 @@ import { AboutPage} from "../about/about";
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
+    info: any = [];
+
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController,public storage: Storage) {
     this.navCtrl = navCtrl;
   }
 
@@ -30,8 +33,15 @@ export class HomePage {
             message: "Please enter the following requirements.",
             inputs: [
                 {
-                    name: 'Backpack Name',
+                    name: 'name',
                     placeholder: 'enter backpack name here...'
+                },
+                {
+                    name: 'strength',
+                    placeholder: 'Enter strength of the backpack....',
+                    type: "number",
+                    min: 1,
+                    max: 50
                 },
             ],
             buttons: [
@@ -39,14 +49,28 @@ export class HomePage {
                     text: 'Cancel',
                     role: 'cancel',
                     handler: data => {
-                        console.log('Cancel clicked');
                     }
                 },
                 {
                     text: 'Save',
                     role: 'submit',
                     handler: data => {
-                        console.log(JSON.stringify(data)); //to see the object
+                        //save into object
+                        if (data.name.length == 0 || data.strength > 50 || data.strength < 1) {
+                            console.log("Incorrect Values");
+                            return false;
+                        }
+                        else {
+                            console.log(data);
+                            this.storage.get('backpacks').then((val) => {
+                                val.push(data);
+                                this.info = val;
+                                this.storage.set("backpacks", val);
+                            }).catch((err) => {
+                                this.storage.set("backpacks", [data]);
+                                this.info = [data];
+                            });
+                        }
                     }
                 }
             ]
