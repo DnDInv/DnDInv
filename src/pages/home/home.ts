@@ -34,7 +34,7 @@ export class HomePage {
             inputs: [
                 {
                     name: 'name',
-                    placeholder: 'enter backpack name here...'
+                    placeholder: 'Enter backpack name here...'
                 },
                 {
                     name: 'strength',
@@ -43,6 +43,18 @@ export class HomePage {
                     min: 1,
                     max: 50
                 },
+                {
+                    name: 'Carrying_Size',
+                    placeholder: 'Tiny,Small,Medium,Large,Huge...'
+                },
+                {
+                    name: 'HardLimit',
+                    placeholder: 'Enter hard limit (if wanted)'
+                },
+                {
+                    name: 'RuleVariants',
+                    placeholder: 'Standard,Encumbrance,No Rules...'
+                }
             ],
             buttons: [
                 {
@@ -56,7 +68,18 @@ export class HomePage {
                     role: 'submit',
                     handler: data => {
                         //save into object
-                        if (data.name.length == 0 || data.strength > 50 || data.strength < 1) {
+                        if (data.name.length              == 0 ||
+                            data.strength                 > 50 ||
+                            data.strength                 < 1  ||
+                            data.Carrying_Size.length     == 0 ||
+                            data.RuleVariants             != "Standard" &&
+                            data.RuleVariants             != "Encumbrance" &&
+                            data.RuleVariants             != "No Rules" &&
+                            data.Carrying_Size            != "Tiny" &&
+                            data.Carrying_Size            != "Small" &&
+                            data.Carrying_Size            != "Medium" &&
+                            data.Carrying_Size            != "Large" &&
+                            data.Carrying_Size            != "Huge") {
                             console.log("Incorrect Values");
                             return false;
                         }
