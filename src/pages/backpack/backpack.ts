@@ -39,6 +39,10 @@ export class BackPackPage {
                   type: "number",
                   min: 1,
                   max: 50
+              },
+              {
+                  name: 'Carrying_Size',
+                  placeholder: 'Tiny,Small,Medium,Large,Huge...'
               }
           ],
           buttons: [
@@ -53,7 +57,15 @@ export class BackPackPage {
                   role: 'submit',
                   handler: data => {
                     //save into object
-                      if (data.name.length == 0 || data.strength > 50 || data.strength < 1) {
+                      if (data.name.length == 0 ||
+                          data.strength > 50 ||
+                          data.strength < 1 ||
+                          data.Carrying_Size.length == 0 ||
+                          data.Carrying_Size != "Tiny" &&
+                          data.Carrying_Size != "Small" &&
+                          data.Carrying_Size != "Medium" &&
+                          data.Carrying_Size != "Large" &&
+                          data.Carrying_Size != "Huge") {
                           console.log("Incorrect Values");
                           return false;
                       }
