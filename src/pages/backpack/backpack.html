@@ -21,7 +21,7 @@
 
   <!--backpacks lodaing-->
     <li class="listAttr" *ngFor="let b of info; let i = index" >
-      <p  [attr.id]="i">{{ b.name }}</p>
+      <button ion-button class="button-backpacks" [attr.id]="i">{{ b.name }}</button>
     </li>
 
 </ion-content>

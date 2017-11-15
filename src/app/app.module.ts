@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { BackPackPage} from '../pages/backpack/backpack';
 import { SettingsPage} from "../pages/settings/settings";
 import { AboutPage} from "../pages/about/about";
+import { InventoryPage } from "../pages/inventory/inventory";
 //import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -23,7 +24,8 @@ import { IonicStorageModule } from '@ionic/storage';
     HomePage,
     BackPackPage,
     SettingsPage,
-    AboutPage
+    AboutPage,
+    InventoryPage
     //ListPage
 
   ],
@@ -38,7 +40,8 @@ import { IonicStorageModule } from '@ionic/storage';
     HomePage,
     BackPackPage,
     SettingsPage,
-    AboutPage
+    AboutPage,
+    InventoryPage
     //ListPage
   ],
   providers: [
