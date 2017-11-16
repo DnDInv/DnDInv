@@ -1,21 +1,22 @@
 import { Component } from '@angular/core';
-import { AlertController, NavController } from 'ionic-angular';
+import { AlertController, NavController, NavParams} from 'ionic-angular';
 import { AboutPage} from "../about/about";
 import { Storage } from '@ionic/storage';
+import { InventoryPage } from "../inventory/inventory";
 
 @Component({
   selector: 'page-backpack',
-  templateUrl: 'backpack.html'
+  templateUrl: 'backpack.html/'
 })
 export class BackPackPage {
 
     info: any = [];
 
-    constructor(public alertCtrl: AlertController, public navCtrl: NavController, public storage: Storage) {
+    constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
         this.navCtrl = navCtrl;
         this.storage.get('backpacks').then((val) => {
             this.info = val;
-            console.log(val);
+            //console.log(val);
         });
     }
 
@@ -23,7 +24,7 @@ export class BackPackPage {
     openaboutPage() {
         this.navCtrl.push(AboutPage);
     }
-//function for the modal confirmation for the Adding backpack
+    //function for the modal confirmation for the Adding backpack
     addBackpack() {
       let addBackpack = this.alertCtrl.create({
           title: "Add Backpack",
@@ -50,7 +51,7 @@ export class BackPackPage {
               },
               {
                   name: 'RuleVariants',
-                  placeholder: 'Standard,Encumbrance,No Rules...'
+                  placeholder: 'Standard,Encumbrance,No rules...'
               }
           ],
           buttons: [
@@ -58,6 +59,7 @@ export class BackPackPage {
                   text: 'Cancel',
                   role: 'cancel',
                   handler: data => {
+
                   }
               },
               {
@@ -69,9 +71,10 @@ export class BackPackPage {
                           data.strength                 > 50 ||
                           data.strength                 < 1  ||
                           data.Carrying_Size.length     == 0 ||
+                          data.RuleVariants.length      == 0 ||
                           data.RuleVariants             != "Standard" &&
                           data.RuleVariants             != "Encumbrance" &&
-                          data.RuleVariants             != "No Rules" &&
+                          data.RuleVariants             != "No rules" &&
                           data.Carrying_Size            != "Tiny" &&
                           data.Carrying_Size            != "Small" &&
                           data.Carrying_Size            != "Medium" &&
@@ -83,6 +86,7 @@ export class BackPackPage {
                       else {
                           console.log(data);
                           this.storage.get('backpacks').then((val) => {
+                              // val.filter(x => {return x.name == data.name}).length() > 0
                               val.push(data);
                               this.info = val;
                               this.storage.set("backpacks", val);
@@ -98,7 +102,6 @@ export class BackPackPage {
       //materialize the popup
       addBackpack.present();
     }
-
     //function for the modal confirmation for the delete
     deleteBackpack() {
         let deleteBackpack = this.alertCtrl.create({
@@ -130,5 +133,24 @@ export class BackPackPage {
       });
       //materialize the popup
       deleteBackpack.present();
+    }
+    //function for opening backpacks
+    openInventory(index) {
+        //console.log('index', index);
+
+        this.storage.get('backpacks').then((val) => {
+            //console.log('Backpack with ID: ', val, index);
+            let data = {
+                backpack: val[index]
+            };
+            console.log('Data', index);
+            this.info = val;
+            this.navCtrl.push(InventoryPage, data);
+            //storage.push(backpack.name, {items: [], dat: {}, dit: 5})
+
+        }).catch((err) => {
+            console.log("backpack not found!");
+        });
+
     }
 }
