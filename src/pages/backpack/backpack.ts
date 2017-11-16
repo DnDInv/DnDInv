@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AlertController, NavController, NavParams} from 'ionic-angular';
+import { AlertController, NavController, NavParams} from 'ionic-angular';
 import { AboutPage} from "../about/about";
 import { Storage } from '@ionic/storage';
 import { InventoryPage } from "../inventory/inventory";
@@ -16,7 +16,7 @@ export class BackPackPage {
         this.navCtrl = navCtrl;
         this.storage.get('backpacks').then((val) => {
             this.info = val;
-            console.log(val);
+            //console.log(val);
         });
     }
 
@@ -59,6 +59,7 @@ export class BackPackPage {
                   text: 'Cancel',
                   role: 'cancel',
                   handler: data => {
+
                   }
               },
               {
@@ -70,6 +71,7 @@ export class BackPackPage {
                           data.strength                 > 50 ||
                           data.strength                 < 1  ||
                           data.Carrying_Size.length     == 0 ||
+                          data.RuleVariants.length      == 0 ||
                           data.RuleVariants             != "Standard" &&
                           data.RuleVariants             != "Encumbrance" &&
                           data.RuleVariants             != "No rules" &&
@@ -134,13 +136,14 @@ export class BackPackPage {
     }
     //function for opening backpacks
     openInventory(index) {
-        console.log(index);
+        //console.log('index', index);
 
         this.storage.get('backpacks').then((val) => {
-            console.log(val, index);
+            //console.log('Backpack with ID: ', val, index);
             let data = {
                 backpack: val[index]
             };
+            console.log('Data', index);
             this.info = val;
             this.navCtrl.push(InventoryPage, data);
             //storage.push(backpack.name, {items: [], dat: {}, dit: 5})

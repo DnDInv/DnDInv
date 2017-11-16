@@ -1,9 +1,3 @@
-<!--
-  Generated template for the InventoryPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -12,7 +6,17 @@
 
 </ion-header>
 
-
 <ion-content padding>
+
+<ion-row>
+  <ion-col width-50 style="text-align: center">
+    <button (tap)="addItem()" round ion-button>Add Item</button>
+  </ion-col>
+</ion-row>
+
+
+  <li class="listAttr" *ngFor="let b of item; let i = index" >
+    <button class="button-inventory" ion-button [attr.id]="i">{{b.itemName}}</button>
+  </li>
 
 </ion-content>
