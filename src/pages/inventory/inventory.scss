@@ -2,6 +2,10 @@ page-inventory {
 
 }
 
+.button-inventory:hover:not(.disable-hover) {
+  background-color: lightgrey;
+}
+
 .button-inventory {
   background-color: transparent;
   color: black;

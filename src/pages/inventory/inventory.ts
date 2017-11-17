@@ -23,6 +23,11 @@ export class InventoryPage {
     });
   }
 
+  openItem() {
+      //push works in a push page. :)
+      //this.navCtrl.push(HomePage);
+  }
+
   addItem(index) {
     let addIteminventory = this.alertCtrl.create({
         title: 'Add Item',
