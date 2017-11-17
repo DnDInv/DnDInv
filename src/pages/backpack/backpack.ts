@@ -11,7 +11,10 @@ import { InventoryPage } from "../inventory/inventory";
 export class BackPackPage {
 
     public backpack;
+    itemKey;
     info: any = [];
+    item: any = [];
+
 
     constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
         this.navCtrl = navCtrl;
@@ -110,6 +113,15 @@ export class BackPackPage {
     //function editing
     EditInventory(index, backpack){
 
+        this.itemKey = 'items:' + backpack.name + backpack.HardLimit;
+
+        console.log(this.itemKey);
+
+        this.storage.get(this.itemKey).then(val => {
+            this.item = val;
+            console.log("Getting Items ", val);
+        });
+
         console.log("Backpack Page: ", index, backpack);
 
         let EditInventory = this.alertCtrl.create({
@@ -118,26 +130,31 @@ export class BackPackPage {
             inputs: [
                 {
                     name: 'name',
-                    placeholder: 'Enter backpack name here...'
+                    value: backpack.name,
+                    placeholder: 'Try creating a backpack named goose'
                 },
                 {
                     name: 'strength',
-                    placeholder: 'Enter strength of the backpack...',
+                    value: backpack.strength,
+                    placeholder: 'enter your strength score' ,
                     type: "number",
                     min: 1,
                     max: 50
                 },
                 {
                     name: 'Carrying_Size',
-                    placeholder: 'Tiny,Small,Medium,Large,Huge...'
+                    value: backpack.Carrying_Size,
+                    placeholder: 'Tiny,Small,Medium,Large,Huge'
                 },
                 {
                     name: 'HardLimit',
-                    placeholder: 'Enter hard limit (if wanted)'
+                    value: backpack.HardLimit,
+                    placeholder: 'Enter hardlimit in lbs'
                 },
                 {
                     name: 'RuleVariants',
-                    placeholder: 'Standard,Encumbrance,No rules...'
+                    value: backpack.RuleVariants,
+                    placeholder:'Standard,Encumbrance,No rules'
                 }
             ],
             buttons:[
@@ -150,13 +167,42 @@ export class BackPackPage {
                     text: 'Save',
                     role: 'submit',
                     handler: data => {
-                        this.storage.get('backpacks').then((val) => {
-                            // val.filter(x => {return x.name == data.name}).length() > 0
-                            /*data = backpack + data;*/
-                            val[index] = data;
-                            this.info = val;
-                            this.storage.set("backpacks", val);
-                        });
+                        //save into object
+                        if (data.name.length              == 0 ||
+                            data.strength                 > 50 ||
+                            data.strength                 < 1  ||
+                            data.Carrying_Size.length     == 0 ||
+                            data.RuleVariants.length      == 0 ||
+                            data.RuleVariants             != "Standard" &&
+                            data.RuleVariants             != "Encumbrance" &&
+                            data.RuleVariants             != "No rules" &&
+                            data.Carrying_Size            != "Tiny" &&
+                            data.Carrying_Size            != "Small" &&
+                            data.Carrying_Size            != "Medium" &&
+                            data.Carrying_Size            != "Large" &&
+                            data.Carrying_Size            != "Huge") {
+                            console.log("Incorrect Values");
+                            return false;
+                        }
+                        else {
+                            this.storage.get('backpacks').then((val) => {
+                                // val.filter(x => {return x.name == data.name}).length() > 0
+                                /*data = backpack + data;*/
+                                val[index] = data;
+                                this.info = val;
+                                this.storage.set("backpacks", val);
+
+                                let oldKey = this.itemKey.toString();
+
+                                this.itemKey = 'items:' + val[index].name + val[index].HardLimit;
+                                console.log(this.itemKey, this.item);
+                                this.storage.set(this.itemKey, this.item);
+                                console.log("old key :", oldKey);
+                                this.storage.remove(oldKey);
+                                //this.itemKey = 'items:' + val.name + val.HardLimit;
+                            });
+
+                        }
                     }
             }
             ]
