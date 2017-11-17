@@ -22,7 +22,7 @@
   <!--backpacks lodaing-->
     <li class="listAttr" *ngFor="let b of info; let i = index" >
       <div class="buttons">
-        <button ion-button class="button-backpacks-icon"><img src="assets/img/BackpackIcon.png" height="30" width="30"/></button>
+        <button (tap)="EditInventory()" ion-button class="button-backpacks-icon" [attr.id]="i"><img src="assets/img/BackpackIcon.png" height="30" width="30"/></button>
         <button (tap)="openInventory(i)" ion-button icon-left class="button-backpacks" [attr.id]="i">
           {{ b.name }}</button>
       </div>

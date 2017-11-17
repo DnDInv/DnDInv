@@ -102,6 +102,50 @@ export class BackPackPage {
       //materialize the popup
       addBackpack.present();
     }
+    EditInventory(){
+        let EditInventory = this.alertCtrl.create({
+            title: 'Edit Backpack',
+            message: "enter the new value's for your backpack",
+            inputs: [
+                {
+                    name: 'name',
+                    placeholder: 'Enter backpack name here...'
+                },
+                {
+                    name: 'strength',
+                    placeholder: 'Enter strength of the backpack...',
+                    type: "number",
+                    min: 1,
+                    max: 50
+                },
+                {
+                    name: 'Carrying_Size',
+                    placeholder: 'Tiny,Small,Medium,Large,Huge...'
+                },
+                {
+                    name: 'HardLimit',
+                    placeholder: 'Enter hard limit (if wanted)'
+                },
+                {
+                    name: 'RuleVariants',
+                    placeholder: 'Standard,Encumbrance,No rules...'
+                }
+            ],
+            buttons:[
+                {
+                    text: 'cancel',
+                    role: 'cancel',
+                    handler: data => {}
+                },
+                {
+                    text: 'Save',
+                    role: 'submit',
+                    handler: data => {}
+            }
+            ]
+        });
+        EditInventory.present();
+    }
     //function for the modal confirmation for the delete
     deleteBackpack() {
         let deleteBackpack = this.alertCtrl.create({
