@@ -19,10 +19,10 @@
 <ion-content padding>
   <h3>D&D Inventory App</h3>
 
-  <!--backpacks lodaing-->
+  <!--backpacks loading-->
     <li class="listAttr" *ngFor="let b of info; let i = index" >
       <div class="buttons">
-        <button (tap)="EditInventory()" ion-button class="button-backpacks-icon" [attr.id]="i"><img src="assets/img/BackpackIcon.png" height="30" width="30"/></button>
+        <button (tap)="EditInventory(i, b)" ion-button class="button-backpacks-icon" [attr.id]="i"><img src="assets/img/BackpackIcon.png" height="30" width="30"/></button>
         <button (tap)="openInventory(i)" ion-button icon-left class="button-backpacks" [attr.id]="i">
           {{ b.name }}</button>
       </div>

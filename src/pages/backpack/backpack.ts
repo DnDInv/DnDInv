@@ -10,10 +10,12 @@ import { InventoryPage } from "../inventory/inventory";
 })
 export class BackPackPage {
 
+    public backpack;
     info: any = [];
 
     constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
         this.navCtrl = navCtrl;
+
         this.storage.get('backpacks').then((val) => {
             this.info = val;
             //console.log(val);
@@ -26,6 +28,8 @@ export class BackPackPage {
     }
     //function for the modal confirmation for the Adding backpack
     addBackpack() {
+
+
       let addBackpack = this.alertCtrl.create({
           title: "Add Backpack",
           message: "Please enter the following requirements.",
@@ -102,7 +106,12 @@ export class BackPackPage {
       //materialize the popup
       addBackpack.present();
     }
-    EditInventory(){
+
+    //function editing
+    EditInventory(index, backpack){
+
+        console.log("Backpack Page: ", index, backpack);
+
         let EditInventory = this.alertCtrl.create({
             title: 'Edit Backpack',
             message: "enter the new value's for your backpack",
@@ -140,12 +149,21 @@ export class BackPackPage {
                 {
                     text: 'Save',
                     role: 'submit',
-                    handler: data => {}
+                    handler: data => {
+                        this.storage.get('backpacks').then((val) => {
+                            // val.filter(x => {return x.name == data.name}).length() > 0
+                            /*data = backpack + data;*/
+                            val[index] = data;
+                            this.info = val;
+                            this.storage.set("backpacks", val);
+                        });
+                    }
             }
             ]
         });
         EditInventory.present();
     }
+
     //function for the modal confirmation for the delete
     deleteBackpack() {
         let deleteBackpack = this.alertCtrl.create({
@@ -178,6 +196,7 @@ export class BackPackPage {
       //materialize the popup
       deleteBackpack.present();
     }
+
     //function for opening backpacks
     openInventory(index) {
         //console.log('index', index);
