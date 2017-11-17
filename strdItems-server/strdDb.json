@@ -1,0 +1,29 @@
+{
+  "strd_Weapons": [
+    { 
+	"strdweapId": 1,
+	"type": "Simple Melee Weapon",
+	"name": "Club",
+	"cost": "1 SP",
+	"damage": "1d4 bludgeoning",
+	"weight": "2 LB",
+	"properties": "Light",
+	"amount": ""
+	
+	}
+  ]
+  
+  "strd_Armor": [
+  { 
+	"strdarmId": 1,
+	"type": "Light armor"
+	"name": "Padded",
+	"Cost": "5 GP",
+	"armor_class": "11 + dex modifier",
+	"strenghtreq": "",
+	"Stealth": "Disadvantage",
+	"weight": "8 lb",
+	"amount": ""
+	}
+  ]
+}
