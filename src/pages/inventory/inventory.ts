@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController, NavController, NavParams } from 'ionic-angular';
 import { Storage } from "@ionic/storage";
+import { HomePage } from "../home/home";
 
 @Component({
   selector: 'page-inventory',
@@ -21,6 +22,11 @@ export class InventoryPage {
         this.item = val;
         console.log("Getting Items ", val);
     });
+  }
+
+  openItem() {
+      //push works in a push page. :)
+      //this.navCtrl.push(HomePage);
   }
 
   addItem(index) {

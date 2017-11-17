@@ -16,7 +16,7 @@
 
 
   <li class="listAttr" *ngFor="let b of item; let i = index" >
-    <button class="button-inventory" ion-button [attr.id]="i">{{b.itemName}}</button>
+    <button (tap)="openItem()" class="button-inventory" ion-button [attr.id]="i">{{b.itemName}}</button>
   </li>
 
 </ion-content>
