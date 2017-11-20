@@ -174,11 +174,6 @@ export class BackPackPage {
                   }
                 },
                 {
-                    text: 'cancel',
-                    role: 'cancel',
-                    handler: data => {}
-                },
-                {
                     text: 'Save',
                     role: 'submit',
                     handler: data => {
