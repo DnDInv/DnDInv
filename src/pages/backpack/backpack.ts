@@ -12,6 +12,7 @@ export class BackPackPage {
 
     public backpack;
     itemKey;
+    storageKey;
     info: any = [];
     item: any = [];
 
@@ -114,6 +115,8 @@ export class BackPackPage {
     EditInventory(index, backpack){
 
         this.itemKey = 'items:' + backpack.name + backpack.HardLimit;
+        this.storageKey = 'Storage:' + backpack.name + backpack.Carrying_Size + backpack.strength + backpack.RuleVariants + backpack.HardLimit;
+
 
         console.log(this.itemKey);
 
@@ -158,6 +161,18 @@ export class BackPackPage {
                 }
             ],
             buttons:[
+                {
+                  text: 'Delete',
+                  handler: data => {
+                      //console.log('Delete clicked!');
+                      this.storage.get('backpacks').then((val) => {
+                          this.storage.remove(this.itemKey);
+                          val.splice(index, 1);
+                          this.info = val;
+                          this.storage.set("backpacks", val);
+                      });
+                  }
+                },
                 {
                     text: 'cancel',
                     role: 'cancel',
