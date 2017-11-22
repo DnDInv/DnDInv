@@ -220,39 +220,6 @@ export class BackPackPage {
         EditInventory.present();
     }
 
-    //function for the modal confirmation for the delete
-    deleteBackpack() {
-        let deleteBackpack = this.alertCtrl.create({
-            title: 'Delete Backpack',
-            message: "Are you sure you want to delete your Backpack?",
-            buttons: [
-                {
-                    text: 'Cancel',
-                    role: 'cancel',
-                    handler: data => {
-                        console.log('Cancel clicked');
-                    }
-                },
-                {
-                    text: 'Delete',
-                    role: 'submit',
-                    handler: data => {
-                        this.storage.get('backpacks').then(val => {
-                            val = [];
-                            this.info = val;
-                            this.storage.set("backpacks", val);
-                            console.log("Cleared.");
-                        }).catch((err) =>{
-                            console.log("Cleared????");
-                        });
-                    }
-                }
-            ]
-      });
-      //materialize the popup
-      deleteBackpack.present();
-    }
-
     //function for opening backpacks
     openInventory(index) {
         //console.log('index', index);
