@@ -1,0 +1,80 @@
+<!--
+  Generated template for the CustomitemPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Create Custom Item</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<ion-row>
+  <ion-col class="centeredText">
+    <input placeholder="Item name" type="text"/>
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col>
+    <input placeholder="amount" type="text" />
+  </ion-col>
+  <ion-col class="styled-select slate">
+    <select>
+      <option value="" disabled hidden>Select Type of Item</option>
+      <option value="Armour">Armour</option>
+      <option value="Consumable">Consumable</option>
+      <option value="Gear">Gear</option>
+      <option value="MagicItem">Magic Item</option>
+      <option value="TradeGoods">Trade Goods</option>
+      <option value="Weapon">Weapon</option>
+      <option value="QuestItem">Quest Item</option>
+      <option value="CraftingMaterial">Crafting Material</option>
+    </select>
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col>
+    <input placeholder="weight" type="text" />
+  </ion-col>
+  <ion-col>
+    <input placeholder="price" type="text" />
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-item>
+    <ion-label>Attunement</ion-label>
+    <ion-checkbox (ionChange)="attunement($event)"></ion-checkbox>
+  </ion-item>
+</ion-row>
+
+<ion-row>
+  <ion-col>
+    <input placeholder="Mechanical Text" type="Machanical">
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col>
+    <input placeholder="Flavor / Lore text / Notes" type="FlavorText" />
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col>
+    <button ion-button round class="cancelButton">Cancel</button>
+  </ion-col>
+  <ion-col>
+    <button ion-button round class="addButton">Add</button>
+  </ion-col>
+</ion-row>
+
+</ion-content>

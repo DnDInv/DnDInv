@@ -1,0 +1,67 @@
+page-customitem {
+
+}
+
+.centeredText {
+  text-align: center;
+  width: 100%;
+}
+
+.cancelButton {
+  position: relative;
+  left: 110%;
+}
+
+.addButton {
+  position: relative;
+  left: 60%;
+}
+
+input[type="Machanical"] {
+  width: 100%;
+  font-size: large;
+  height: 160px;
+  text-align: center;
+  box-sizing: border-box;
+  border: 0px;
+  -webkit-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+  -moz-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+  box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+}
+
+input[type="FlavorText"] {
+  width: 100%;
+  font-size: large;
+  height: 160px;
+  text-align: center;
+  box-sizing: border-box;
+  border: 0px;
+  -webkit-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+  -moz-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+  box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+}
+
+input[type="text"] {
+  width: 100%;
+  font-size: large;
+  height: 40px;
+  text-align: center;
+  box-sizing: border-box;
+  border: 0px;
+  -webkit-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+  -moz-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+  box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+}
+
+.styled-select select {
+  background: transparent;
+  width: 100%;
+  font-size: large;
+  border: none;
+  height: 40px;
+  font-size: 14px;
+  padding: 5px; /* If you add too much padding here, the options won't show in IE */
+  -webkit-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+  -moz-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+  box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+}
