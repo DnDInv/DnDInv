@@ -28,6 +28,18 @@ page-home {
 .button-backpacks {
   background-color: transparent;
   color: black;
-  width: 100%;
+  width: 78%;
+  height: 45px;
+}
+
+.button-backpacks-icon:hover:not(.disable-hover) {
+  background-color: lightgrey;
+}
+
+.button-backpacks-icon {
+  background-color: transparent;
+  color: black;
+  width: 20%;
+  margin-right: -4px;
   height: 45px;
 }

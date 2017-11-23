@@ -1,3 +1,24 @@
 page-inventory {
 
 }
+
+.button-inventory:hover:not(.disable-hover) {
+  background-color: lightgrey;
+}
+
+.button-inventory {
+  background-color: transparent;
+  color: black;
+  width: 100%;
+  height: 45px;
+}
+
+.button-deleteinv {
+  display: block;
+  order: 4;
+}
+
+.listAttr {
+  list-style-type: none;
+  border-bottom: 1px solid #dedede;
+}

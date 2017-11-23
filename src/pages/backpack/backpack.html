@@ -4,9 +4,6 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Backpack</ion-title>
-    <button ion-button menuToggle class="button-min" (tap)="deleteBackpack()">
-      <ion-icon name="trash"></ion-icon>
-    </button>
     <button ion-button menuToggle class="button-plus" (tap)="addBackpack()">
       <ion-icon name="add"></ion-icon>
     </button>
@@ -19,9 +16,13 @@
 <ion-content padding>
   <h3>D&D Inventory App</h3>
 
-  <!--backpacks lodaing-->
+  <!--backpacks loading-->
     <li class="listAttr" *ngFor="let b of info; let i = index" >
-      <button ion-button class="button-backpacks" [attr.id]="i">{{ b.name }}</button>
+      <div class="buttons">
+        <button (tap)="EditInventory(i, b)" ion-button class="button-backpacks-icon" [attr.id]="i"><img src="assets/img/BackpackIcon-outline.png" height="30" width="30"/></button>
+        <button (tap)="openInventory(i)" ion-button icon-left class="button-backpacks" [attr.id]="i">
+          {{ b.name }}</button>
+      </div>
     </li>
 
 </ion-content>
