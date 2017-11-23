@@ -17,15 +17,13 @@ export class InventoryPage {
     this.backpack = this.navParams.get('backpack');
     //set backpack key items for the items in individual inventories.
     this.itemKey = 'items:' + this.backpack.name + this.backpack.HardLimit;
-
-    console.log("Backpack ", this.backpack);
-      //get items in the selected backpack
+    //console.log("Backpack ", this.backpack);
+    //get items in the selected backpack
     this.storage.get(this.itemKey).then(val => {
         this.item = val;
-        console.log("Getting Items ", val);
+        //console.log("Getting Items ", val);
     });
   }
-
   //function for opening a item.
   openItem() {
       //push works in a push page. :)
@@ -53,9 +51,9 @@ export class InventoryPage {
                         val = [];
                         this.item = val;
                         this.storage.set(this.itemKey, val);
-                        console.log("Cleared.");
+                        //console.log("Cleared.");
                     }).catch((err) =>{
-                        console.log("Cleared????");
+                        //console.log("Cleared????");
                     });
                 }
             },
@@ -76,7 +74,7 @@ export class InventoryPage {
                           this.storage.set(this.itemKey, [data]);
                           this.item = [data];
                       });
-                      console.log(data);
+                      //console.log(data);
                     }
                 }
             }

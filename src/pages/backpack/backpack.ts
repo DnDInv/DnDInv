@@ -9,18 +9,16 @@ import { InventoryPage } from "../inventory/inventory";
   templateUrl: 'backpack.html/'
 })
 export class BackPackPage {
-
     //backpack for calling the function to create and delete a backpack.
     public backpack;
     //itemKey for setting a itemKey for deleting a item if the backpack selected is deleted.
     itemKey;
-    //for setting a storageKey for deleting the backpack
+    //storageKey for setting a storageKey for deleting the backpack
     storageKey;
     //info for the access to the backpack local storage.
     info: any = [];
     //item for the access to the items per inventory
     item: any = [];
-
 
     constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
         this.navCtrl = navCtrl;
@@ -38,8 +36,6 @@ export class BackPackPage {
     }
     //function for the modal confirmation for the Adding backpack
     addBackpack() {
-
-
       let addBackpack = this.alertCtrl.create({
           //fields that are shown in the alert modal.
           title: "Add Backpack",
@@ -121,12 +117,10 @@ export class BackPackPage {
 
     //function editing
     EditInventory(index, backpack){
-
         //itemKey and storageKey requirements for editing backpacks so that the item
         //transfers (previous problem that when you edit a backpack the items where all gone and still in the old backpack (name))
         this.itemKey = 'items:' + backpack.name + backpack.HardLimit;
         this.storageKey = 'Storage:' + backpack.name + backpack.Carrying_Size + backpack.strength + backpack.RuleVariants + backpack.HardLimit;
-
 
         //console.log(this.itemKey);
 
@@ -135,9 +129,7 @@ export class BackPackPage {
             this.item = val;
             //console.log("Getting Items ", val);
         });
-
         //console.log("Backpack Page: ", index, backpack);
-
         let EditInventory = this.alertCtrl.create({
             title: 'Edit Backpack',
             message: "enter the new value's for your backpack",
@@ -219,9 +211,9 @@ export class BackPackPage {
                                 let oldKey = this.itemKey.toString();
 
                                 this.itemKey = 'items:' + val[index].name + val[index].HardLimit;
-                                console.log(this.itemKey, this.item);
+                                //console.log(this.itemKey, this.item);
                                 this.storage.set(this.itemKey, this.item);
-                                console.log("old key :", oldKey);
+                                //console.log("old key :", oldKey);
                                 this.storage.remove(oldKey);
                                 //this.itemKey = 'items:' + val.name + val.HardLimit;
                             });
@@ -237,7 +229,6 @@ export class BackPackPage {
     //function for opening backpacks
     openInventory(index) {
         //console.log('index', index);
-
         //getting all backpacks
         this.storage.get('backpacks').then((val) => {
             //console.log('Backpack with ID: ', val, index);

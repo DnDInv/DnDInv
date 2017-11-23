@@ -10,14 +10,12 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
     //info for the access to the backpack local storage.
     info: any = [];
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController,public storage: Storage) {
     this.navCtrl = navCtrl;
   }
-
   //open setting menu with a push
   opensettingPage() {
     this.navCtrl.push(SettingsPage);
@@ -62,6 +60,7 @@ export class HomePage {
                     text: 'Cancel',
                     role: 'cancel',
                     handler: data => {
+
                     }
                 },
                 {
@@ -85,7 +84,7 @@ export class HomePage {
                             return false;
                         }
                         else {
-                            //push the input of all the fields that are required into an JSON object.
+                            //push the input of all the fields that are required into a JSON object.
                             console.log(data);
                             this.storage.get('backpacks').then((val) => {
                                 val.push(data);
