@@ -15,7 +15,7 @@ export class SettingsPage {
     this.settings.getActiveTheme().subscribe(val => this.selectedTheme = val);
   }
 
-
+//function for changing theme
   toggleAppTheme() {
     console.log(this.selectedTheme);
     if(this.selectedTheme === 'light-theme')
@@ -24,6 +24,7 @@ export class SettingsPage {
       this.settings.setActiveTheme('light-theme');
   }
 
+//function for turning Awake mode on and off
   toggleAwakemode(event) {
     //console.log("toggle: ", event.checked);
       if (event.checked == false)

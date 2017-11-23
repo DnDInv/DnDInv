@@ -13,21 +13,26 @@ export class InventoryPage {
   itemKey;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,public storage: Storage) {
+    //get all the backpacks
     this.backpack = this.navParams.get('backpack');
+    //set backpack key items for the items in individual inventories.
     this.itemKey = 'items:' + this.backpack.name + this.backpack.HardLimit;
 
     console.log("Backpack ", this.backpack);
+      //get items in the selected backpack
     this.storage.get(this.itemKey).then(val => {
         this.item = val;
         console.log("Getting Items ", val);
     });
   }
 
+  //function for opening a item.
   openItem() {
       //push works in a push page. :)
       //this.navCtrl.push(HomePage);
   }
 
+  //adding items
   addItem(index) {
     let addIteminventory = this.alertCtrl.create({
         title: 'Add Item',
@@ -43,6 +48,7 @@ export class InventoryPage {
                 text: 'Cancel',
                 role: 'cancel',
                 handler: data => {
+                    //temporary delete everything.
                     this.storage.get(this.itemKey).then(val => {
                         val = [];
                         this.item = val;
@@ -57,6 +63,7 @@ export class InventoryPage {
                 text: 'Save',
                 role: 'submit',
                 handler: data => {
+                    //function for saving items in one backpack.
                     if (data.itemName.length == 0){
                       return false;
                     }

@@ -10,16 +10,22 @@ import { InventoryPage } from "../inventory/inventory";
 })
 export class BackPackPage {
 
+    //backpack for calling the function to create and delete a backpack.
     public backpack;
+    //itemKey for setting a itemKey for deleting a item if the backpack selected is deleted.
     itemKey;
+    //for setting a storageKey for deleting the backpack
     storageKey;
+    //info for the access to the backpack local storage.
     info: any = [];
+    //item for the access to the items per inventory
     item: any = [];
 
 
     constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
         this.navCtrl = navCtrl;
 
+        //function for getting all the backpacks in the JSON array
         this.storage.get('backpacks').then((val) => {
             this.info = val;
             //console.log(val);
@@ -35,6 +41,7 @@ export class BackPackPage {
 
 
       let addBackpack = this.alertCtrl.create({
+          //fields that are shown in the alert modal.
           title: "Add Backpack",
           message: "Please enter the following requirements.",
           inputs: [
@@ -92,6 +99,7 @@ export class BackPackPage {
                           return false;
                       }
                       else {
+                          //push the input of all the fields that are required into an JSON object.
                           console.log(data);
                           this.storage.get('backpacks').then((val) => {
                               // val.filter(x => {return x.name == data.name}).length() > 0
@@ -114,18 +122,21 @@ export class BackPackPage {
     //function editing
     EditInventory(index, backpack){
 
+        //itemKey and storageKey requirements for editing backpacks so that the item
+        //transfers (previous problem that when you edit a backpack the items where all gone and still in the old backpack (name))
         this.itemKey = 'items:' + backpack.name + backpack.HardLimit;
         this.storageKey = 'Storage:' + backpack.name + backpack.Carrying_Size + backpack.strength + backpack.RuleVariants + backpack.HardLimit;
 
 
-        console.log(this.itemKey);
+        //console.log(this.itemKey);
 
+        //getting all the items in a certain backpack.
         this.storage.get(this.itemKey).then(val => {
             this.item = val;
-            console.log("Getting Items ", val);
+            //console.log("Getting Items ", val);
         });
 
-        console.log("Backpack Page: ", index, backpack);
+        //console.log("Backpack Page: ", index, backpack);
 
         let EditInventory = this.alertCtrl.create({
             title: 'Edit Backpack',
@@ -165,8 +176,10 @@ export class BackPackPage {
                   text: 'Delete',
                   handler: data => {
                       //console.log('Delete clicked!');
+                      //getting the backpack to delete it.
                       this.storage.get('backpacks').then((val) => {
                           this.storage.remove(this.itemKey);
+                          //splice 1 to delete one element and there for delete the whole array.
                           val.splice(index, 1);
                           this.info = val;
                           this.storage.set("backpacks", val);
@@ -195,6 +208,7 @@ export class BackPackPage {
                             return false;
                         }
                         else {
+                            //push the input of all the fields that are required into an JSON object.
                             this.storage.get('backpacks').then((val) => {
                                 // val.filter(x => {return x.name == data.name}).length() > 0
                                 /*data = backpack + data;*/
@@ -224,12 +238,14 @@ export class BackPackPage {
     openInventory(index) {
         //console.log('index', index);
 
+        //getting all backpacks
         this.storage.get('backpacks').then((val) => {
             //console.log('Backpack with ID: ', val, index);
+            //getting the id of the backpack that is tapped.
             let data = {
                 backpack: val[index]
             };
-            console.log('Data', index);
+            //console.log('Data', index);
             this.info = val;
             this.navCtrl.push(InventoryPage, data);
             //storage.push(backpack.name, {items: [], dat: {}, dit: 5})
