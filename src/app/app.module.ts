@@ -14,6 +14,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SettingsProvider } from '../providers/settings/settings';
 import { AboutProvider } from '../providers/about/about';
+import { Insomnia } from "@ionic-native/insomnia";
 
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -49,7 +50,8 @@ import { IonicStorageModule } from '@ionic/storage';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SettingsProvider,
-    AboutProvider
+    AboutProvider,
+    Insomnia
   ]
 })
 export class AppModule {}
