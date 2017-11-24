@@ -55,6 +55,7 @@ export class StandarditemPage {
         }
     ];
 
+
     constructor(public navCtrl: NavController, public navParams: NavParams) {
 
     }
