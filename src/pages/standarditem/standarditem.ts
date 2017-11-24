@@ -135,7 +135,7 @@ export class StandarditemPage {
             "name": "Padded",
             "cost": "5 gp",
             "armor_class": "11 + Dex modifier",
-            "strenght": "",
+            "strength": "",
             "stealth": "Disadvantage",
             "weight": "8 lb",
             "amount": ""
@@ -282,5 +282,7 @@ export class StandarditemPage {
 
     }
 
-
+    clickable(index) {
+        console.log("Clicked id: ", index);
+    }
 }

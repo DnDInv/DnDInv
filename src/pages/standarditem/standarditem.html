@@ -16,11 +16,17 @@
 <ion-content padding>
 
     <ion-list>
-        <ion-item *ngFor="let b of weapons; let i = index" [attr.Weaponid]="i">
-            {{ b.name }} - {{ b.type }} - {{ b.cost }}
+        <ion-item *ngFor="let b of weapons; let i = index" [attr.Weaponid]="i" (tap)="clickable(i)">
+            <h2 id="WeaponHeader">{{ b.name }}</h2>
+            <p id="Weapon">       Type: {{ b.type }}
+                            <br/> Weight: {{ b.weight }}
+                            <br/> Cost: {{ b.cost }}</p>
         </ion-item>
-        <ion-item *ngFor="let a of armor; let i = index" [attr.Armorid]="i">
-            {{ a.name }} - {{ a.type }}
+        <ion-item *ngFor="let a of armor; let i = index" [attr.Armorid]="i" (tap)="clickable(i)">
+            <h2 id="ArmorHeader">{{ a.name }}</h2>
+            <p id="Armor">       Type: {{ a.type }}
+                           <br/> Weight: {{ a.weight }}
+                           <br/> Cost: {{ a.cost }} </p>
         </ion-item>
     </ion-list>
 </ion-content>
