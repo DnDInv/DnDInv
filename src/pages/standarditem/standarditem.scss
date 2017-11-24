@@ -1,3 +1,11 @@
 page-standarditem {
 
 }
+
+p#Weapon, p#Armor{
+  color: black;
+}
+
+h2#ArmorHeader, h2#WeaponHeader {
+  font-weight: bold;
+}

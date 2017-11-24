@@ -46,10 +46,10 @@ export class StandarditemPage {
             "strdarmId": 0,
             "type": "Light armor",
             "name": "Padded",
-            "Cost": "5 GP",
+            "cost": "5 GP",
             "armor_class": "11 + dex modifier",
             "strenghtreq": "",
-            "Stealth": "Disadvantage",
+            "stealth": "Disadvantage",
             "weight": "8 lb",
             "amount": ""
         }
@@ -60,5 +60,7 @@ export class StandarditemPage {
 
     }
 
-
+    clickable(index) {
+        console.log("Clicked id: ", index);
+    }
 }
