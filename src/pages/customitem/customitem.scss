@@ -41,7 +41,7 @@ input#Flavor {
   box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
 }
 
-input[type="text"] {
+input#CustomItem {
   width: 100%;
   font-size: large;
   height: 40px;
@@ -59,7 +59,6 @@ input[type="text"] {
   font-size: large;
   border: none;
   height: 40px;
-  font-size: 14px;
   padding: 5px; /* If you add too much padding here, the options won't show in IE */
   -webkit-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
   -moz-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);

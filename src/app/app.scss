@@ -19,3 +19,10 @@
 //COMMENT MADE BY JEFF
 //everytime you make a new page you have to add the @import scss here in this file :)
 @import "../pages/backpack/backpack";
+
+.getstart {
+  background-image: url('../assets/img/backgrounddnd.jpg') ;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
