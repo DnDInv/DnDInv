@@ -6,10 +6,29 @@ page-inventory {
   background-color: lightgrey;
 }
 
+
+
+
+.button-items-icon:hover:not(.disable-hover) {
+  background-color: lightgrey;
+}
+
+.button-items-icon {
+  background-color: transparent;
+  color: black;
+  width: 20%;
+  margin-right: -4px;
+  height: 45px;
+}
+
+.button-inventory:hover:not(.disable-hover) {
+  background-color: lightgrey;
+}
+
 .button-inventory {
   background-color: transparent;
   color: black;
-  width: 100%;
+  width: 78%;
   height: 45px;
 }
 

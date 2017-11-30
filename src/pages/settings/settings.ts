@@ -9,8 +9,8 @@ import { Insomnia } from '@ionic-native/insomnia';
 })
 export class SettingsPage {
 
+  selectedTheme: String;
 
-    selectedTheme: String;
   constructor(public navCtrl: NavController, private settings: SettingsProvider,public insomnia: Insomnia) {
     this.settings.getActiveTheme().subscribe(val => this.selectedTheme = val);
   }
