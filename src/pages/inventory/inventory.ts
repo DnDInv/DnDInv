@@ -57,7 +57,7 @@ export class InventoryPage {
             buttons: [
                 {
                     //<editor-fold desc="delete individual items">
-                    text: "Delete",
+                    text: "Yes",
                     handler: data => {
                         //gets the storage with the given itemKey
                         this.storage.get(this.itemKey).then((val) => {
@@ -76,6 +76,9 @@ export class InventoryPage {
                     }
                     //</editor-fold>
                 },
+                {
+                    text: "No"
+                }
             ]
         });
         editorDelete.present();
