@@ -10,7 +10,7 @@ import {NavController, NavParams} from 'ionic-angular';
 export class StandarditemPage {
 
     weapons = [
-        // simple melee weapons
+        //<editor-fold desc="simple melee weapons">
         {
             "strdweapId": 0,
             "type": "Simple Melee Weapon",
@@ -111,7 +111,9 @@ export class StandarditemPage {
             "properties": "Thrown (range 20/60), versatile (1d8)",
             "amount": ""
         },
-        // simple ranged weapons
+        //</editor-fold>
+
+        //<editor-fold desc="simple ranged weapons">
         {
             "strdweapId": 10,
             "type": "Simple Ranged Weapon ",
@@ -152,7 +154,9 @@ export class StandarditemPage {
             "properties": "Ammunition (range 30/120)",
             "amount": ""
         },
-        // martial melee weapons
+        //</editor-fold>
+
+        //<editor-fold desc="martial melee weapons">
         {
             "strdweapId": 14,
             "type": "Martial Melee Weapon ",
@@ -333,7 +337,9 @@ export class StandarditemPage {
             "properties": "Finesse, reach",
             "amount": ""
         },
-        // martial ranged weapons
+        //</editor-fold>
+
+        //<editor-fold desc="martial ranged weapons">
         {
             "strdweapId": 32,
             "type": "Martial Ranged Weapon ",
@@ -384,10 +390,11 @@ export class StandarditemPage {
             "properties": "Special, thrown (range 5/15)",
             "amount": ""
         }
+        //</editor-fold>
     ];
 
     armor = [
-        // light armor
+        //<editor-fold desc="light armor">
         {
             "strdarmId": 0,
             "type": "Light armor",
@@ -421,7 +428,9 @@ export class StandarditemPage {
             "weight": "13 lb",
             "amount": ""
         },
-        //medium armor
+        //</editor-fold>
+
+        //<editor-fold desc="medium armor">
         {
             "strdarmId": 3,
             "type": "Medium armor",
@@ -477,7 +486,9 @@ export class StandarditemPage {
             "weight": "40 lb",
             "amount": ""
         },
-        // heavy armor
+        //</editor-fold>
+
+        //<editor-fold desc="heavy armor">
         {
             "strdarmId": 8,
             "type": "Heavy armor",
@@ -522,7 +533,9 @@ export class StandarditemPage {
             "weight": "65 lb",
             "amount": ""
         },
-        // shields
+        //</editor-fold>
+
+        //<editor-fold desc="shields">
         {
             "strdarmId": 12,
             "type": "Shield",
@@ -534,9 +547,11 @@ export class StandarditemPage {
             "weight": "6 lb",
             "amount": ""
         }
+        //</editor-fold>
     ];
 
     gear = [
+        //<editor-fold desc="Adventuring Gear">
         {
             "strgearId": 0,
             "type": "Adventuring Gear",
@@ -1297,9 +1312,11 @@ export class StandarditemPage {
             "weight": "1 lb",
             "amount": ""
         }
+        //</editor-fold>
     ];
 
     ammunition = [
+        //<editor-fold desc="Ammunition">
             {
                 "str]ammoId": 0,
                 "type": "Ammunition",
@@ -1332,6 +1349,7 @@ export class StandarditemPage {
                 "weight": "",
                 "amount": ""
             }
+        //</editor-fold>
         ];
 
 
