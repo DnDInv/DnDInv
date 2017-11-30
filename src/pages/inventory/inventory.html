@@ -1,23 +1,28 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>{{backpack.name}} - inventory</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>{{backpack.name}} - inventory</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
 
-<ion-row>
-  <ion-col width-50 style="text-align: center">
-    <button (tap)="addItem()" round ion-button>Add Item</button>
-  </ion-col>
-</ion-row>
+    <ion-row>
+        <ion-col style="text-align: center; width: 49%">
+            <button (tap)="addstandardItem()" round ion-button>Add Standard</button>
+        </ion-col>
+        <ion-col style="text-align: center; width: 49%">
+            <button (tap)="createcustomItem(backpack)" round ion-button>Create Custom</button>
+        </ion-col>
+    </ion-row>
 
 
-  <li class="listAttr" *ngFor="let b of item; let i = index" >
-    <button (tap)="openItem()" class="button-inventory" ion-button [attr.id]="i">{{b.itemName}}</button>
-  </li>
+    <li class="listAttr" *ngFor="let b of items; let i = index">
+        <button (tap)="deleteItem(i, b)" ion-button class="button-items-icon" [attr.id]="i"><ion-icon name="trash"></ion-icon></button>
+        <button (tap)="openItem()" class="button-inventory" ion-button [attr.id]="i">{{ b.itemName }}</button>
+    </li>
+
 
 
   <button ion-button (tap)="wallet()">Wallet</button>
