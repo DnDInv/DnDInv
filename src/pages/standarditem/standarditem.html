@@ -40,5 +40,11 @@
                            <br/>Weight: {{ a.weight }}
                            <br/>Cost: {{ a.cost }}</p>
         </ion-item>
+        <ion-item *ngFor="let a of tools; let i = index" [attr.Toolid]="i" (tap)="clickable(i)">
+            <h2 id="ToolHeader">{{ a.name }}</h2>
+            <p id="Tool">       Type: {{ a.type }}
+                           <br/>Weight: {{ a.weight }}
+                           <br/>Cost: {{ a.cost }}</p>
+        </ion-item>
     </ion-list>
 </ion-content>

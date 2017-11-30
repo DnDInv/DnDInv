@@ -17,7 +17,7 @@ export class InventoryPage {
   //info array for getting all the backpacks
   info = [];
   //item to sync all the objects in this.itemKey and get them on the screen.
-  item = [];
+  items = [];
   //itemKey to get the items from the individual backpacks.
   itemKey;
   //</editor-fold
@@ -35,7 +35,8 @@ export class InventoryPage {
     //<editor-fold desc="Getting items from itemKey">
     //get items in the selected backpack
     this.storage.get(this.itemKey).then((val) => {
-        this.item = val;
+        this.items = val;
+        console.log("Storage items: ", val);
     }).catch((err) => {
 
     });
@@ -45,6 +46,40 @@ export class InventoryPage {
   //function for opening a item.
   openItem() {
       //this.navCtrl.push(itemPage);
+  }
+
+  deleteItem(index, item) {
+      //<editor-fold desc="Creating the modal for deleting only">
+      //create the modal for deleting the selected item.
+        let editorDelete = this.alertCtrl.create({
+            title: "Are you sure you want to delete the item: " + item.itemName,
+            message: "here you can delete the Item: " + item.itemName,
+            buttons: [
+                {
+                    //<editor-fold desc="delete individual items">
+                    text: "Delete",
+                    handler: data => {
+                        //gets the storage with the given itemKey
+                        this.storage.get(this.itemKey).then((val) => {
+                            //removes the selected item with the corresponding itemKey
+                            this.storage.remove(this.itemKey);
+                            //setting this.items to the val variable
+                            this.items = val;
+                            //splicing the val that has the selected item and delete one element so the object gets removed.
+                            val.splice(index, 1);
+
+                            //set the storage itemKey to val so that the selected item will stay removed and will not be shown on the list.
+                            this.storage.set(this.itemKey, val);
+                        }).catch((err) => {
+                            console.log("something went wrong: ", err.message);
+                        })
+                    }
+                    //</editor-fold>
+                },
+            ]
+        });
+        editorDelete.present();
+      //</editor-fold>
   }
 
   //Creating custom item

@@ -123,7 +123,6 @@ export class BackPackPage {
     //function editing
     EditInventory(index, backpack){
 
-        console.log(backpack);
         //<editor-fold desc="Setting itemKey and storageKey to get the right inventory to rename it.">
         //itemKey and storageKey requirements for editing backpacks so that the item
         //transfers (previous problem that when you edit a backpack the items where all gone and still in the old backpack (name))

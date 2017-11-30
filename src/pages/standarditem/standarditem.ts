@@ -1350,7 +1350,7 @@ export class StandarditemPage {
                 "amount": ""
             }
         //</editor-fold>
-        ];
+    ];
 
     tools = [
         //<editor-fold desc="artisan's tools">
@@ -1507,6 +1507,7 @@ export class StandarditemPage {
             "amount": ""
         },
         //</editor-fold>
+
         //<editor-fold desc="gaming set">
         {
             "strtoolId": 19 ,
@@ -1549,6 +1550,7 @@ export class StandarditemPage {
             "amount": ""
         },
         //</editor-fold>
+
         //<editor-fold desc="musical instrument">
         {
             "strtoolId": 24 ,
@@ -1631,6 +1633,8 @@ export class StandarditemPage {
             "amount": ""
         },
         //</editor-fold>
+
+        //<editor-fold desc="tools">
         {
             "strtoolId": 34 ,
             "type": "Tools",
@@ -1655,10 +1659,8 @@ export class StandarditemPage {
             "weight": "1 lb",
             "amount": ""
         }
+        //</editor-fold>
     ];
-
-
-
 
     constructor(public navCtrl: NavController, public navParams: NavParams) {
 
