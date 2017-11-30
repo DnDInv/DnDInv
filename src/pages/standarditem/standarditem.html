@@ -28,5 +28,17 @@
                            <br/> Weight: {{ a.weight }}
                            <br/> Cost: {{ a.cost }} </p>
         </ion-item>
+        <ion-item *ngFor="let g of gear; let i = index" [attr.Gearid]="i" (tap)="clickable(i)">
+            <h2 id="GearHeader">{{ g.name }}</h2>
+            <p id="Gear">       Type: {{ g.type }}
+                           <br/>Weight: {{ g.weight }}
+                           <br/>cost: {{ g.cost }}</p>
+        </ion-item>
+        <ion-item *ngFor="let c of ammunition; let i = index" [attr.Ammoid]="i" (tap)="clickable(i)">
+            <h2 id="AmmoHeader">{{ c.name }}</h2>
+            <p id="Ammo">       Type: {{ c.type }}
+                           <br/>Weight: {{ c.weight }}
+                           <br/>Cost: {{ c.cost }}</p>
+        </ion-item>
     </ion-list>
 </ion-content>

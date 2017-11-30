@@ -2,10 +2,10 @@ page-standarditem {
 
 }
 
-p#Weapon, p#Armor{
+p#Weapon, p#Armor, p#Gear, p#Ammo {
   color: black;
 }
 
-h2#ArmorHeader, h2#WeaponHeader {
+h2#ArmorHeader, h2#WeaponHeader, h2#GearHeader, h2#AmmoHeader {
   font-weight: bold;
 }

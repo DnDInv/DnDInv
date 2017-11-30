@@ -63,7 +63,16 @@ export class InventoryPage {
 
   //adding items
   addstandardItem() {
-    this.navCtrl.push(StandarditemPage);
+      //<editor-fold desc="Pushing the selected backpack to the next page.">
+      //getting all backpacks
+      this.storage.get('backpacks').then((val) => {
+          this.info = val;
+          this.navCtrl.push(StandarditemPage, { backpack: this.backpack });
+
+      }).catch((err) => {
+          console.log("backpack not found!");
+      });
+      //</editor-fold>
   }
 
 }
