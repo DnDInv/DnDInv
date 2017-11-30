@@ -9,6 +9,7 @@ import { Storage } from "@ionic/storage";
 })
 export class CustomitemPage {
 
+    //<editor-fold desc="variables">
     //backpack variable for the selected backpack
     public backpack;
     //item to sync all the objects in this.itemKey.
@@ -32,8 +33,10 @@ export class CustomitemPage {
     mechanical: any;
     //the flavor field.
     flavor: any;
+    //</editor-fold>
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
+        //<editor-fold desc="variables default values.">
         this.itemName = "";
         this.type = "";
         this.amount = null;
@@ -42,26 +45,25 @@ export class CustomitemPage {
         this.attune = false;
         this.mechanical = "";
         this.flavor = "";
+        //</editor-fold
 
+        //<editor-fold desc="getting the selected backpack.">
         //get the selected backpacks
         this.backpack = this.navParams.get("backpack");
         //console.log("last backpack: ", this.backpack.name);
         //set backpack key items for the items in individual inventories.
         this.itemKey = "item:" + this.backpack.name + this.backpack.HardLimit;
         //console.log("itemKey: ", this.itemKey);
+        //</editor-fold
     }
-
-
-    attunement(event) {
-        //console.log("checked: ", event.checked);
-    }
-
 
     createCustom() {
-
+        //<editor-fold desc="set itemKey for the selected backpack">
          this.itemKey = "item: " + this.backpack.name + this.backpack.HardLimit;
         // console.log("ItemKey: ", this.itemKey);
+        //</editor-fold>
 
+        //<editor-fold desc="input data">
         let data = {
             "itemName": this.itemName,
             "type": this.type,
@@ -72,7 +74,9 @@ export class CustomitemPage {
             "mechanical": this.mechanical,
             "flavor": this.flavor
         };
+        //</editor-fold>
 
+        //<editor-fold desc="Save and Add Custom item.">
         this.storage.get(this.itemKey).then((val) => {
             // val.filter(x => {return x.name == data.name}).length() > 0
             val.push(data);
@@ -86,6 +90,6 @@ export class CustomitemPage {
             this.storage.set(this.itemKey, [data]);
             this.item = [data];
         });
+        //</editor-fold>
     }
-
 }

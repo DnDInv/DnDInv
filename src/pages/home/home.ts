@@ -27,6 +27,7 @@ export class HomePage {
   }
     //function for the modal confirmation for the Adding backpack
     addBackpack() {
+        //<editor-fold desc="Function for adding a backpack">
         let addBackpack = this.alertCtrl.create({
             title: "Add Backpack",
             message: "Please enter the following requirements.",
@@ -101,5 +102,6 @@ export class HomePage {
         });
         //materialize the popup
         addBackpack.present();
+        //</editor-fold>
     }
 }

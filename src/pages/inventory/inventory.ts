@@ -10,6 +10,7 @@ import { StandarditemPage } from "../standarditem/standarditem";
 })
 export class InventoryPage {
 
+  //<editor-fold desc="variables">
   //backpack variable for the selected backpack
   public backpack;
 
@@ -19,18 +20,26 @@ export class InventoryPage {
   item = [];
   //itemKey to get the items from the individual backpacks.
   itemKey;
+  //</editor-fold
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public storage: Storage) {
+
+    //<editor-fold desc="getting the backpack thats been tapped on.">
     //get the selected backpack
     this.backpack = this.navParams.get('backpack');
+
     //set backpack key items for the items in individual inventories.
     this.itemKey = 'item: ' + this.backpack.name + this.backpack.HardLimit;
+    //</editor-fold>
+
+    //<editor-fold desc="Getting items from itemKey">
     //get items in the selected backpack
     this.storage.get(this.itemKey).then((val) => {
         this.item = val;
     }).catch((err) => {
 
     });
+    //</editor-fold>
   }
 
   //function for opening a item.
@@ -40,6 +49,7 @@ export class InventoryPage {
 
   //Creating custom item
   createcustomItem() {
+      //<editor-fold desc="Pushing the selected backpack to the next page.">
       //getting all backpacks
       this.storage.get('backpacks').then((val) => {
           this.info = val;
@@ -48,6 +58,7 @@ export class InventoryPage {
       }).catch((err) => {
           console.log("backpack not found!");
       });
+      //</editor-fold>
   }
 
   //adding items
