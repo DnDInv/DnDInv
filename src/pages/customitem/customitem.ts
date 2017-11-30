@@ -57,6 +57,7 @@ export class CustomitemPage {
     }
 
 
+    createCustom() {
 
          this.itemKey = "item: " + this.backpack.name + this.backpack.HardLimit;
         // console.log("ItemKey: ", this.itemKey);
