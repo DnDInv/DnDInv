@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController, NavController, NavParams } from 'ionic-angular';
 import { Storage } from "@ionic/storage";
+import { WalletPage } from "../wallet/wallet";
 
 @Component({
   selector: 'page-inventory',
@@ -21,6 +22,10 @@ export class InventoryPage {
         this.item = val;
         console.log("Getting Items ", val);
     });
+  }
+
+  wallet() {
+      this.navCtrl.push(WalletPage);
   }
 
   openItem() {

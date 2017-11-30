@@ -1,0 +1,55 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Wallet</ion-title>
+        <button ion-button menuToggle class="setting" (tap)="opensettingPage()">
+            <ion-icon name="settings"></ion-icon>
+        </button>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <!--<button ion-button (tap)="decrementPlat()">-</button>-->
+    <!--<input  placeholder={{tempCoin.pp}} [(ngModel)]="plat" type="number"/>-->
+    <!--<button ion-button (tap)="incrementPlat()">+</button><br />-->
+    <!--<button ion-button (tap)="decrementGold()">-</button>-->
+    <!--<input placeholder="gp" [(ngModel)]="gold" type="number"/>-->
+    <!--<button ion-button (tap)="incrementGold()">+</button><br />-->
+    <!--<button ion-button (tap)="decrementElec()">-</button>-->
+    <!--<input placeholder="ep" [(ngModel)]="elec" type="number"/>-->
+    <!--<button ion-button (tap)="incrementElec()">+</button><br />-->
+    <!--<button ion-button (tap)="decrementSilv()">-</button>-->
+    <!--<input placeholder="sp" [(ngModel)]="silv" type="number"/>-->
+    <!--<button ion-button (tap)="incrementSilv()">+</button><br />-->
+    <!--<button ion-button (tap)="decrementCopp()">-</button>-->
+    <!--<input placeholder="cp" [(ngModel)]="copp" type="number"/>-->
+    <!--<button ion-button (tap)="incrementCopp()">+</button><br />-->
+
+    <form (ngSubmit)="test()">
+        <ion-item>
+            <ion-label>pp</ion-label>
+            <ion-input type="number" [(ngModel)]="plat" name="plat"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>gp</ion-label>
+            <ion-input type="number" [(ngModel)]="gold" name="gold"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>ep</ion-label>
+            <ion-input type="number" [(ngModel)]="elec" name="elec"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>sp</ion-label>
+            <ion-input type="number" [(ngModel)]="silv" name="silv"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>cp</ion-label>
+            <ion-input type="number" [(ngModel)]="copp" name="copp"></ion-input>
+        </ion-item>
+        <button ion-button (tap)="submitCoins()">Test</button>
+    </form>
+
+    <!--<button ion-button (tap)="cancelWallet()">Canceling butt</button>-->
+    <!--<button ion-button (tap)="saveWallet()">ok but tony</button>-->
+
+</ion-content>

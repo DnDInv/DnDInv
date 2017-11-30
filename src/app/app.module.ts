@@ -8,6 +8,7 @@ import { BackPackPage} from '../pages/backpack/backpack';
 import { SettingsPage} from "../pages/settings/settings";
 import { AboutPage} from "../pages/about/about";
 import { InventoryPage } from "../pages/inventory/inventory";
+import { WalletPage } from  "../pages/wallet/wallet";
 //import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -26,7 +27,8 @@ import { IonicStorageModule } from '@ionic/storage';
     BackPackPage,
     SettingsPage,
     AboutPage,
-    InventoryPage
+    InventoryPage,
+    WalletPage
     //ListPage
 
   ],
@@ -42,7 +44,8 @@ import { IonicStorageModule } from '@ionic/storage';
     BackPackPage,
     SettingsPage,
     AboutPage,
-    InventoryPage
+    InventoryPage,
+    WalletPage
     //ListPage
   ],
   providers: [
@@ -51,7 +54,8 @@ import { IonicStorageModule } from '@ionic/storage';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SettingsProvider,
     AboutProvider,
-    Insomnia
+    Insomnia,
+    Storage
   ]
 })
 export class AppModule {}
