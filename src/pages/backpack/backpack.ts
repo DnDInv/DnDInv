@@ -123,22 +123,19 @@ export class BackPackPage {
     //function editing
     EditInventory(index, backpack){
 
+        console.log(backpack);
         //<editor-fold desc="Setting itemKey and storageKey to get the right inventory to rename it.">
         //itemKey and storageKey requirements for editing backpacks so that the item
         //transfers (previous problem that when you edit a backpack the items where all gone and still in the old backpack (name))
         this.itemKey = 'items:' + backpack.name + backpack.HardLimit;
         this.storageKey = 'Storage:' + backpack.name + backpack.Carrying_Size + backpack.strength + backpack.RuleVariants + backpack.HardLimit;
-
-        //console.log(this.itemKey);
         //</editor-fold>
 
         //<editor-fold desc="Getting the items in the selected backpack so they transfer on rename.">
         //getting all the items in a certain backpack.
         this.storage.get(this.itemKey).then(val => {
             this.item = val;
-            //console.log("Getting Items ", val);
         });
-        //console.log("Backpack Page: ", index, backpack);
         //</editor-fold>
 
         //<editor-fold desc="Edit and Delete selected inventory">
