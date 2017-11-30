@@ -1352,6 +1352,311 @@ export class StandarditemPage {
         //</editor-fold>
         ];
 
+    tools = [
+        //<editor-fold desc="artisan's tools">
+        {
+            "strtoolId": 0,
+            "type": "Tools",
+            "name": "Alchemist's supplies",
+            "cost": "50 gp",
+            "weight": "8 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 1,
+            "type": "Tools",
+            "name": "Brewer's supplies",
+            "cost": "20 gp",
+            "weight": "9 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 2,
+            "type": "Tools",
+            "name": "Calligrapher's supplies",
+            "cost": "10 gp",
+            "weight": "5 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 3,
+            "type": "Tools",
+            "name": "Carpenter's supplies",
+            "cost": "8 gp",
+            "weight": "6 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 4,
+            "type": "Tools",
+            "name": "Cartographer's tools",
+            "cost": " 8",
+            "weight": "6 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 5,
+            "type": "Tools",
+            "name": "Cobbler's tools",
+            "cost": "5 gp",
+            "weight": "5 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 6,
+            "type": "Tools",
+            "name": "Cook's utensils",
+            "cost": "1 gp",
+            "weight": "8 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 7,
+            "type": "Tools",
+            "name": "Glassblower's2 tools",
+            "cost": "30 gp",
+            "weight": "5 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 8,
+            "type": "Tools",
+            "name": "Jeweler's tools",
+            "cost": "25 gp",
+            "weight": "2 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 9,
+            "type": "Tools",
+            "name": "Leatherworker's tools",
+            "cost": "5 gp",
+            "weight": "5 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 10,
+            "type": "Tools",
+            "name": "Mason's tools",
+            "cost": "10 gp",
+            "weight": "8 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 11,
+            "type": "Tools",
+            "name": "Painter's supplies",
+            "cost": "10 gp",
+            "weight": "5 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 12,
+            "type": "Tools",
+            "name": "Potter's tools",
+            "cost": "10 gp",
+            "weight": "3 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 13,
+            "type": "Tools",
+            "name": "Smith's tools",
+            "cost": "20 gp",
+            "weight": "8 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 14,
+            "type": "Tools",
+            "name": "Tinker's tools",
+            "cost": "50 gp",
+            "weight": "10 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 15,
+            "type": "Tools",
+            "name": "Weaver's tools",
+            "cost": "1 gp",
+            "weight": "5 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 16,
+            "type": "Tools",
+            "name": "Woodcarver's tools",
+            "cost": "1 gp",
+            "weight": "5 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 17,
+            "type": "Tools",
+            "name": "Disguise kit",
+            "cost": "25 gp",
+            "weight": "3 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 18,
+            "type": "Tools",
+            "name": "Forgery kut",
+            "cost": "15 gp",
+            "weight": "5 lb",
+            "amount": ""
+        },
+        //</editor-fold>
+        //<editor-fold desc="gaming set">
+        {
+            "strtoolId": 19 ,
+            "type": "Tools",
+            "name": "Dice set",
+            "cost": "1 sp",
+            "weight": "",
+            "amount": ""
+        },
+        {
+            "strtoolId": 20 ,
+            "type": "Tools",
+            "name": "Dragonchess set",
+            "cost": "1 gp",
+            "weight": "0,5 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 21 ,
+            "type": "Tools",
+            "name": "Playing card set",
+            "cost": "5 sp",
+            "weight": "",
+            "amount": ""
+        },
+        {
+            "strtoolId": 22 ,
+            "type": "Tools",
+            "name": "Three-Dragon Ante set",
+            "cost": "1 gp",
+            "weight": "",
+            "amount": ""
+        },
+        {
+            "strtoolId": 23 ,
+            "type": "Tools",
+            "name": "Herbalism kit",
+            "cost": "5 gp",
+            "weight": "3 lb",
+            "amount": ""
+        },
+        //</editor-fold>
+        //<editor-fold desc="musical instrument">
+        {
+            "strtoolId": 24 ,
+            "type": "Tools",
+            "name": "Bagpipes",
+            "cost": "30 gp",
+            "weight": "6 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 25 ,
+            "type": "Tools",
+            "name": "Drum",
+            "cost": "6 gp",
+            "weight": "3 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 26 ,
+            "type": "Tools",
+            "name": "Dulcimer",
+            "cost": "25 gp",
+            "weight": "10 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 27 ,
+            "type": "Tools",
+            "name": "Flute",
+            "cost": "2 gp",
+            "weight": "1 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 28 ,
+            "type": "Tools",
+            "name": "Lute",
+            "cost": "35 gp",
+            "weight": "2 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 29 ,
+            "type": "Tools",
+            "name": "Lyre",
+            "cost": "30 gp",
+            "weight": "2 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 30 ,
+            "type": "Tools",
+            "name": "Horn",
+            "cost": "3 gp",
+            "weight": "2 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 31 ,
+            "type": "Tools",
+            "name": "Pan flute",
+            "cost": "12 gp",
+            "weight": "2 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 32 ,
+            "type": "Tools",
+            "name": "Shawn",
+            "cost": "2 gp",
+            "weight": "1 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 33 ,
+            "type": "Tools",
+            "name": "Viol",
+            "cost": "30 gp",
+            "weight": "1 lb",
+            "amount": ""
+        },
+        //</editor-fold>
+        {
+            "strtoolId": 34 ,
+            "type": "Tools",
+            "name": "Navigator's tools",
+            "cost": "25 gp",
+            "weight": "2 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 35 ,
+            "type": "Tools",
+            "name": "Poisoner's kit",
+            "cost": "50 gp",
+            "weight": "2 lb",
+            "amount": ""
+        },
+        {
+            "strtoolId": 36 ,
+            "type": "Tools",
+            "name": "Thieves tools",
+            "cost": "25 gp",
+            "weight": "1 lb",
+            "amount": ""
+        }
+    ];
+
 
 
 
