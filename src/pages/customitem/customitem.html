@@ -13,67 +13,65 @@
 </ion-header>
 
 
-<ion-content class="getstart" padding>
+<ion-content padding>
 
 <ion-row>
   <ion-col class="centeredText">
-    <input id="CustomItem" placeholder="Item name" type="text"/>
+    <input id="CustomItem" placeholder="Item name" [(ngModel)]="itemName" type="text"/>
   </ion-col>
 </ion-row>
 
 <ion-row>
   <ion-col>
-    <input id="CustomItem" placeholder="amount" type="text" />
+    <input id="CustomItem" placeholder="amount" [(ngModel)]="amount" type="text" />
   </ion-col>
-  <ion-col class="styled-select slate">
-    <select>
-      <option value="" disabled hidden>Select Type of Item</option>
-      <option value="Armour">Armour</option>
-      <option value="Consumable">Consumable</option>
-      <option value="Gear">Gear</option>
-      <option value="MagicItem">Magic Item</option>
-      <option value="TradeGoods">Trade Goods</option>
-      <option value="Weapon">Weapon</option>
-      <option value="QuestItem">Quest Item</option>
-      <option value="CraftingMaterial">Crafting Material</option>
-    </select>
+  <ion-col>
+    <!--<ion-item id="Test" class="styled-select slate">-->
+      <ion-select [(ngModel)]="type" placeholder="Select Type of Item">
+        <!--<ion-option value="" disabled hidden>Select Type of Item</ion-option>-->
+        <ion-option value="Armour">Armour</ion-option>
+        <ion-option value="Consumable">Consumable</ion-option>
+        <ion-option value="Gear">Gear</ion-option>
+        <ion-option value="MagicItem">Magic Item</ion-option>
+        <ion-option value="TradeGoods">Trade Goods</ion-option>
+        <ion-option value="Weapon">Weapon</ion-option>
+        <ion-option value="QuestItem">Quest Item</ion-option>
+        <ion-option value="CraftingMaterial">Crafting Material</ion-option>
+      </ion-select>
+    <!--</ion-item>-->
   </ion-col>
 </ion-row>
 
 <ion-row>
   <ion-col>
-    <input id="CustomItem" placeholder="weight" type="text" />
+    <input id="CustomItem" [(ngModel)]="weight" placeholder="weight lbs" type="text" />
   </ion-col>
   <ion-col>
-    <input id="CustomItem" placeholder="price" type="text" />
+    <input id="CustomItem" [(ngModel)]="price" placeholder="price" type="text" />
   </ion-col>
 </ion-row>
 
 <ion-row>
   <ion-item>
     <ion-label>Attunement</ion-label>
-    <ion-checkbox (ionChange)="attunement($event)"></ion-checkbox>
+    <ion-checkbox [(ngModel)]="attune" ></ion-checkbox>
   </ion-item>
 </ion-row>
 
 <ion-row>
   <ion-col>
-    <input placeholder="Mechanical Text" id="Machanical" type="text">
+    <input placeholder="Mechanical Text" [(ngModel)]="mechanical" id="Mechanical" type="text">
   </ion-col>
 </ion-row>
 
 <ion-row>
   <ion-col>
-    <input placeholder="Flavor / Lore text / Notes" id="Flavor" type="text" />
+    <input placeholder="Flavor / Lore text / Notes" [(ngModel)]="flavor" id="Flavor" type="text" />
   </ion-col>
 </ion-row>
 
 <ion-row>
   <ion-col>
-    <button ion-button round class="cancelButton">Cancel</button>
-  </ion-col>
-  <ion-col>
-    <button ion-button round class="addButton">Add</button>
   </ion-col>
 </ion-row>
 

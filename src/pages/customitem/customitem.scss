@@ -7,17 +7,12 @@ page-customitem {
   width: 100%;
 }
 
-.cancelButton {
-  position: relative;
-  left: 110%;
-}
-
 .addButton {
   position: relative;
-  left: 60%;
+  left: 80%;
 }
 
-input#Machanical {
+input#Mechanical {
   width: 100%;
   font-size: large;
   height: 160px;
@@ -44,7 +39,7 @@ input#Flavor {
 input#CustomItem {
   width: 100%;
   font-size: large;
-  height: 40px;
+  height: 50px;
   text-align: center;
   box-sizing: border-box;
   border: 0px;
@@ -53,12 +48,21 @@ input#CustomItem {
   box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
 }
 
-.styled-select select {
+ion-select {
+  max-width: 100%;
+  font-size: large;
+  height: 50px;
+  -webkit-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+  -moz-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+  box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+}
+
+.styled-select ion-select {
   background: transparent;
   width: 100%;
   font-size: large;
   border: none;
-  height: 40px;
+  height: 45px;
   padding: 5px; /* If you add too much padding here, the options won't show in IE */
   -webkit-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
   -moz-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);

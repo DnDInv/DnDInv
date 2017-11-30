@@ -6,20 +6,20 @@
 
 </ion-header>
 
-<ion-content style="background-color: transparent" class="getstart" padding>
+<ion-content padding>
 
     <ion-row>
-        <ion-col width-50 style="text-align: center">
-            <button (tap)="addstandardItem()" round ion-button>Add Standard Item</button>
+        <ion-col style="text-align: center; width: 49%">
+            <button (tap)="addstandardItem()" round ion-button>Add Standard</button>
         </ion-col>
-        <ion-col>
-            <button (tap)="createcustomItem()" round ion-button>Create Custom Item</button>
+        <ion-col style="text-align: center; width: 49%">
+            <button (tap)="createcustomItem(backpack)" round ion-button>Create Custom</button>
         </ion-col>
     </ion-row>
 
 
     <li class="listAttr" *ngFor="let b of item; let i = index">
-        <button (tap)="openItem()" class="button-inventory" ion-button [attr.id]="i">{{b.itemName}}</button>
+        <button (tap)="openItem()" class="button-inventory" ion-button [attr.id]="i">{{ b.itemName }}</button>
     </li>
 
 
