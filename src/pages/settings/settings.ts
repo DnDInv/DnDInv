@@ -9,21 +9,22 @@ import { Insomnia } from '@ionic-native/insomnia';
 })
 export class SettingsPage {
 
+  selectedTheme: String;
 
-    selectedTheme: String;
   constructor(public navCtrl: NavController, private settings: SettingsProvider,public insomnia: Insomnia) {
     this.settings.getActiveTheme().subscribe(val => this.selectedTheme = val);
   }
 
-
+//function for changing theme
   toggleAppTheme() {
-    console.log(this.selectedTheme);
+    //console.log(this.selectedTheme);
     if(this.selectedTheme === 'light-theme')
       this.settings.setActiveTheme('dark-theme');
     else
       this.settings.setActiveTheme('light-theme');
   }
 
+//function for turning Awake mode on and off
   toggleAwakemode(event) {
     //console.log("toggle: ", event.checked);
       if (event.checked == false)
