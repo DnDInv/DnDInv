@@ -19,6 +19,7 @@
 
 
     <li class="listAttr" *ngFor="let b of item; let i = index">
+        <button ion-button class="button-items-icon" [attr.id]="i"><img src="assets/img/BackpackIcon-outline.png" height="30" width="30"/></button>
         <button (tap)="openItem()" class="button-inventory" ion-button [attr.id]="i">{{ b.itemName }}</button>
     </li>
 
