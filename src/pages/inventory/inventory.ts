@@ -45,9 +45,20 @@ export class InventoryPage {
 
   //function for opening a item.
   openItem() {
-      //this.navCtrl.push(itemPage);
+      //<editor-fold desc="Pushing the selected backpack to the Item page.">
+      //getting all backpacks
+      /*
+      this.storage.get('backpacks').then((val) => {
+          this.info = val;
+          this.navCtrl.push(itemPage, { backpack: this.backpack });
+      }).catch((err) => {
+          console.log("backpack not found!");
+      });
+      */
+      //</editor-fold>*/
   }
 
+  //delete items
   deleteItem(index, item) {
       //<editor-fold desc="Creating the modal for deleting only">
       //create the modal for deleting the selected item.
@@ -77,7 +88,12 @@ export class InventoryPage {
                     //</editor-fold>
                 },
                 {
-                    text: "No"
+                    text: "No",
+                    handler: data => {
+                        this.storage.get(this.itemKey).then((val) => {
+                           this.items = val;
+                        });
+                    }
                 }
             ]
         });
@@ -99,9 +115,10 @@ export class InventoryPage {
       //</editor-fold>
   }
 
-  //adding items
+  //adding standard items
+  //adding standard items
   addstandardItem() {
-      //<editor-fold desc="Pushing the selected backpack to the next page.">
+      //<editor-fold desc="Pushing the selected backpack to the add Standard Item page.">
       //getting all backpacks
       this.storage.get('backpacks').then((val) => {
           this.info = val;

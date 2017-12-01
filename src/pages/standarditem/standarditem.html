@@ -1,14 +1,8 @@
-<!--
-  Generated template for the StandarditemPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
     <ion-navbar>
         <ion-title>Add Standard Item</ion-title>
-        <!--<br/><span style="font-size: 1.5rem;padding: 0px;">test</span>-->
     </ion-navbar>
 
 </ion-header>
@@ -16,8 +10,8 @@
 <ion-content padding>
 
     <ion-list>
-        <ion-item *ngFor="let a of standardItems; let i = index" [attr.id]="a.strditemId" (tap)="clickable(i)">
-            <h2 id="StandardItems">{{ a.name }}</h2>
+        <ion-item *ngFor="let a of standardItems; let i = index" [attr.id]="a.strditemId" (tap)="addStandarditem(i)">
+            <h2 id="StandardItems">{{ a.itemName }}</h2>
             <p id="Standard">       Type: {{ a.type }}</p>
             <p id="Standard">       Weight: {{ a.weight }}</p>
             <p id="Standard">       Cost: {{ a.cost }}</p>

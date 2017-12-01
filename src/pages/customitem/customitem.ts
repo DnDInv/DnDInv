@@ -90,6 +90,9 @@ export class CustomitemPage {
             this.storage.set(this.itemKey, [data]);
             this.item = [data];
         });
+        this.navCtrl.remove(2,1);
+        this.navCtrl.pop();
+
         //</editor-fold>
     }
 }
