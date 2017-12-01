@@ -12,7 +12,9 @@ export class HomePage {
     //info for the access to the backpack local storage.
     info: any = [];
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController,public storage: Storage) {
+  constructor(public navCtrl: NavController,
+              public alertCtrl: AlertController,
+              public storage: Storage) {
     this.navCtrl = navCtrl;
   }
   //open setting menu with a push

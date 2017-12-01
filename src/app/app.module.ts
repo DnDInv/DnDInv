@@ -19,6 +19,7 @@ import { AboutProvider } from '../providers/about/about';
 import { Insomnia } from "@ionic-native/insomnia";
 
 import { IonicStorageModule } from '@ionic/storage';
+import { StorageProvider } from '../providers/storage/storage';
 
 
 @NgModule({
@@ -57,7 +58,9 @@ import { IonicStorageModule } from '@ionic/storage';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SettingsProvider,
     AboutProvider,
-    Insomnia
+    Insomnia,
+    StorageProvider
+
   ]
 })
 export class AppModule {}

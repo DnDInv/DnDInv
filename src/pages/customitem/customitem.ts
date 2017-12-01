@@ -35,7 +35,9 @@ export class CustomitemPage {
     flavor: any;
     //</editor-fold>
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
+    constructor(public navCtrl: NavController,
+                public navParams: NavParams,
+                public storage: Storage) {
         //<editor-fold desc="variables default values.">
         this.itemName = "";
         this.type = "";
@@ -90,7 +92,6 @@ export class CustomitemPage {
             this.storage.set(this.itemKey, [data]);
             this.item = [data];
         });
-        this.navCtrl.remove(2,1);
         this.navCtrl.pop();
 
         //</editor-fold>

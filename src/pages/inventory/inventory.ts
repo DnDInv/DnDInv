@@ -3,6 +3,7 @@ import { AlertController, NavController, NavParams } from 'ionic-angular';
 import { Storage } from "@ionic/storage";
 import { CustomitemPage } from "../customitem/customitem";
 import { StandarditemPage } from "../standarditem/standarditem";
+//import {StorageProvider} from "../../providers/storage/storage";
 
 @Component({
   selector: 'page-inventory',
@@ -10,38 +11,50 @@ import { StandarditemPage } from "../standarditem/standarditem";
 })
 export class InventoryPage {
 
-  //<editor-fold desc="variables">
-  //backpack variable for the selected backpack
-  public backpack;
+    //<editor-fold desc="variables">
+    //backpack variable for the selected backpack
+    public backpack;
 
-  //info array for getting all the backpacks
-  info = [];
-  //item to sync all the objects in this.itemKey and get them on the screen.
-  items = [];
-  //itemKey to get the items from the individual backpacks.
-  itemKey;
-  //</editor-fold
+    //info array for getting all the backpacks
+    info = [];
+    //item to sync all the objects in this.itemKey and get them on the screen.
+    items = [];
+    //itemKey to get the items from the individual backpacks.
+    itemKey;
+    //</editor-fold
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public storage: Storage) {
+    constructor(public navCtrl: NavController,
+                public navParams: NavParams,
+                public alertCtrl: AlertController,
+                public storage: Storage,
+                /*private storageProvider: StorageProvider*/) {
+        //<editor-fold desc="getting the backpack thats been tapped on.">
+        //get the selected backpack
+        this.backpack = this.navParams.get('backpack');
 
-    //<editor-fold desc="getting the backpack thats been tapped on.">
-    //get the selected backpack
-    this.backpack = this.navParams.get('backpack');
+        //set backpack key items for the items in individual inventories.
+        this.itemKey = 'item: ' + this.backpack.name + this.backpack.HardLimit;
+        //</editor-fold>
 
-    //set backpack key items for the items in individual inventories.
-    this.itemKey = 'item: ' + this.backpack.name + this.backpack.HardLimit;
-    //</editor-fold>
+        //<editor-fold desc="Getting items from itemKey">
+        //get items in the selected backpack
+        this.storage.get(this.itemKey).then((val) => {
+            this.items = val;
+            console.log("Storage items: ", val);
+        }).catch((err) => {
 
-    //<editor-fold desc="Getting items from itemKey">
-    //get items in the selected backpack
-    this.storage.get(this.itemKey).then((val) => {
-        this.items = val;
-        console.log("Storage items: ", val);
-    }).catch((err) => {
+        });
+        //</editor-fold>
+    }
 
-    });
-    //</editor-fold>
+  ionViewDidEnter() {
+      //this.items = this.storageProvider.get(this.itemKey);
+      //console.log(this.items);
+      this.storage.get(this.itemKey).then ((val) => {
+         this.items = val;
+      });
   }
+
 
   //function for opening a item.
   openItem() {
@@ -111,7 +124,6 @@ export class InventoryPage {
       //</editor-fold>
   }
 
-  //adding standard items
   //adding standard items
   addstandardItem() {
       //<editor-fold desc="Pushing the selected backpack to the add Standard Item page.">

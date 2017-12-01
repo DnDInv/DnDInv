@@ -9,6 +9,7 @@ import { Storage } from "@ionic/storage";
 })
 export class StandarditemPage {
 
+    //<editor-fold desc="All Standard items in an array object">
     standardItems = [
         //<editor-fold desc="simple melee weapons">
         {
@@ -1627,6 +1628,7 @@ export class StandarditemPage {
         }
         //</editor-fold>
     ];
+    //</editor-fold>
 
     //<editor-fold desc="variables">
     public backpack;
@@ -1644,7 +1646,9 @@ export class StandarditemPage {
     itemKey;
     //</editor-fold>
 
-    constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage) {
+    constructor(public navCtrl: NavController,
+                public navParams: NavParams,
+                private storage: Storage) {
         //<editor-fold desc="getting the selected backpack and setting default values">
         this.backpack = this.navParams.get('backpack');
 
@@ -1662,18 +1666,16 @@ export class StandarditemPage {
 
     addStandarditem(index) {
         //<editor-fold desc="Adding standard items">
-        console.log("Test: ", this.standardItems[index]);
+        let data = this.standardItems[index];
 
         this.storage.get(this.itemKey).then((val) => {
-            val.push(this.standardItems[index]);
+            val.push(data);
             this.items = val;
-
             this.storage.set(this.itemKey, val);
         }).catch((err) => {
-           console.log("something went wrong: ", err.message);
+            this.storage.set(this.itemKey, [data]);
+            this.items = [data];
         });
-        this.navCtrl.remove(2,1);
-
         this.navCtrl.pop();
         //</editor-fold>
     }

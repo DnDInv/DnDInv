@@ -23,14 +23,19 @@ export class BackPackPage {
     item: any = [];
     //</editor-fold>
 
-    constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
+    constructor(public alertCtrl: AlertController,
+                public navCtrl: NavController,
+                public navParams: NavParams,
+                public storage: Storage) {
         this.navCtrl = navCtrl;
 
+        //<editor-fold desc="fetching all the backpacks from local storage">
         //function for getting all the backpacks in the JSON array
         this.storage.get('backpacks').then((val) => {
             this.info = val;
             //console.log(val);
         });
+    //</editor-fold>
     }
 
     //open about Page with a push
