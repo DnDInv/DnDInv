@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
+import { Storage } from "@ionic/storage";
 
-//import { Http } from '@angular/http';
 
 @Component({
     selector: 'page-standarditem',
@@ -9,10 +9,10 @@ import {NavController, NavParams} from 'ionic-angular';
 })
 export class StandarditemPage {
 
-    weapons = [
+    standardItems = [
         //<editor-fold desc="simple melee weapons">
         {
-            "strdweapId": 0,
+            "strditemId": 0,
             "type": "Simple Melee Weapon",
             "name": "Club",
             "cost": "1 sp",
@@ -22,7 +22,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 1,
+            "strditemId": 1,
             "type": "Simple Melee Weapon ",
             "name": "Dagger",
             "cost": "2 gp",
@@ -32,7 +32,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 2,
+            "strditemId": 2,
             "type": "Simple Melee Weapon ",
             "name": "Greatclub",
             "cost": "2 sp",
@@ -42,7 +42,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 3,
+            "strditemId": 3,
             "type": "Simple Melee Weapon ",
             "name": "Handaxe",
             "cost": "5 gp",
@@ -52,7 +52,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 4,
+            "strditemId": 4,
             "type": "Simple Melee Weapon ",
             "name": "Javelin",
             "cost": "5 sp",
@@ -62,7 +62,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 5,
+            "strditemId": 5,
             "type": "Simple Melee Weapon ",
             "name": "Light hammer",
             "cost": "2 gp",
@@ -72,7 +72,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 6,
+            "strditemId": 6,
             "type": "Simple Melee Weapon ",
             "name": "Mace",
             "cost": "5 gp",
@@ -82,7 +82,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 7,
+            "strditemId": 7,
             "type": "Simple Melee Weapon ",
             "name": "Quarterstaff",
             "cost": "2 sp",
@@ -92,7 +92,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 8,
+            "strditemId": 8,
             "type": "Simple Melee Weapon ",
             "name": "Sickle",
             "cost": "1 gp",
@@ -102,7 +102,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 9,
+            "strditemId": 9,
             "type": "Simple Melee Weapon ",
             "name": "Spear",
             "cost": "1 gp",
@@ -115,7 +115,7 @@ export class StandarditemPage {
 
         //<editor-fold desc="simple ranged weapons">
         {
-            "strdweapId": 10,
+            "strditemId": 10,
             "type": "Simple Ranged Weapon ",
             "name": "Crossbow, light",
             "cost": "25 gp",
@@ -125,7 +125,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 11,
+            "strditemId": 11,
             "type": "Simple Ranged Weapon ",
             "name": "Dart",
             "cost": "5 cp",
@@ -135,7 +135,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 12,
+            "strditemId": 12,
             "type": "Simple Ranged Weapon ",
             "name": "Shortbow",
             "cost": "25 gp",
@@ -145,7 +145,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 13,
+            "strditemId": 13,
             "type": "Simple Ranged Weapon ",
             "name": "Sling",
             "cost": "1 sp",
@@ -158,7 +158,7 @@ export class StandarditemPage {
 
         //<editor-fold desc="martial melee weapons">
         {
-            "strdweapId": 14,
+            "strditemId": 14,
             "type": "Martial Melee Weapon ",
             "name": "Battleaxe",
             "cost": "10 gp",
@@ -168,7 +168,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 15,
+            "strditemId": 15,
             "type": "Martial Melee Weapon ",
             "name": "Flail",
             "cost": "10 gp",
@@ -178,7 +178,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 16,
+            "strditemId": 16,
             "type": "Martial Melee Weapon ",
             "name": "Glaive",
             "cost": "20 gp",
@@ -188,7 +188,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 17,
+            "strditemId": 17,
             "type": "Martial Melee Weapon ",
             "name": "Greataxe",
             "cost": "30 gp",
@@ -198,7 +198,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 18,
+            "strditemId": 18,
             "type": "Martial Melee Weapon ",
             "name": "Greatsword",
             "cost": "50 gp",
@@ -218,7 +218,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 20,
+            "strditemId": 20,
             "type": "Martial Melee Weapon ",
             "name": "Lance",
             "cost": "10 gp",
@@ -228,7 +228,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 21,
+            "strditemId": 21,
             "type": "Martial Melee Weapon ",
             "name": "Longsword",
             "cost": "15 gp",
@@ -238,7 +238,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 22,
+            "strditemId": 22,
             "type": "Martial Melee Weapon ",
             "name": "Maul",
             "cost": "10 gp",
@@ -248,7 +248,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 23,
+            "strditemId": 23,
             "type": "Martial Melee Weapon ",
             "name": "Morningstar",
             "cost": "15 gp",
@@ -258,7 +258,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 24,
+            "strditemId": 24,
             "type": "Martial Melee Weapon ",
             "name": "Pike",
             "cost": "5 gp",
@@ -268,7 +268,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 25,
+            "strditemId": 25,
             "type": "Martial Melee Weapon ",
             "name": "Rapier",
             "cost": "25 gp",
@@ -278,7 +278,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 26,
+            "strditemId": 26,
             "type": "Martial Melee Weapon ",
             "name": "Scimitar",
             "cost": "25 gp",
@@ -288,7 +288,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 27,
+            "strditemId": 27,
             "type": "Martial Melee Weapon ",
             "name": "Shortsword",
             "cost": "10 gp",
@@ -298,7 +298,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 28,
+            "strditemId": 28,
             "type": "Martial Melee Weapon ",
             "name": "Trident",
             "cost": "5 gp",
@@ -308,7 +308,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 29,
+            "strditemId": 29,
             "type": "Martial Melee Weapon ",
             "name": "War pick",
             "cost": "5 gp",
@@ -318,7 +318,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 30,
+            "strditemId": 30,
             "type": "Martial Melee Weapon ",
             "name": "Warhammer",
             "cost": "15 gp",
@@ -328,7 +328,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 31,
+            "strditemId": 31,
             "type": "Martial Melee Weapon ",
             "name": "Whip",
             "cost": "2 gp",
@@ -341,7 +341,7 @@ export class StandarditemPage {
 
         //<editor-fold desc="martial ranged weapons">
         {
-            "strdweapId": 32,
+            "strditemId": 32,
             "type": "Martial Ranged Weapon ",
             "name": "Blowgun",
             "cost": "10 gp",
@@ -351,7 +351,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 33,
+            "strditemId": 33,
             "type": "Martial Ranged Weapon ",
             "name": "Crossbow, hand",
             "cost": "75 gp",
@@ -361,7 +361,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 34,
+            "strditemId": 34,
             "type": "Martial Ranged Weapon ",
             "name": "Crossbow, heavy",
             "cost": "50 gp",
@@ -371,7 +371,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 35,
+            "strditemId": 35,
             "type": "Martial Ranged Weapon ",
             "name": "Longbow",
             "cost": "50 gp",
@@ -381,7 +381,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdweapId": 36,
+            "strditemId": 36,
             "type": "Martial Ranged Weapon ",
             "name": "Net",
             "cost": "1 gp",
@@ -389,14 +389,12 @@ export class StandarditemPage {
             "weight": "3 lb",
             "properties": "Special, thrown (range 5/15)",
             "amount": ""
-        }
+        },
         //</editor-fold>
-    ];
 
-    armor = [
         //<editor-fold desc="light armor">
         {
-            "strdarmId": 0,
+            "strditemId": 37,
             "type": "Light armor",
             "name": "Padded",
             "cost": "5 gp",
@@ -407,7 +405,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdarmId": 1,
+            "strditemId": 38,
             "type": "Light armor",
             "name": "Leather",
             "cost": "10 gp",
@@ -418,7 +416,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdarmId": 2,
+            "strditemId": 39,
             "type": "Light armor",
             "name": "Studded leather",
             "cost": "45 gp",
@@ -432,7 +430,7 @@ export class StandarditemPage {
 
         //<editor-fold desc="medium armor">
         {
-            "strdarmId": 3,
+            "strditemId": 40,
             "type": "Medium armor",
             "name": "Hide",
             "cost": "10 gp",
@@ -443,7 +441,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdarmId": 4,
+            "strditemId": 41,
             "type": "Medium armor",
             "name": "Chain shirt",
             "cost": "50 gp",
@@ -454,7 +452,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdarmId": 5,
+            "strditemId": 42,
             "type": "Medium armor",
             "name": "Scale mail",
             "cost": "50 gp",
@@ -465,7 +463,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdarmId": 6,
+            "strditemId": 43,
             "type": "Medium armor",
             "name": "Breastplate",
             "cost": "400 gp",
@@ -476,7 +474,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdarmId": 7,
+            "strditemId": 44,
             "type": "Medium armor",
             "name": "Half plate",
             "cost": "750 gp",
@@ -490,7 +488,7 @@ export class StandarditemPage {
 
         //<editor-fold desc="heavy armor">
         {
-            "strdarmId": 8,
+            "strditemId": 45,
             "type": "Heavy armor",
             "name": "Ring mail",
             "cost": "30 gp",
@@ -501,7 +499,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdarmId": 9,
+            "strditemId": 46,
             "type": "Heavy armor",
             "name": "Chain mail",
             "cost": "75 gp",
@@ -512,7 +510,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdarmId": 10,
+            "strdarmId": 47,
             "type": "Heavy armor",
             "name": "Splint",
             "cost": "200 gp",
@@ -523,7 +521,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strdarmId": 11,
+            "strditemId": 48,
             "type": "Heavy armor",
             "name": "Plate",
             "cost": "1.500 gp",
@@ -537,7 +535,7 @@ export class StandarditemPage {
 
         //<editor-fold desc="shields">
         {
-            "strdarmId": 12,
+            "strditemId": 49,
             "type": "Shield",
             "name": "Shield",
             "cost": "10 gp",
@@ -546,14 +544,12 @@ export class StandarditemPage {
             "stealth": "",
             "weight": "6 lb",
             "amount": ""
-        }
+        },
         //</editor-fold>
-    ];
 
-    gear = [
         //<editor-fold desc="Adventuring Gear">
         {
-            "strgearId": 0,
+            "strditemId": 50,
             "type": "Adventuring Gear",
             "name": "Abacus",
             "cost": "2 gp",
@@ -561,7 +557,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 1,
+            "strditemId": 51,
             "type": "Adventuring Gear",
             "name": "Acid (vial)",
             "cost": "25 gp",
@@ -569,7 +565,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 2,
+            "strditemId": 52,
             "type": "Adventuring Gear",
             "name": "Alechemist's fire",
             "cost": "50 gp",
@@ -577,7 +573,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 3,
+            "strditemId": 53,
             "type": "Adventuring Gear",
             "name": "Antitoxin (vial)",
             "cost": "50 gp",
@@ -585,7 +581,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 4,
+            "strditemId": 54,
             "type": "Adventuring Gear",
             "name": "Crystal",
             "cost": "10 gp",
@@ -593,7 +589,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 5,
+            "strditemId": 55,
             "type": "Adventuring Gear",
             "name": "Orb",
             "cost": "20 gp",
@@ -601,7 +597,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 6,
+            "strditemId": 56,
             "type": "Adventuring Gear",
             "name": "Rod",
             "cost": "10 gp",
@@ -609,7 +605,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 7,
+            "strditemId": 57,
             "type": "Adventuring Gear",
             "name": "Staff",
             "cost": "5 gp",
@@ -617,7 +613,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 8,
+            "strditemId": 58,
             "type": "Adventuring Gear",
             "name": "Wand",
             "cost": "10 gp",
@@ -625,7 +621,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 9,
+            "strditemId": 59,
             "type": "Adventuring Gear",
             "name": "Backpack",
             "cost": "2 gp",
@@ -633,7 +629,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 10,
+            "strditemId": 60,
             "type": "Adventuring Gear",
             "name": "Ball bearings",
             "cost": "1 gp",
@@ -641,7 +637,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 11,
+            "strditemId": 61,
             "type": "Adventuring Gear",
             "name": "Barrel",
             "cost": "2 gp",
@@ -649,7 +645,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 12,
+            "strditemId": 62,
             "type": "Adventuring Gear",
             "name": "Basket",
             "cost": "2 sp",
@@ -657,7 +653,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 13,
+            "strditemId": 63,
             "type": "Adventuring Gear",
             "name": "Bedroll",
             "cost": "1 gp",
@@ -665,7 +661,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 14,
+            "strditemId": 64,
             "type": "Adventuring Gear",
             "name": "Bell",
             "cost": "1 gp",
@@ -673,7 +669,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 15,
+            "strditemId": 65,
             "type": "Adventuring Gear",
             "name": "Blanket",
             "cost": "5 sp",
@@ -681,7 +677,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 16,
+            "strditemId": 66,
             "type": "Adventuring Gear",
             "name": "Block and tackle",
             "cost": "1 gp",
@@ -689,7 +685,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 17,
+            "strditemId": 67,
             "type": "Adventuring Gear",
             "name": "Book",
             "cost": "25 gp",
@@ -697,7 +693,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 18,
+            "strditemId": 68,
             "type": "Adventuring Gear",
             "name": "Bottle, glass",
             "cost": "2 gp",
@@ -705,7 +701,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 19,
+            "strditemId": 69,
             "type": "Adventuring Gear",
             "name": "Bucket",
             "cost": "5 cp",
@@ -713,7 +709,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 20,
+            "strditemId": 70,
             "type": "Adventuring Gear",
             "name": "caltrops",
             "cost": "1 gp",
@@ -721,7 +717,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 21,
+            "strditemId": 71,
             "type": "Adventuring Gear",
             "name": "Candle",
             "cost": "1 cp",
@@ -729,7 +725,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 22,
+            "strditemId": 72,
             "type": "Adventuring Gear",
             "name": "Case, crossbow bolt",
             "cost": "1 gp",
@@ -737,7 +733,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 23,
+            "strditemId": 73,
             "type": "Adventuring Gear",
             "name": "Case, map or scroll",
             "cost": "1 gp",
@@ -745,7 +741,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 24,
+            "strditemId": 74,
             "type": "Adventuring Gear",
             "name": "chain (10 feet)",
             "cost": "5 gp",
@@ -753,7 +749,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 25,
+            "strditemId": 75,
             "type": "Adventuring Gear",
             "name": "Chalk (1 piece)",
             "cost": "1 cp",
@@ -761,7 +757,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 26,
+            "strditemId": 76,
             "type": "Adventuring Gear",
             "name": "Chest",
             "cost": "5 gp",
@@ -769,7 +765,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 27,
+            "strditemId": 77,
             "type": "Adventuring Gear",
             "name": "Climber's kit",
             "cost": "25 gp",
@@ -777,7 +773,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 28,
+            "strditemId": 78,
             "type": "Adventuring Gear",
             "name": "Clothes, common",
             "cost": "5 sp",
@@ -785,7 +781,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 29,
+            "strditemId": 79,
             "type": "Adventuring Gear",
             "name": "Clothes, costume",
             "cost": "5 gp",
@@ -793,7 +789,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 30,
+            "strditemId": 80,
             "type": "Adventuring Gear",
             "name": "Clothes, fine",
             "cost": "15 gp",
@@ -801,7 +797,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 31,
+            "strditemId": 81,
             "type": "Adventuring Gear",
             "name": "Clothes, traveler's",
             "cost": "2 gp",
@@ -809,7 +805,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 32,
+            "strditemId": 82,
             "type": "Adventuring Gear",
             "name": "Component pouch",
             "cost": "25 gp",
@@ -817,7 +813,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 33,
+            "strditemId": 83,
             "type": "Adventuring Gear",
             "name": "Crowbar",
             "cost": "2 gp",
@@ -825,7 +821,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 34,
+            "strditemId": 84,
             "type": "Adventuring Gear",
             "name": "Sprig of mistletoe",
             "cost": "1 gp",
@@ -833,7 +829,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 35,
+            "strditemId": 85,
             "type": "Adventuring Gear",
             "name": "Totem",
             "cost": "1 gp",
@@ -841,7 +837,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 36,
+            "strditemId": 86,
             "type": "Adventuring Gear",
             "name": "Wooden staff",
             "cost": "5 gp",
@@ -849,7 +845,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 37,
+            "strditemId": 87,
             "type": "Adventuring Gear",
             "name": "Yew wand",
             "cost": "10 gp",
@@ -857,7 +853,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 38,
+            "strditemId": 88,
             "type": "Adventuring Gear",
             "name": "Fishing tackle",
             "cost": "1 gp",
@@ -865,7 +861,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 39,
+            "strditemId": 89,
             "type": "Adventuring Gear",
             "name": "Flask or tankard",
             "cost": "2 cp",
@@ -873,7 +869,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 40,
+            "strditemId": 90,
             "type": "Adventuring Gear",
             "name": "Grappling hook",
             "cost": "2 gp",
@@ -881,7 +877,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 41,
+            "strditemId": 91,
             "type": "Adventuring Gear",
             "name": "Hammer",
             "cost": "1 gp",
@@ -889,7 +885,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 42,
+            "strditemId": 92,
             "type": "Adventuring Gear",
             "name": "Hammer, sledge",
             "cost": "2 gp",
@@ -897,7 +893,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 43,
+            "strditemId": 93,
             "type": "Adventuring Gear",
             "name": "Healer's kit",
             "cost": "5 gp",
@@ -905,7 +901,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 44,
+            "strditemId": 94,
             "type": "Adventuring Gear",
             "name": "Amulet",
             "cost": "5 gp",
@@ -913,7 +909,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 45,
+            "strditemId": 95,
             "type": "Adventuring Gear",
             "name": "Emblem",
             "cost": "5 gp",
@@ -921,7 +917,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 46,
+            "strditemId": 96,
             "type": "Adventuring Gear",
             "name": "Reliquary",
             "cost": "5 gp",
@@ -929,7 +925,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 47,
+            "strditemId": 97,
             "type": "Adventuring Gear",
             "name": "Holy water (flask)",
             "cost": "25 gp",
@@ -937,7 +933,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 48,
+            "strditemId": 98,
             "type": "Adventuring Gear",
             "name": "Hourglass",
             "cost": "25 gp",
@@ -945,7 +941,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 49,
+            "strditemId": 99,
             "type": "Adventuring Gear",
             "name": "Hunting trap",
             "cost": "5 gp",
@@ -953,7 +949,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 50,
+            "strditemId": 100,
             "type": "Adventuring Gear",
             "name": "Ink (1 ounce bottle)",
             "cost": "10 gp",
@@ -961,7 +957,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 51,
+            "strditemId": 101,
             "type": "Adventuring Gear",
             "name": "Ink pen",
             "cost": "2 cp",
@@ -969,7 +965,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 52,
+            "strditemId": 102,
             "type": "Adventuring Gear",
             "name": "Jug or pitcher",
             "cost": "2 cp",
@@ -977,7 +973,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 53,
+            "strditemId": 103,
             "type": "Adventuring Gear",
             "name": "Ladder (10-foot)",
             "cost": "1 sp",
@@ -985,7 +981,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 54,
+            "strditemId": 104,
             "type": "Adventuring Gear",
             "name": "Lamp",
             "cost": "5 sp",
@@ -993,7 +989,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 55,
+            "strditemId": 105,
             "type": "Adventuring Gear",
             "name": "Latern, bullseye",
             "cost": "10 gp",
@@ -1001,7 +997,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 56,
+            "strditemId": 106,
             "type": "Adventuring Gear",
             "name": "Latern, hooded",
             "cost": "5 gp",
@@ -1009,7 +1005,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 57,
+            "strditemId": 107,
             "type": "Adventuring Gear",
             "name": "Lock",
             "cost": "10 gp",
@@ -1017,7 +1013,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 58,
+            "strditemId": 108,
             "type": "Adventuring Gear",
             "name": "Magnifying glass",
             "cost": "100 gp",
@@ -1025,7 +1021,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 59,
+            "strditemId": 109,
             "type": "Adventuring Gear",
             "name": "Manacles",
             "cost": "2 gp",
@@ -1033,7 +1029,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 60,
+            "strditemId": 110,
             "type": "Adventuring Gear",
             "name": "Mess kit",
             "cost": "2 sp",
@@ -1041,7 +1037,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 61,
+            "strditemId": 111,
             "type": "Adventuring Gear",
             "name": "Mirror, steel",
             "cost": "5 gp",
@@ -1049,7 +1045,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 62,
+            "strditemId": 112,
             "type": "Adventuring Gear",
             "name": "Oil (flask)",
             "cost": "1 sp",
@@ -1057,7 +1053,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 63,
+            "strditemId": 113,
             "type": "Adventuring Gear",
             "name": "Paper (one sheet)",
             "cost": "2 sp",
@@ -1065,7 +1061,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 64,
+            "strditemId": 114,
             "type": "Adventuring Gear",
             "name": "Parchment (one sheet)",
             "cost": "1 sp",
@@ -1073,7 +1069,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 65,
+            "strditemId": 115,
             "type": "Adventuring Gear",
             "name": "Perfume (vial)",
             "cost": "5 gp",
@@ -1081,7 +1077,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 66,
+            "strditemId": 116,
             "type": "Adventuring Gear",
             "name": "Pick, miner's",
             "cost": "2 gp",
@@ -1089,7 +1085,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 67,
+            "strditemId": 117,
             "type": "Adventuring Gear",
             "name": "Piton",
             "cost": "5 cp",
@@ -1097,7 +1093,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 68,
+            "strditemId": 118,
             "type": "Adventuring Gear",
             "name": "Posion, basic (vial)",
             "cost": "100 gp",
@@ -1105,7 +1101,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 69,
+            "strditemId": 119,
             "type": "Adventuring Gear",
             "name": "Pole (10-foot)",
             "cost": "5 cp",
@@ -1113,7 +1109,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 70,
+            "strditemId": 120,
             "type": "Adventuring Gear",
             "name": "Pot, iron",
             "cost": "2 gp",
@@ -1121,7 +1117,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 71,
+            "strditemId": 121,
             "type": "Adventuring Gear",
             "name": "Potion of healing",
             "cost": "50 gp",
@@ -1129,7 +1125,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 72,
+            "strditemId": 122,
             "type": "Adventuring Gear",
             "name": "Pouch",
             "cost": "5 sp",
@@ -1137,7 +1133,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 73,
+            "strditemId": 123,
             "type": "Adventuring Gear",
             "name": "Quiver",
             "cost": "1 gp",
@@ -1145,7 +1141,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 74,
+            "strditemId": 124,
             "type": "Adventuring Gear",
             "name": "Ram, portable",
             "cost": "4 gp",
@@ -1153,7 +1149,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 75,
+            "strditemId": 125,
             "type": "Adventuring Gear",
             "name": "Rations (1 day)",
             "cost": "5 sp",
@@ -1161,7 +1157,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 76,
+            "strditemId": 126,
             "type": "Adventuring Gear",
             "name": "Robes",
             "cost": "1 gp",
@@ -1169,7 +1165,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 77,
+            "strditemId": 127,
             "type": "Adventuring Gear",
             "name": "Rope, hempen (50 feet)",
             "cost": "1 gp",
@@ -1177,7 +1173,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 78,
+            "strditemId": 128,
             "type": "Adventuring Gear",
             "name": "Rope, silk (50 feet)",
             "cost": "10 gp",
@@ -1185,7 +1181,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 79,
+            "strditemId": 129,
             "type": "Adventuring Gear",
             "name": "Sack",
             "cost": "1 cp",
@@ -1193,7 +1189,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 80,
+            "strditemId": 130,
             "type": "Adventuring Gear",
             "name": "Scale, merchant's",
             "cost": "5 gp",
@@ -1201,7 +1197,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 81,
+            "strditemId": 131,
             "type": "Adventuring Gear",
             "name": "Sealing wax",
             "cost": "1 sp",
@@ -1209,7 +1205,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 82,
+            "strditemId": 132,
             "type": "Adventuring Gear",
             "name": "Shovel",
             "cost": "2 gp",
@@ -1217,7 +1213,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 83,
+            "strditemId": 133,
             "type": "Adventuring Gear",
             "name": "Signal Whistle",
             "cost": "5 cp",
@@ -1225,7 +1221,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 84,
+            "strditemId": 134,
             "type": "Adventuring Gear",
             "name": "Signet ring",
             "cost": "5 gp",
@@ -1233,7 +1229,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 85,
+            "strditemId": 135,
             "type": "Adventuring Gear",
             "name": "Soap",
             "cost": "1 cp",
@@ -1241,7 +1237,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 86,
+            "strditemId": 136,
             "type": "Adventuring Gear",
             "name": "Spellbook",
             "cost": "50 gp",
@@ -1249,7 +1245,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 87,
+            "strditemId": 137,
             "type": "Adventuring Gear",
             "name": "Spikes, iron",
             "cost": "1 sp",
@@ -1257,7 +1253,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 88,
+            "strditemId": 138,
             "type": "Adventuring Gear",
             "name": "Spyglass",
             "cost": "1000 gp",
@@ -1265,7 +1261,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 89,
+            "strditemId": 139,
             "type": "Adventuring Gear",
             "name": "Tent, two-person",
             "cost": "2 gp",
@@ -1273,7 +1269,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 90,
+            "strditemId": 140,
             "type": "Adventuring Gear",
             "name": "Tinderbox",
             "cost": "5 sp",
@@ -1281,7 +1277,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 91,
+            "strditemId": 141,
             "type": "Adventuring Gear",
             "name": "Torch",
             "cost": "1 cp",
@@ -1289,7 +1285,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 92,
+            "strditemId": 142,
             "type": "Adventuring Gear",
             "name": "Vial",
             "cost": "1 gp",
@@ -1297,7 +1293,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 93,
+            "strditemId": 143,
             "type": "Adventuring Gear",
             "name": "Waterskin",
             "cost": "2 sp",
@@ -1305,57 +1301,53 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strgearId": 94,
+            "strditemId": 144,
             "type": "Adventuring Gear",
             "name": "Whetstone",
             "cost": "1 cp",
             "weight": "1 lb",
             "amount": ""
-        }
+        },
         //</editor-fold>
-    ];
 
-    ammunition = [
         //<editor-fold desc="Ammunition">
-            {
-                "str]ammoId": 0,
-                "type": "Ammunition",
-                "name": "Arrow",
-                "cost": "",
-                "weight": "",
-                "amount": ""
-            },
-            {
-                "strgearId": 1,
-                "type": "Ammunition",
-                "name": "Blowgun needles",
-                "cost": "",
-                "weight": "",
-                "amount": ""
-            },
-            {
-                "strgearId": 2,
-                "type": "Ammunition",
-                "name": "Crossbow bolts",
-                "cost": "",
-                "weight": "",
-                "amount": ""
-            },
-            {
-                "strgearId": 3,
-                "type": "Ammunition",
-                "name": "Sling bullets",
-                "cost": "",
-                "weight": "",
-                "amount": ""
-            }
+        {
+            "strditemId": 145,
+            "type": "Ammunition",
+            "name": "Arrow",
+            "cost": "",
+            "weight": "",
+            "amount": ""
+        },
+        {
+            "strditemId": 146,
+            "type": "Ammunition",
+            "name": "Blowgun needles",
+            "cost": "",
+            "weight": "",
+            "amount": ""
+        },
+        {
+            "strditemId": 147,
+            "type": "Ammunition",
+            "name": "Crossbow bolts",
+            "cost": "",
+            "weight": "",
+            "amount": ""
+        },
+        {
+            "strditemId": 148,
+            "type": "Ammunition",
+            "name": "Sling bullets",
+            "cost": "",
+            "weight": "",
+            "amount": ""
+        },
         //</editor-fold>
-    ];
 
-    tools = [
         //<editor-fold desc="artisan's tools">
         {
-            "strtoolId": 0,
+            "strditemId": 149,
             "type": "Tools",
             "name": "Alchemist's supplies",
             "cost": "50 gp",
@@ -1363,7 +1355,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 1,
+            "strditemId": 150,
             "type": "Tools",
             "name": "Brewer's supplies",
             "cost": "20 gp",
@@ -1371,7 +1363,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 2,
+            "strditemId": 151,
             "type": "Tools",
             "name": "Calligrapher's supplies",
             "cost": "10 gp",
@@ -1379,7 +1371,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 3,
+            "strditemId": 152,
             "type": "Tools",
             "name": "Carpenter's supplies",
             "cost": "8 gp",
@@ -1387,7 +1379,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 4,
+            "strditemId": 153,
             "type": "Tools",
             "name": "Cartographer's tools",
             "cost": " 8",
@@ -1395,7 +1387,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 5,
+            "strditemId": 154,
             "type": "Tools",
             "name": "Cobbler's tools",
             "cost": "5 gp",
@@ -1403,7 +1395,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 6,
+            "strditemId": 155,
             "type": "Tools",
             "name": "Cook's utensils",
             "cost": "1 gp",
@@ -1411,7 +1403,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 7,
+            "strditemId": 156,
             "type": "Tools",
             "name": "Glassblower's2 tools",
             "cost": "30 gp",
@@ -1419,7 +1411,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 8,
+            "strditemId": 157,
             "type": "Tools",
             "name": "Jeweler's tools",
             "cost": "25 gp",
@@ -1427,7 +1419,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 9,
+            "strditemId": 158,
             "type": "Tools",
             "name": "Leatherworker's tools",
             "cost": "5 gp",
@@ -1435,7 +1427,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 10,
+            "strditemId": 159,
             "type": "Tools",
             "name": "Mason's tools",
             "cost": "10 gp",
@@ -1443,7 +1435,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 11,
+            "strditemId": 160,
             "type": "Tools",
             "name": "Painter's supplies",
             "cost": "10 gp",
@@ -1451,7 +1443,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 12,
+            "strditemId": 161,
             "type": "Tools",
             "name": "Potter's tools",
             "cost": "10 gp",
@@ -1459,7 +1451,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 13,
+            "strditemId": 162,
             "type": "Tools",
             "name": "Smith's tools",
             "cost": "20 gp",
@@ -1467,7 +1459,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 14,
+            "strditemId": 163,
             "type": "Tools",
             "name": "Tinker's tools",
             "cost": "50 gp",
@@ -1475,7 +1467,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 15,
+            "strditemId": 164,
             "type": "Tools",
             "name": "Weaver's tools",
             "cost": "1 gp",
@@ -1483,7 +1475,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 16,
+            "strditemId": 165,
             "type": "Tools",
             "name": "Woodcarver's tools",
             "cost": "1 gp",
@@ -1491,7 +1483,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 17,
+            "strditemId": 166,
             "type": "Tools",
             "name": "Disguise kit",
             "cost": "25 gp",
@@ -1499,7 +1491,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 18,
+            "strditemId": 167,
             "type": "Tools",
             "name": "Forgery kut",
             "cost": "15 gp",
@@ -1510,7 +1502,7 @@ export class StandarditemPage {
 
         //<editor-fold desc="gaming set">
         {
-            "strtoolId": 19 ,
+            "strditemId": 168 ,
             "type": "Tools",
             "name": "Dice set",
             "cost": "1 sp",
@@ -1518,7 +1510,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 20 ,
+            "strditemId": 169 ,
             "type": "Tools",
             "name": "Dragonchess set",
             "cost": "1 gp",
@@ -1526,7 +1518,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 21 ,
+            "strditemId": 170 ,
             "type": "Tools",
             "name": "Playing card set",
             "cost": "5 sp",
@@ -1534,7 +1526,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 22 ,
+            "strditemId": 171 ,
             "type": "Tools",
             "name": "Three-Dragon Ante set",
             "cost": "1 gp",
@@ -1542,7 +1534,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 23 ,
+            "strditemId": 172 ,
             "type": "Tools",
             "name": "Herbalism kit",
             "cost": "5 gp",
@@ -1553,7 +1545,7 @@ export class StandarditemPage {
 
         //<editor-fold desc="musical instrument">
         {
-            "strtoolId": 24 ,
+            "strtoolId": 173 ,
             "type": "Tools",
             "name": "Bagpipes",
             "cost": "30 gp",
@@ -1561,7 +1553,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 25 ,
+            "strditemId": 174 ,
             "type": "Tools",
             "name": "Drum",
             "cost": "6 gp",
@@ -1569,7 +1561,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 26 ,
+            "strditemId": 175 ,
             "type": "Tools",
             "name": "Dulcimer",
             "cost": "25 gp",
@@ -1577,7 +1569,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 27 ,
+            "strditemId": 176 ,
             "type": "Tools",
             "name": "Flute",
             "cost": "2 gp",
@@ -1585,7 +1577,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 28 ,
+            "strditemId": 177 ,
             "type": "Tools",
             "name": "Lute",
             "cost": "35 gp",
@@ -1593,7 +1585,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 29 ,
+            "strditemId": 178 ,
             "type": "Tools",
             "name": "Lyre",
             "cost": "30 gp",
@@ -1601,7 +1593,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 30 ,
+            "strditemId": 179 ,
             "type": "Tools",
             "name": "Horn",
             "cost": "3 gp",
@@ -1609,7 +1601,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 31 ,
+            "strditemId": 180 ,
             "type": "Tools",
             "name": "Pan flute",
             "cost": "12 gp",
@@ -1617,7 +1609,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 32 ,
+            "strditemId": 181 ,
             "type": "Tools",
             "name": "Shawn",
             "cost": "2 gp",
@@ -1625,9 +1617,9 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 33 ,
+            "strditemId": 182 ,
             "type": "Tools",
-            "name": "Viol",
+            "name": "Violin",
             "cost": "30 gp",
             "weight": "1 lb",
             "amount": ""
@@ -1636,7 +1628,7 @@ export class StandarditemPage {
 
         //<editor-fold desc="tools">
         {
-            "strtoolId": 34 ,
+            "strditemId": 183 ,
             "type": "Tools",
             "name": "Navigator's tools",
             "cost": "25 gp",
@@ -1644,7 +1636,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 35 ,
+            "strditemId": 184 ,
             "type": "Tools",
             "name": "Poisoner's kit",
             "cost": "50 gp",
@@ -1652,7 +1644,7 @@ export class StandarditemPage {
             "amount": ""
         },
         {
-            "strtoolId": 36 ,
+            "strditemId": 185 ,
             "type": "Tools",
             "name": "Thieves tools",
             "cost": "25 gp",
@@ -1662,11 +1654,57 @@ export class StandarditemPage {
         //</editor-fold>
     ];
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
 
+    public backpack;
+
+
+    strditems: any [];
+
+    strdweapons: any = [];
+    strdarmor: any = [];
+    strdgear: any = [];
+    strdammunition: any = [];
+    strdtools: any = [];
+
+    itemKey;
+
+    constructor(public navCtrl: NavController, public navParams: NavParams) {
+        this.backpack = this.navParams.get('backpack');
+
+
+        this.strditems = this.standardItems;
+
+
+        console.log("Standard Items: ", this.strditems);
+
+        // console.log("weapons: ", this.strdweapons,
+        //             "armor: ", this.strdarmor,
+        //             "gear: ", this.strdgear,
+        //             "Ammunitions: ", this.strdammunition,
+        //             "tools: ", this.strdtools);
+
+        //set backpack key items for the items in individual inventories.
+        this.itemKey = 'item: ' + this.backpack.name + this.backpack.HardLimit;
+
+        console.log(this.itemKey);
+        // this.storage.get(this.itemKey).then((val) =>{
+        //
+        // });
     }
 
     clickable(index) {
-        console.log("Clicked id: ", index);
+
+        console.log("id: ", index);
+        console.log("Test: ", this.standardItems[index]);
+
+        // this.storage.get('strdItem').then((val) => {
+        //     // console.log("itemKey: ", this.itemKey);
+        //     // console.log("Val: ", val);
+        // }).catch((err) => {
+        //    console.log("something went wrong: ", err.message);
+        // });
+        // let keys = Object.keys(this.weapons[index]);
+
+        //console.log("Clicked id: ", keys[index]);
     }
 }

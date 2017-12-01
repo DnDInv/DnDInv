@@ -12,10 +12,14 @@ page-customitem {
   left: 80%;
 }
 
+.size {
+  font-size: medium;
+}
+
 input#Mechanical {
   width: 100%;
-  font-size: large;
-  height: 160px;
+  font-size: medium;
+  height: 135px;
   text-align: center;
   box-sizing: border-box;
   border: 0px;
@@ -26,8 +30,8 @@ input#Mechanical {
 
 input#Flavor {
   width: 100%;
-  font-size: large;
-  height: 160px;
+  font-size: medium;
+  height: 135px;
   text-align: center;
   box-sizing: border-box;
   border: 0px;
@@ -38,8 +42,8 @@ input#Flavor {
 
 input#CustomItem {
   width: 100%;
-  font-size: large;
-  height: 50px;
+  font-size: medium;
+  height: 45px;
   text-align: center;
   box-sizing: border-box;
   border: 0px;
@@ -50,20 +54,8 @@ input#CustomItem {
 
 ion-select {
   max-width: 100%;
-  font-size: large;
-  height: 50px;
-  -webkit-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
-  -moz-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
-  box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
-}
-
-.styled-select ion-select {
-  background: transparent;
-  width: 100%;
-  font-size: large;
-  border: none;
+  font-size: medium;
   height: 45px;
-  padding: 5px; /* If you add too much padding here, the options won't show in IE */
   -webkit-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
   -moz-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
   box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
