@@ -67,6 +67,9 @@ export class InventoryPage {
             message: "here you can delete the Item: " + item.itemName,
             buttons: [
                 {
+                    text: "No"
+                },
+                {
                     //<editor-fold desc="delete individual items">
                     text: "Yes",
                     handler: data => {
@@ -86,15 +89,8 @@ export class InventoryPage {
                         })
                     }
                     //</editor-fold>
-                },
-                {
-                    text: "No",
-                    handler: data => {
-                        this.storage.get(this.itemKey).then((val) => {
-                           this.items = val;
-                        });
-                    }
                 }
+
             ]
         });
         editorDelete.present();

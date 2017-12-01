@@ -1665,14 +1665,15 @@ export class StandarditemPage {
         console.log("Test: ", this.standardItems[index]);
 
         this.storage.get(this.itemKey).then((val) => {
-             val.push(this.standardItems[index]);
-             this.items = val;
+            val.push(this.standardItems[index]);
+            this.items = val;
 
-             this.storage.set(this.itemKey, val);
+            this.storage.set(this.itemKey, val);
         }).catch((err) => {
            console.log("something went wrong: ", err.message);
         });
         this.navCtrl.remove(2,1);
+
         this.navCtrl.pop();
         //</editor-fold>
     }
