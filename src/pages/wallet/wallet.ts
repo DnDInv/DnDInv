@@ -8,30 +8,71 @@ import {Storage} from '@ionic/storage';
 })
 export class WalletPage {
 
+    //declaring all the stuff we need here.
     public backpack;
-    coin: any = [];
+
     coinKey;
 
-    plat: number;
-    gold: number;
-    elec: number;
-    silv: number;
-    copp: number;
+    plat: any;
+    gold: any;
+    elec: any;
+    silv: any;
+    copp: any;
+
+    coins: any = [{
+        "pp": this.plat,
+        "gp": this.gold,
+        "ep": this.elec,
+        "sp": this.silv,
+        "cp": this.copp,
+    }];
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
 
         this.backpack = this.navParams.get('backpack');
+        console.log(" The backpack: ", this.backpack);
         this.coinKey = 'coins:' + this.backpack.name + this.backpack.HardLimit;
 
-        console.log("Backpack ", this.backpack);
+        //attempt to fill the input with the old numbers when loading the page
         this.storage.get(this.coinKey).then(val => {
-            this.coin = val;
-            console.log("Getting Coins ", val);
+
+            this.coins = val;
+            //check wth is in coins.
+            console.log(this.coins);
+            //set the old coins in the input.
+            this.plat = this.coins["0"].pp;
+            this.gold = this.coins["0"].gp;
+            this.elec = this.coins["0"].ep;
+            this.silv = this.coins["0"].sp;
+            this.copp = this.coins["0"].cp;
+        }).catch((err) => {
+            //first time, this.coins["0"] does not exist yet. So we catch it and fix it.
+            this.storage.set(this.coinKey, [this.coins]);
+            this.coins = [this.coins];
         });
 
     }
-    submitCoins(){
 
-        console.log("now is forty. ")
+    saveWallet() {
+        //put the newest plat values into a coins array
+        let coins = {
+            "pp": this.plat,
+            "gp": this.gold,
+            "ep": this.elec,
+            "sp": this.silv,
+            "cp": this.copp,
+        };
+
+        // get the backpack we are in, then give that "Key" to the coins array and
+        // set it in the storage
+        this.storage.get(this.coinKey).then((val) => {
+            val = [];
+            val.push(coins);
+            this.coins = val;
+            this.storage.set(this.coinKey, val);
+        }).catch((err) => {
+            this.storage.set(this.coinKey, [coins]);
+            this.coins = [coins];
+        });
     }
 }

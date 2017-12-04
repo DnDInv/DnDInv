@@ -45,7 +45,13 @@ export class InventoryPage {
   }
 
   wallet() {
-      this.navCtrl.push(WalletPage);
+      this.storage.get('backpacks').then((val) => {
+          this.info = val;
+          this.navCtrl.push(WalletPage, { backpack: this.backpack });
+
+      }).catch((err) => {
+          console.log("backpack not found!");
+      });
   }
   //function for opening a item.
   openItem() {
