@@ -1,0 +1,62 @@
+page-customitem {
+
+}
+
+.centeredText {
+  text-align: center;
+  width: 100%;
+}
+
+.addButton {
+  position: relative;
+  left: 80%;
+}
+
+.size {
+  font-size: medium;
+}
+
+input#Mechanical {
+  width: 100%;
+  font-size: medium;
+  height: 135px;
+  text-align: center;
+  box-sizing: border-box;
+  border: 0px;
+  -webkit-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+  -moz-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+  box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+}
+
+input#Flavor {
+  width: 100%;
+  font-size: medium;
+  height: 135px;
+  text-align: center;
+  box-sizing: border-box;
+  border: 0px;
+  -webkit-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+  -moz-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+  box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+}
+
+input#CustomItem {
+  width: 100%;
+  font-size: medium;
+  height: 45px;
+  text-align: center;
+  box-sizing: border-box;
+  border: 0px;
+  -webkit-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+  -moz-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+  box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+}
+
+ion-select {
+  max-width: 100%;
+  font-size: medium;
+  height: 45px;
+  -webkit-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+  -moz-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+  box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+}

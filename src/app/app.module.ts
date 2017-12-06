@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -8,14 +8,19 @@ import { BackPackPage} from '../pages/backpack/backpack';
 import { SettingsPage} from "../pages/settings/settings";
 import { AboutPage} from "../pages/about/about";
 import { InventoryPage } from "../pages/inventory/inventory";
+import { StandarditemPage } from "../pages/standarditem/standarditem";
+import { CustomitemPage } from "../pages/customitem/customitem";
+import { EdititemPage } from "../pages/edititem/edititem";
 //import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SettingsProvider } from '../providers/settings/settings';
 import { AboutProvider } from '../providers/about/about';
+import { Insomnia } from "@ionic-native/insomnia";
 
 import { IonicStorageModule } from '@ionic/storage';
+import { StorageProvider } from '../providers/storage/storage';
 
 
 @NgModule({
@@ -25,7 +30,10 @@ import { IonicStorageModule } from '@ionic/storage';
     BackPackPage,
     SettingsPage,
     AboutPage,
-    InventoryPage
+    InventoryPage,
+    StandarditemPage,
+    CustomitemPage,
+    EdititemPage
     //ListPage
 
   ],
@@ -41,7 +49,10 @@ import { IonicStorageModule } from '@ionic/storage';
     BackPackPage,
     SettingsPage,
     AboutPage,
-    InventoryPage
+    InventoryPage,
+    StandarditemPage,
+    CustomitemPage,
+    EdititemPage
     //ListPage
   ],
   providers: [
@@ -49,7 +60,10 @@ import { IonicStorageModule } from '@ionic/storage';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SettingsProvider,
-    AboutProvider
+    AboutProvider,
+    Insomnia,
+    StorageProvider
+
   ]
 })
 export class AppModule {}

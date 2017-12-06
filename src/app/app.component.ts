@@ -20,7 +20,11 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private settings: SettingsProvider) {
-      this.settings.getActiveTheme().subscribe(val => {console.log(this.selectedTheme); this.selectedTheme = val; console.log(this.selectedTheme)});
+      this.settings.getActiveTheme().subscribe(val => {
+          //console.log(this.selectedTheme);
+          this.selectedTheme = val;
+          /*console.log(this.selectedTheme)*/
+      });
 
       this.platform.ready().then(() => {
           this.statusBar.styleDefault();

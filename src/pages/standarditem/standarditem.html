@@ -1,0 +1,20 @@
+
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Add Standard Item</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+    <ion-list>
+        <ion-item *ngFor="let a of standardItems; let i = index" [attr.id]="a.strditemId" (tap)="addStandarditem(i)">
+            <h2 class="StandardItems">{{ a.itemName }}</h2>
+            <p class="Standard">       Type: {{ a.type }}</p>
+            <p class="Standard">       Weight: {{ a.weight }}</p>
+            <p class="Standard">       Cost: {{ a.cost }}</p>
+        </ion-item>
+    </ion-list>
+</ion-content>

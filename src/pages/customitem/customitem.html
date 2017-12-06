@@ -1,0 +1,73 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Create Custom Item</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<ion-row>
+  <ion-col class="centeredText">
+    <input id="CustomItem" placeholder="Item name" [(ngModel)]="itemName" type="text"/>
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col>
+    <input id="CustomItem" placeholder="amount" [(ngModel)]="amount" type="number" />
+  </ion-col>
+  <ion-col>
+    <!--<ion-item id="Test" class="styled-select slate">-->
+      <ion-select [(ngModel)]="type" placeholder="Select Type of Item">
+        <!--<ion-option value="" disabled hidden>Select Type of Item</ion-option>-->
+        <ion-option value="Armour">Armour</ion-option>
+        <ion-option value="Consumable">Consumable</ion-option>
+        <ion-option value="Gear">Adventuring Gear</ion-option>
+        <ion-option value="MagicItem">Magic Item</ion-option>
+        <ion-option value="TradeGoods">Trade Goods</ion-option>
+        <ion-option value="Weapon">Weapon</ion-option>
+        <ion-option value="QuestItem">Quest Item</ion-option>
+        <ion-option value="CraftingMaterial">Crafting Material</ion-option>
+      </ion-select>
+    <!--</ion-item>-->
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col>
+    <input id="CustomItem" [(ngModel)]="weight" placeholder="weight lbs" type="text" />
+  </ion-col>
+  <ion-col>
+    <input id="CustomItem" [(ngModel)]="price" placeholder="price" type="number" />
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-item>
+    <ion-label class="size">Attunement</ion-label>
+    <ion-checkbox [(ngModel)]="attune" ></ion-checkbox>
+  </ion-item>
+</ion-row>
+
+<ion-row>
+  <ion-col>
+    <input placeholder="Mechanical Text" [(ngModel)]="mechanical" id="Mechanical" type="text">
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col>
+    <input placeholder="Flavor / Lore text / Notes" [(ngModel)]="flavor" id="Flavor" type="text" />
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col>
+    <button (tap)="createCustom()" ion-button round class="addButton">Add</button>
+  </ion-col>
+</ion-row>
+
+</ion-content>

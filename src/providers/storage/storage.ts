@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { Storage } from "@ionic/storage";
 
-/*
-  Generated class for the StorageProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class StorageProvider {
+  constructor(public storage: Storage) {}
 
-  constructor(public http: Http) {
-    console.log('Hello StorageProvider Provider');
+  public inventory = [];
+
+  public get(inv: string) {
+    this.storage.get(inv).then((val) => {
+      this.inventory = val;
+      console.log("Val: ", val);
+    });
+    return this.inventory;
   }
-
 }
