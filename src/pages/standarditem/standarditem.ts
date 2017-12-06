@@ -14,7 +14,7 @@ export class StandarditemPage {
         //<editor-fold desc="simple melee weapons">
         {
             "strditemId": 0,
-            "type": "Simple Melee Weapon",
+            "type": "Simple Melee Weapon ",
             "itemName": "Club",
             "price": "1 SP",
             "mechanical": "1d4 bludgeoning",

@@ -3,6 +3,7 @@ import { AlertController, NavController, NavParams } from 'ionic-angular';
 import { Storage } from "@ionic/storage";
 import { CustomitemPage } from "../customitem/customitem";
 import { StandarditemPage } from "../standarditem/standarditem";
+import { EdititemPage } from "../edititem/edititem";
 //import {StorageProvider} from "../../providers/storage/storage";
 
 @Component({
@@ -14,6 +15,8 @@ export class InventoryPage {
     //<editor-fold desc="variables">
     //backpack variable for the selected backpack
     public backpack;
+    //variable for selected item for the Edit page
+    public item;
 
     //info array for getting all the backpacks
     info = [];
@@ -26,7 +29,7 @@ export class InventoryPage {
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 public alertCtrl: AlertController,
-                public storage: Storage,
+                public storage: Storage
                 /*private storageProvider: StorageProvider*/) {
         //<editor-fold desc="getting the backpack thats been tapped on.">
         //get the selected backpack
@@ -40,7 +43,7 @@ export class InventoryPage {
         //get items in the selected backpack
         this.storage.get(this.itemKey).then((val) => {
             this.items = val;
-            console.log("Storage items: ", val);
+            //console.log("Storage items: ", val);
         }).catch((err) => {
 
         });
@@ -50,6 +53,10 @@ export class InventoryPage {
   ionViewDidEnter() {
       //this.items = this.storageProvider.get(this.itemKey);
       //console.log(this.items);
+      // this.platform.ready().then(() => {
+      //     Keyboard.disableScroll(true);
+      // });
+
       this.storage.get(this.itemKey).then ((val) => {
          this.items = val;
       });
@@ -57,17 +64,20 @@ export class InventoryPage {
 
 
   //function for opening a item.
-  openItem() {
+  openItem(index) {
       //<editor-fold desc="Pushing the selected backpack to the Item page.">
       //getting all backpacks
-      /*
-      this.storage.get('backpacks').then((val) => {
+      this.storage.get(this.itemKey).then((val) => {
+          let data = {
+              item: val[index]
+          };
+          console.log("Val: ", data);
+
           this.info = val;
-          this.navCtrl.push(itemPage, { backpack: this.backpack });
+          this.navCtrl.push(EdititemPage, { item: data, backpack: this.backpack } );
       }).catch((err) => {
           console.log("backpack not found!");
       });
-      */
       //</editor-fold>*/
   }
 

@@ -1,19 +1,29 @@
 page-home {
 
+  .scroll-content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    ion-row {
+      height: 70vh;
+      ion-col {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
+  .setting {
+    display: flex;
+    order: 5;
+  }
+
+  .about {
+    display: flex;
+    order: 4;
+  }
 }
 
-.button-pos {
-  position: relative;
-  left: 45%;
-  top: 500%;
-}
 
-.setting {
-  display: flex;
-  order: 5;
-}
 
-.about {
-  display: flex;
-  order: 4;
-}

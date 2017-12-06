@@ -10,6 +10,7 @@ import { AboutPage} from "../pages/about/about";
 import { InventoryPage } from "../pages/inventory/inventory";
 import { StandarditemPage } from "../pages/standarditem/standarditem";
 import { CustomitemPage } from "../pages/customitem/customitem";
+import { EdititemPage } from "../pages/edititem/edititem";
 //import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -31,7 +32,8 @@ import { StorageProvider } from '../providers/storage/storage';
     AboutPage,
     InventoryPage,
     StandarditemPage,
-    CustomitemPage
+    CustomitemPage,
+    EdititemPage
     //ListPage
 
   ],
@@ -49,7 +51,8 @@ import { StorageProvider } from '../providers/storage/storage';
     AboutPage,
     InventoryPage,
     StandarditemPage,
-    CustomitemPage
+    CustomitemPage,
+    EdititemPage
     //ListPage
   ],
   providers: [
