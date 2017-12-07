@@ -17,6 +17,7 @@ export class BackPackPage {
     itemKey;
     //storageKey for setting a storageKey for deleting the backpack
     storageKey;
+    coinKey;
     //info for the access to the backpack local storage.
     info: any = [];
     //item for the access to the items per inventory
@@ -31,6 +32,8 @@ export class BackPackPage {
             this.info = val;
             //console.log(val);
         });
+
+
     }
 
     //open about Page with a push
@@ -127,6 +130,7 @@ export class BackPackPage {
         //itemKey and storageKey requirements for editing backpacks so that the item
         //transfers (previous problem that when you edit a backpack the items where all gone and still in the old backpack (name))
         this.itemKey = 'items:' + backpack.name + backpack.HardLimit;
+        this.coinKey = 'coins:' + backpack.name + backpack.HardLimit;
         this.storageKey = 'Storage:' + backpack.name + backpack.Carrying_Size + backpack.strength + backpack.RuleVariants + backpack.HardLimit;
         //</editor-fold>
 
@@ -175,10 +179,13 @@ export class BackPackPage {
                 {
                   text: 'Delete',
                   handler: data => {
+
                       //console.log('Delete clicked!');
                       //getting the backpack to delete it.
                       this.storage.get('backpacks').then((val) => {
+                          console.log("herpederp",this.coinKey)
                           this.storage.remove(this.itemKey);
+                          this.storage.remove(this.coinKey);
                           //splice 1 to delete one element and there for delete the whole array.
                           val.splice(index, 1);
                           this.info = val;

@@ -13,11 +13,11 @@ export class WalletPage {
 
     coinKey;
 
-    plat: any;
-    gold: any;
-    elec: any;
-    silv: any;
-    copp: any;
+    plat: any = 0;
+    gold: any = 0;
+    elec: any = 0;
+    silv: any = 0;
+    copp: any = 0;
 
     coins: any = [{
         "pp": this.plat,
@@ -74,5 +74,57 @@ export class WalletPage {
             this.storage.set(this.coinKey, [coins]);
             this.coins = [coins];
         });
+        this.navCtrl.pop();
+
+    }
+
+    decrementPlat() {
+        if (this.plat > 0) {
+            this.plat--;
+        }
+    }
+
+    incrementPlat() {
+        this.plat++;
+    }
+
+    decrementGold() {
+        if (this.gold > 0) {
+            this.gold--;
+        }
+    }
+
+    incrementGold() {
+        this.gold++;
+    }
+
+    decrementElec() {
+        if (this.elec > 0) {
+            this.elec--;
+        }
+    }
+
+    incrementElec() {
+        this.elec++;
+    }
+
+    decrementSilv() {
+        if (this.silv > 0) {
+            this.silv--;
+        }
+    }
+
+    incrementSilv() {
+        this.silv++;
+    }
+
+    decrementCopp() {
+        if (this.copp > 0) {
+            this.copp--;
+        }
+    }
+
+    incrementCopp() {
+        this.copp++;
     }
 }

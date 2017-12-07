@@ -8,45 +8,70 @@
 </ion-header>
 
 <ion-content padding>
+    <ion-row baseline>
+        <ion-col col-8>
+            <ion-item>
+                <ion-label stacked>Platinum Pieces</ion-label>
+                <ion-input any="number" [(ngModel)]="plat" name="pp"></ion-input>
+            </ion-item>
+        </ion-col>
+        <ion-col col-4>
+                <button ion-button small (tap)="incrementPlat()">+</button>
+                <button ion-button small (tap)="decrementPlat()">-</button>
+        </ion-col>
+    </ion-row>
+    <ion-row baseline>
+        <ion-col col-8>
+            <ion-item>
+                <ion-label stacked>Gold Pieces</ion-label>
+                <ion-input any="number" [(ngModel)]="gold" name="gp"></ion-input>
+            </ion-item>
+        </ion-col>
+        <ion-col col-4>
+                <button ion-button small (tap)="incrementGold()">+</button>
+                <button ion-button small (tap)="decrementGold()">-</button>
+        </ion-col>
+    </ion-row>
+    <ion-row baseline>
+        <ion-col col-8>
+            <ion-item>
+                <ion-label stacked>Electrum Pieces</ion-label>
+                <ion-input any="number" [(ngModel)]="elec" name="ep"></ion-input>
+            </ion-item>
+        </ion-col>
+        <ion-col col-4>
+                <button ion-button small (tap)="incrementElec()">+</button>
+                <button ion-button small (tap)="decrementElec()">-</button>
+        </ion-col>
+    </ion-row>
+    <ion-row baseline>
+        <ion-col col-8>
+            <ion-item>
+                <ion-label stacked>Silver Pieces</ion-label>
+                <ion-input any="number" [(ngModel)]="silv" name="sp"></ion-input>
+            </ion-item>
+        </ion-col>
+        <ion-col col-4>
+                <button class="slightlylowerbutton" ion-button small (tap)="incrementSilv()">+</button>
+                <button ion-button small (tap)="decrementSilv()">-</button>
+        </ion-col>
+    </ion-row>
+    <ion-row baseline>
+        <ion-col col-8>
+            <ion-item>
+                <ion-label stacked>Copper Pieces</ion-label>
+                <ion-input type="number" [(ngModel)]="copp" name="cp"></ion-input>
+            </ion-item>
+        </ion-col>
+        <ion-col col-4>
+                <button ion-button small (tap)="incrementCopp()">+</button>
+                <button ion-button small (tap)="decrementCopp()">-</button>
+        </ion-col>
+    </ion-row>
 
-    <!--<button ion-button (tap)="decrementPlat()">-</button>-->
-    <!--<input  placeholder={{tempCoin.pp}} [(ngModel)]="plat" type="number"/>-->
-    <!--<button ion-button (tap)="incrementPlat()">+</button><br />-->
-    <!--<button ion-button (tap)="decrementGold()">-</button>-->
-    <!--<input placeholder="gp" [(ngModel)]="gold" type="number"/>-->
-    <!--<button ion-button (tap)="incrementGold()">+</button><br />-->
-    <!--<button ion-button (tap)="decrementElec()">-</button>-->
-    <!--<input placeholder="ep" [(ngModel)]="elec" type="number"/>-->
-    <!--<button ion-button (tap)="incrementElec()">+</button><br />-->
-    <!--<button ion-button (tap)="decrementSilv()">-</button>-->
-    <!--<input placeholder="sp" [(ngModel)]="silv" type="number"/>-->
-    <!--<button ion-button (tap)="incrementSilv()">+</button><br />-->
-    <!--<button ion-button (tap)="decrementCopp()">-</button>-->
-    <!--<input placeholder="cp" [(ngModel)]="copp" type="number"/>-->
-    <!--<button ion-button (tap)="incrementCopp()">+</button><br />-->
-
-        <ion-item>
-            <ion-label>pp</ion-label>
-            <ion-input any="number" [(ngModel)]="plat" name="plat"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>gp</ion-label>
-            <ion-input any="number" [(ngModel)]="gold" id="gold"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>ep</ion-label>
-            <ion-input any="number" [(ngModel)]="elec" name="elec"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>sp</ion-label>
-            <ion-input any="number" [(ngModel)]="silv" name="silv"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>cp</ion-label>
-            <ion-input type="number" [(ngModel)]="copp" name="copp"></ion-input>
-        </ion-item>
-
-    <!--<button ion-button (tap)="cancelWallet()">Canceling butt</button>-->
-    <button ion-button (tap)="saveWallet()">ok but tony</button>
-
+    <ion-row>
+        <ion-col style="text-align: center">
+            <button ion-button (tap)="saveWallet()">Accept</button>
+        </ion-col>
+    </ion-row>
 </ion-content>
