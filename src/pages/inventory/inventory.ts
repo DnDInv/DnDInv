@@ -4,6 +4,8 @@ import { Storage } from "@ionic/storage";
 import { WalletPage } from "../wallet/wallet";
 import { CustomitemPage } from "../customitem/customitem";
 import { StandarditemPage } from "../standarditem/standarditem";
+import { EdititemPage } from "../edititem/edititem";
+//import {StorageProvider} from "../../providers/storage/storage";
 
 @Component({
   selector: 'page-inventory',
@@ -11,39 +13,56 @@ import { StandarditemPage } from "../standarditem/standarditem";
 })
 export class InventoryPage {
 
-  //<editor-fold desc="variables">
-  //backpack variable for the selected backpack
-  public backpack;
+    //<editor-fold desc="variables">
+    //backpack variable for the selected backpack
+    public backpack;
+    //variable for selected item for the Edit page
+    public item;
 
-  //info array for getting all the backpacks
-  info = [];
-  //item to sync all the objects in this.itemKey and get them on the screen.
-  items = [];
-  //itemKey to get the items from the individual backpacks.
-  itemKey;
-  //</editor-fold
+    //info array for getting all the backpacks
+    info = [];
+    //item to sync all the objects in this.itemKey and get them on the screen.
+    items = [];
+    //itemKey to get the items from the individual backpacks.
+    itemKey;
+    //</editor-fold
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public storage: Storage) {
+    constructor(public navCtrl: NavController,
+                public navParams: NavParams,
+                public alertCtrl: AlertController,
+                public storage: Storage
+                /*private storageProvider: StorageProvider*/) {
+        //<editor-fold desc="getting the backpack thats been tapped on.">
+        //get the selected backpack
+        this.backpack = this.navParams.get('backpack');
 
-    //<editor-fold desc="getting the backpack thats been tapped on.">
-    //get the selected backpack
-    this.backpack = this.navParams.get('backpack');
+        //set backpack key items for the items in individual inventories.
+        this.itemKey = 'item: ' + this.backpack.name + this.backpack.HardLimit;
+        //</editor-fold>
 
-    //set backpack key items for the items in individual inventories.
-    this.itemKey = 'item: ' + this.backpack.name + this.backpack.HardLimit;
-    //</editor-fold>
+        //<editor-fold desc="Getting items from itemKey">
+        //get items in the selected backpack
+        this.storage.get(this.itemKey).then((val) => {
+            this.items = val;
+            //console.log("Storage items: ", val);
+        }).catch((err) => {
 
-    //<editor-fold desc="Getting items from itemKey">
-    //get items in the selected backpack
-    this.storage.get(this.itemKey).then((val) => {
-        this.items = val;
-        console.log("Storage items: ", val);
-    }).catch((err) => {
+        });
+        //</editor-fold>
+    }
 
-    });
-    //</editor-fold>
+  ionViewDidEnter() {
+      //this.items = this.storageProvider.get(this.itemKey);
+      //console.log(this.items);
+      // this.platform.ready().then(() => {
+      //     Keyboard.disableScroll(true);
+      // });
+
+      this.storage.get(this.itemKey).then ((val) => {
+         this.items = val;
+      });
   }
-
+  
   wallet() {
       this.storage.get('backpacks').then((val) => {
           this.info = val;
@@ -54,10 +73,28 @@ export class InventoryPage {
       });
   }
   //function for opening a item.
-  openItem() {
-      //this.navCtrl.push(itemPage);
+  openItem(index) {
+      //<editor-fold desc="Pushing the selected backpack to the Item page.">
+      //getting all backpacks
+      this.storage.get(this.itemKey).then((val) => {
+          let data = {
+              item: val[index]
+          };
+          let selectedIndex = {
+              index: index
+          }
+          console.log('stuff ', selectedIndex);
+          //console.log("Val: ", data);
+
+          this.info = val;
+          this.navCtrl.push(EdititemPage, { index: selectedIndex, item: data, backpack: this.backpack } );
+      }).catch((err) => {
+          console.log("backpack not found!");
+      });
+      //</editor-fold>*/
   }
 
+  //delete items
   deleteItem(index, item) {
       //<editor-fold desc="Creating the modal for deleting only">
       //create the modal for deleting the selected item.
@@ -66,8 +103,11 @@ export class InventoryPage {
             message: "here you can delete the Item: " + item.itemName,
             buttons: [
                 {
+                    text: "No"
+                },
+                {
                     //<editor-fold desc="delete individual items">
-                    text: "Delete",
+                    text: "Yes",
                     handler: data => {
                         //gets the storage with the given itemKey
                         this.storage.get(this.itemKey).then((val) => {
@@ -85,7 +125,8 @@ export class InventoryPage {
                         })
                     }
                     //</editor-fold>
-                },
+                }
+
             ]
         });
         editorDelete.present();
@@ -106,9 +147,9 @@ export class InventoryPage {
       //</editor-fold>
   }
 
-  //adding items
+  //adding standard items
   addstandardItem() {
-      //<editor-fold desc="Pushing the selected backpack to the next page.">
+      //<editor-fold desc="Pushing the selected backpack to the add Standard Item page.">
       //getting all backpacks
       this.storage.get('backpacks').then((val) => {
           this.info = val;

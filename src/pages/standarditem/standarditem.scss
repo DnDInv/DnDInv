@@ -6,10 +6,10 @@ page-standarditem {
   z-index: 2;
 }
 
-p#Weapon, p#Armor, p#Gear, p#Ammo, p#Tool {
+p.Standard {
   color: black;
 }
 
-h2#ArmorHeader, h2#WeaponHeader, h2#GearHeader, h2#AmmoHeader, h2#ToolHeader {
+h2.StandardItems {
   font-weight: bold;
 }

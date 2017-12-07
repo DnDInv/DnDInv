@@ -1,4 +1,3 @@
-///<reference path="../../../node_modules/ionic-angular/navigation/nav-controller.d.ts"/>
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { SettingsPage } from '../settings/settings';
@@ -13,7 +12,9 @@ export class HomePage {
     //info for the access to the backpack local storage.
     info: any = [];
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController,public storage: Storage) {
+  constructor(public navCtrl: NavController,
+              public alertCtrl: AlertController,
+              public storage: Storage) {
     this.navCtrl = navCtrl;
   }
   //open setting menu with a push
@@ -86,7 +87,7 @@ export class HomePage {
                         }
                         else {
                             //push the input of all the fields that are required into a JSON object.
-                            console.log(data);
+                            //console.log(data);
                             this.storage.get('backpacks').then((val) => {
                                 val.push(data);
                                 this.info = val;

@@ -1,14 +1,8 @@
-<!--
-  Generated template for the StandarditemPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
     <ion-navbar>
         <ion-title>Add Standard Item</ion-title>
-        <!--<br/><span style="font-size: 1.5rem;padding: 0px;">test</span>-->
     </ion-navbar>
 
 </ion-header>
@@ -16,35 +10,11 @@
 <ion-content padding>
 
     <ion-list>
-        <ion-item *ngFor="let a of weapons; let i = index" [attr.Weaponid]="i" (tap)="clickable(i)">
-            <h2 id="WeaponHeader">{{ a.name }}</h2>
-            <p id="Weapon">       Type: {{ a.type }}
-                            <br/> Weight: {{ a.weight }}
-                            <br/> Cost: {{ a.cost }}</p>
-        </ion-item>
-        <ion-item *ngFor="let a of armor; let i = index" [attr.Armorid]="i" (tap)="clickable(i)">
-            <h2 id="ArmorHeader">{{ a.name }}</h2>
-            <p id="Armor">       Type: {{ a.type }}
-                           <br/> Weight: {{ a.weight }}
-                           <br/> Cost: {{ a.cost }} </p>
-        </ion-item>
-        <ion-item *ngFor="let a of gear; let i = index" [attr.Gearid]="i" (tap)="clickable(i)">
-            <h2 id="GearHeader">{{ a.name }}</h2>
-            <p id="Gear">       Type: {{ a.type }}
-                           <br/>Weight: {{ a.weight }}
-                           <br/>cost: {{ a.cost }}</p>
-        </ion-item>
-        <ion-item *ngFor="let a of ammunition; let i = index" [attr.Ammoid]="i" (tap)="clickable(i)">
-            <h2 id="AmmoHeader">{{ a.name }}</h2>
-            <p id="Ammo">       Type: {{ a.type }}
-                           <br/>Weight: {{ a.weight }}
-                           <br/>Cost: {{ a.cost }}</p>
-        </ion-item>
-        <ion-item *ngFor="let a of tools; let i = index" [attr.Toolid]="i" (tap)="clickable(i)">
-            <h2 id="ToolHeader">{{ a.name }}</h2>
-            <p id="Tool">       Type: {{ a.type }}
-                           <br/>Weight: {{ a.weight }}
-                           <br/>Cost: {{ a.cost }}</p>
+        <ion-item *ngFor="let a of standardItems; let i = index" [attr.id]="a.strditemId" (tap)="addStandarditem(i)">
+            <h2 class="StandardItems">{{ a.itemName }}</h2>
+            <p class="Standard">       Type: {{ a.type }}</p>
+            <p class="Standard">       Weight: {{ a.weight }}</p>
+            <p class="Standard">       Cost: {{ a.cost }}</p>
         </ion-item>
     </ion-list>
 </ion-content>

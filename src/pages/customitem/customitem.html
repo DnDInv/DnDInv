@@ -17,7 +17,7 @@
 
 <ion-row>
   <ion-col>
-    <input id="CustomItem" placeholder="amount" [(ngModel)]="amount" type="text" />
+    <input id="CustomItem" placeholder="amount" [(ngModel)]="amount" type="number" />
   </ion-col>
   <ion-col>
     <!--<ion-item id="Test" class="styled-select slate">-->
@@ -41,13 +41,13 @@
     <input id="CustomItem" [(ngModel)]="weight" placeholder="weight lbs" type="text" />
   </ion-col>
   <ion-col>
-    <input id="CustomItem" [(ngModel)]="price" placeholder="price" type="text" />
+    <input id="CustomItem" [(ngModel)]="price" placeholder="price" type="number" />
   </ion-col>
 </ion-row>
 
 <ion-row>
   <ion-item>
-    <ion-label>Attunement</ion-label>
+    <ion-label class="size">Attunement</ion-label>
     <ion-checkbox [(ngModel)]="attune" ></ion-checkbox>
   </ion-item>
 </ion-row>

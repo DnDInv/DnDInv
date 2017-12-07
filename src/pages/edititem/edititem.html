@@ -1,0 +1,86 @@
+<!--
+  Generated template for the EdititemPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Edit Item "{{ item.item.itemName }}"</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-row>
+    <ion-col class="centeredText">
+      <input id="CustomItem" placeholder="Item name" [(ngModel)]="itemName" type="text"/>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <input id="CustomItem" placeholder="amount" [(ngModel)]="amount" type="number" />
+    </ion-col>
+    <ion-col>
+      <!--<ion-item id="Test" class="styled-select slate">-->
+      <ion-select [(ngModel)]="type" placeholder="Select Type of Item">
+        <!--<ion-option value="" disabled hidden>Select Type of Item</ion-option>-->
+        <ion-option value="Light armor">Armor</ion-option>
+        <ion-option value="Medium armor">Armor</ion-option>
+        <ion-option value="Heavy armor">Armor</ion-option>
+        <ion-option value="Consumable">Consumable</ion-option>
+        <ion-option value="Gear">Adventuring Gear</ion-option>
+        <ion-option value="MagicItem">Magic Item</ion-option>
+        <ion-option value="TradeGoods">Trade Goods</ion-option>
+        <ion-option value="Simple Melee Weapon ">Weapon</ion-option>
+        <ion-option value="Simple Ranged Weapon ">Weapon</ion-option>
+        <ion-option value="Martial Melee Weapon ">Weapon</ion-option>
+        <ion-option value="Martial Ranged Weapon ">Weapon</ion-option>
+        <ion-option value="Simple Ranged Weapon ">Weapon</ion-option>
+        <ion-option value="Martial Melee Weapon ">Weapon</ion-option>
+        <ion-option value="QuestItem">Quest Item</ion-option>
+        <ion-option value="CraftingMaterial">Crafting Material</ion-option>
+      </ion-select>
+      <!--</ion-item>-->
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <input id="CustomItem" [(ngModel)]="weight" placeholder="weight lbs" type="text" />
+    </ion-col>
+    <ion-col>
+      <input id="CustomItem" [(ngModel)]="price" placeholder="price" type="text" />
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-item>
+      <ion-label class="size">Attunement</ion-label>
+      <ion-checkbox [(ngModel)]="attune" ></ion-checkbox>
+    </ion-item>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <input placeholder="Mechanical Text" [(ngModel)]="mechanical" id="Mechanical" type="text">
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <input placeholder="Flavor / Lore text / Notes" [(ngModel)]="flavor" id="Flavor" type="text" />
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <button (tap)="editItem()" ion-button round class="editButton">Edit</button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

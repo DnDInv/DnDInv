@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+import { Storage } from "@ionic/storage";
 
-//import { Http } from '@angular/http';
 
 @Component({
     selector: 'page-standarditem',
@@ -9,104 +9,105 @@ import {NavController, NavParams} from 'ionic-angular';
 })
 export class StandarditemPage {
 
-    weapons = [
+    //<editor-fold desc="All Standard items in an array object">
+    standardItems = [
         //<editor-fold desc="simple melee weapons">
         {
-            "strdweapId": 0,
-            "type": "Simple Melee Weapon",
-            "name": "Club",
-            "cost": "1 sp",
-            "damage": "1d4 bludgeoning",
-            "weight": "2 lb",
+            "strditemId": 0,
+            "type": "Simple Melee Weapon ",
+            "itemName": "Club",
+            "price": "1 SP",
+            "mechanical": "1d4 bludgeoning",
+            "weight": "2",
             "properties": "Light",
             "amount": ""
         },
         {
-            "strdweapId": 1,
+            "strditemId": 1,
             "type": "Simple Melee Weapon ",
-            "name": "Dagger",
-            "cost": "2 gp",
-            "damage": "1d4 piercing",
+            "itemName": "Dagger",
+            "price": "2 gp",
+            "mechanical": "1d4 piercing",
             "weight": "1 lb",
             "properties": "Finesse, light, thrown (range 20/60)",
             "amount": ""
         },
         {
-            "strdweapId": 2,
+            "strditemId": 2,
             "type": "Simple Melee Weapon ",
-            "name": "Greatclub",
-            "cost": "2 sp",
-            "damage": "1d8 bludgeoning",
+            "itemName": "Greatclub",
+            "price": "2 sp",
+            "mechanical": "1d8 bludgeoning",
             "weight": "10 lb",
             "properties": "Two-handed",
             "amount": ""
         },
         {
-            "strdweapId": 3,
+            "strditemId": 3,
             "type": "Simple Melee Weapon ",
-            "name": "Handaxe",
-            "cost": "5 gp",
-            "damage": "1d6 slashing",
+            "itemName": "Handaxe",
+            "price": "5 gp",
+            "mechanical": "1d6 slashing",
             "weight": "2 lb",
             "properties": "Light, thrown (range 20/60)",
             "amount": ""
         },
         {
-            "strdweapId": 4,
+            "strditemId": 4,
             "type": "Simple Melee Weapon ",
-            "name": "Javelin",
-            "cost": "5 sp",
-            "damage": "1d6 piercing",
+            "itemName": "Javelin",
+            "price": "5 sp",
+            "mechanical": "1d6 piercing",
             "weight": "2 lb",
             "properties": "Thrown (range 30/120)",
             "amount": ""
         },
         {
-            "strdweapId": 5,
-            "type": "Simple Melee Weapon ",
+            "strditemId": 5,
+            "itemName": "Simple Melee Weapon ",
             "name": "Light hammer",
-            "cost": "2 gp",
-            "damage": "1d4 bludgeoning",
+            "price": "2 gp",
+            "mechanical": "1d4 bludgeoning",
             "weight": "2 lb",
             "properties": "Light, thrown (range 20/60)",
             "amount": ""
         },
         {
-            "strdweapId": 6,
+            "strditemId": 6,
             "type": "Simple Melee Weapon ",
-            "name": "Mace",
-            "cost": "5 gp",
-            "damage": "1d6 bludgeoning",
+            "itemName": "Mace",
+            "price": "5 gp",
+            "mechanical": "1d6 bludgeoning",
             "weight": "4 lb",
             "properties": "",
             "amount": ""
         },
         {
-            "strdweapId": 7,
+            "strditemId": 7,
             "type": "Simple Melee Weapon ",
-            "name": "Quarterstaff",
-            "cost": "2 sp",
-            "damage": "1d6 bludgeoning",
+            "itemName": "Quarterstaff",
+            "price": "2 sp",
+            "mechanical": "1d6 bludgeoning",
             "weight": "4 lb",
             "properties": "Versatile (1d8)",
             "amount": ""
         },
         {
-            "strdweapId": 8,
+            "strditemId": 8,
             "type": "Simple Melee Weapon ",
-            "name": "Sickle",
-            "cost": "1 gp",
-            "damage": "1d4 slashing",
+            "itemName": "Sickle",
+            "price": "1 gp",
+            "mechanical": "1d4 slashing",
             "weight": "2 lb",
             "properties": "Light",
             "amount": ""
         },
         {
-            "strdweapId": 9,
+            "strditemId": 9,
             "type": "Simple Melee Weapon ",
-            "name": "Spear",
-            "cost": "1 gp",
-            "damage": "1d6 piercing",
+            "itemName": "Spear",
+            "price": "1 gp",
+            "mechanical": "1d6 piercing",
             "weight": "3 lb",
             "properties": "Thrown (range 20/60), versatile (1d8)",
             "amount": ""
@@ -115,41 +116,41 @@ export class StandarditemPage {
 
         //<editor-fold desc="simple ranged weapons">
         {
-            "strdweapId": 10,
+            "strditemId": 10,
             "type": "Simple Ranged Weapon ",
-            "name": "Crossbow, light",
-            "cost": "25 gp",
-            "damage": "1d8 piercing",
+            "itemName": "Crossbow, light",
+            "price": "25 gp",
+            "mechanical": "1d8 piercing",
             "weight": "5 lb",
             "properties": "Ammunition (range 80/320), loading, two-handed",
             "amount": ""
         },
         {
-            "strdweapId": 11,
+            "strditemId": 11,
             "type": "Simple Ranged Weapon ",
-            "name": "Dart",
-            "cost": "5 cp",
-            "damage": "1d4 piercing",
+            "itemName": "Dart",
+            "price": "5 cp",
+            "mechanical": "1d4 piercing",
             "weight": "1/4 lb",
             "properties": "Finesse, thrown (range 20/60)",
             "amount": ""
         },
         {
-            "strdweapId": 12,
+            "strditemId": 12,
             "type": "Simple Ranged Weapon ",
-            "name": "Shortbow",
-            "cost": "25 gp",
-            "damage": "1d6 piercing",
+            "itemName": "Shortbow",
+            "price": "25 gp",
+            "mechanical": "1d6 piercing",
             "weight": "5 lb",
             "properties": "Ammunition (range 80/320),two-handed",
             "amount": ""
         },
         {
-            "strdweapId": 13,
+            "strditemId": 13,
             "type": "Simple Ranged Weapon ",
-            "name": "Sling",
-            "cost": "1 sp",
-            "damage": "1d4 bludgeoning",
+            "itemName": "Sling",
+            "price": "1 sp",
+            "mechanical": "1d4 bludgeoning",
             "weight": "",
             "properties": "Ammunition (range 30/120)",
             "amount": ""
@@ -158,51 +159,51 @@ export class StandarditemPage {
 
         //<editor-fold desc="martial melee weapons">
         {
-            "strdweapId": 14,
+            "strditemId": 14,
             "type": "Martial Melee Weapon ",
-            "name": "Battleaxe",
-            "cost": "10 gp",
-            "damage": "1d8 slashing",
+            "itemName": "Battleaxe",
+            "price": "10 gp",
+            "mechanical": "1d8 slashing",
             "weight": "4 lb",
             "properties": "Versatile (1d10)",
             "amount": ""
         },
         {
-            "strdweapId": 15,
+            "strditemId": 15,
             "type": "Martial Melee Weapon ",
-            "name": "Flail",
-            "cost": "10 gp",
-            "damage": "1d8 bludgeoning",
+            "itemName": "Flail",
+            "price": "10 gp",
+            "mechanical": "1d8 bludgeoning",
             "weight": "2 lb",
             "properties": "",
             "amount": ""
         },
         {
-            "strdweapId": 16,
+            "strditemId": 16,
             "type": "Martial Melee Weapon ",
-            "name": "Glaive",
-            "cost": "20 gp",
-            "damage": "1d10 slashing",
+            "itemName": "Glaive",
+            "price": "20 gp",
+            "mechanical": "1d10 slashing",
             "weight": "6 lb",
             "properties": "Heavy, reach, two-handed",
             "amount": ""
         },
         {
-            "strdweapId": 17,
+            "strditemId": 17,
             "type": "Martial Melee Weapon ",
-            "name": "Greataxe",
-            "cost": "30 gp",
-            "damage": "1d12 slashing",
+            "itemName": "Greataxe",
+            "price": "30 gp",
+            "mechanical": "1d12 slashing",
             "weight": "7 lb",
             "properties": "Heavy, two-handed",
             "amount": ""
         },
         {
-            "strdweapId": 18,
+            "strditemId": 18,
             "type": "Martial Melee Weapon ",
-            "name": "Greatsword",
-            "cost": "50 gp",
-            "damage": "2d6 slashing",
+            "itemName": "Greatsword",
+            "price": "50 gp",
+            "mechanical": "2d6 slashing",
             "weight": "6 lb",
             "properties": "Heavy, two-handed",
             "amount": ""
@@ -210,129 +211,129 @@ export class StandarditemPage {
         {
             "strdweapId": 19,
             "type": "Martial Melee Weapon ",
-            "name": "Halberd",
-            "cost": "20 gp",
-            "damage": "1d19 slashing",
+            "itemName": "Halberd",
+            "price": "20 gp",
+            "mechanical": "1d19 slashing",
             "weight": "6 lb",
             "properties": "Heavy, reach, two-handed",
             "amount": ""
         },
         {
-            "strdweapId": 20,
+            "strditemId": 20,
             "type": "Martial Melee Weapon ",
-            "name": "Lance",
-            "cost": "10 gp",
-            "damage": "1d12 bludgeoning",
+            "itemName": "Lance",
+            "price": "10 gp",
+            "mechanical": "1d12 bludgeoning",
             "weight": "6 lb",
             "properties": "Reach, Special",
             "amount": ""
         },
         {
-            "strdweapId": 21,
+            "strditemId": 21,
             "type": "Martial Melee Weapon ",
-            "name": "Longsword",
-            "cost": "15 gp",
-            "damage": "1d8 slashing",
+            "itemName": "Longsword",
+            "price": "15 gp",
+            "mechanical": "1d8 slashing",
             "weight": "3 lb",
             "properties": "Versatile (1d10)",
             "amount": ""
         },
         {
-            "strdweapId": 22,
+            "strditemId": 22,
             "type": "Martial Melee Weapon ",
-            "name": "Maul",
-            "cost": "10 gp",
-            "damage": "2d6 bludgeoning",
+            "itemName": "Maul",
+            "price": "10 gp",
+            "mechanical": "2d6 bludgeoning",
             "weight": "10 lb",
             "properties": "Heavy, two-handed",
             "amount": ""
         },
         {
-            "strdweapId": 23,
+            "strditemId": 23,
             "type": "Martial Melee Weapon ",
-            "name": "Morningstar",
-            "cost": "15 gp",
-            "damage": "1d8 piercing",
+            "itemName": "Morningstar",
+            "price": "15 gp",
+            "mechanical": "1d8 piercing",
             "weight": "4 lb",
             "properties": "",
             "amount": ""
         },
         {
-            "strdweapId": 24,
+            "strditemId": 24,
             "type": "Martial Melee Weapon ",
-            "name": "Pike",
-            "cost": "5 gp",
-            "damage": "1d10 piercing",
+            "itemName": "Pike",
+            "price": "5 gp",
+            "mechanical": "1d10 piercing",
             "weight": "18 lb",
             "properties": "Heavy, reach, two-handed",
             "amount": ""
         },
         {
-            "strdweapId": 25,
+            "strditemId": 25,
             "type": "Martial Melee Weapon ",
-            "name": "Rapier",
-            "cost": "25 gp",
-            "damage": "1d8 piercing",
+            "itemName": "Rapier",
+            "price": "25 gp",
+            "mechanical": "1d8 piercing",
             "weight": "2 lb",
             "properties": "Finesse",
             "amount": ""
         },
         {
-            "strdweapId": 26,
+            "strditemId": 26,
             "type": "Martial Melee Weapon ",
-            "name": "Scimitar",
-            "cost": "25 gp",
-            "damage": "1d6 slashing",
+            "itemName": "Scimitar",
+            "price": "25 gp",
+            "mechanical": "1d6 slashing",
             "weight": "3 lb",
             "properties": "Finesse, light",
             "amount": ""
         },
         {
-            "strdweapId": 27,
+            "strditemId": 27,
             "type": "Martial Melee Weapon ",
-            "name": "Shortsword",
-            "cost": "10 gp",
-            "damage": "1d6 piercing",
+            "itemName": "Shortsword",
+            "price": "10 gp",
+            "mechanical": "1d6 piercing",
             "weight": "2 lb",
             "properties": "Finesse, light",
             "amount": ""
         },
         {
-            "strdweapId": 28,
+            "strditemId": 28,
             "type": "Martial Melee Weapon ",
-            "name": "Trident",
-            "cost": "5 gp",
-            "damage": "1d6 piercing",
+            "itemName": "Trident",
+            "price": "5 gp",
+            "mechanical": "1d6 piercing",
             "weight": "4 lb",
             "properties": "Thrown (range 20/60), Versatile (1d8)",
             "amount": ""
         },
         {
-            "strdweapId": 29,
+            "strditemId": 29,
             "type": "Martial Melee Weapon ",
-            "name": "War pick",
-            "cost": "5 gp",
-            "damage": "1d8 piercing",
+            "itemName": "War pick",
+            "price": "5 gp",
+            "mechanical": "1d8 piercing",
             "weight": "2 lb",
             "properties": "",
             "amount": ""
         },
         {
-            "strdweapId": 30,
+            "strditemId": 30,
             "type": "Martial Melee Weapon ",
-            "name": "Warhammer",
-            "cost": "15 gp",
-            "damage": "1d8 bludgeoning",
+            "itemName": "Warhammer",
+            "price": "15 gp",
+            "mechanical": "1d8 bludgeoning",
             "weight": "2 lb",
             "properties": "Versatile (1d10)",
             "amount": ""
         },
         {
-            "strdweapId": 31,
+            "strditemId": 31,
             "type": "Martial Melee Weapon ",
-            "name": "Whip",
-            "cost": "2 gp",
-            "damage": "1d4 slashing",
+            "itemName": "Whip",
+            "price": "2 gp",
+            "mechanical": "1d4 slashing",
             "weight": "3 lb",
             "properties": "Finesse, reach",
             "amount": ""
@@ -341,90 +342,82 @@ export class StandarditemPage {
 
         //<editor-fold desc="martial ranged weapons">
         {
-            "strdweapId": 32,
+            "strditemId": 32,
             "type": "Martial Ranged Weapon ",
-            "name": "Blowgun",
-            "cost": "10 gp",
-            "damage": "1 piercing",
+            "itemName": "Blowgun",
+            "price": "10 gp",
+            "mechanical": "1 piercing",
             "weight": "1 lb",
             "properties": "Ammunition (range 25/100), loading",
             "amount": ""
         },
         {
-            "strdweapId": 33,
+            "strditemId": 33,
             "type": "Martial Ranged Weapon ",
-            "name": "Crossbow, hand",
-            "cost": "75 gp",
-            "damage": "1d6 piercing",
+            "itemName": "Crossbow, hand",
+            "price": "75 gp",
+            "mechanical": "1d6 piercing",
             "weight": "3 lb",
             "properties": "Ammunition (range 30/120), light, loading",
             "amount": ""
         },
         {
-            "strdweapId": 34,
+            "strditemId": 34,
             "type": "Martial Ranged Weapon ",
-            "name": "Crossbow, heavy",
-            "cost": "50 gp",
-            "damage": "1d10 piercing",
+            "itemName": "Crossbow, heavy",
+            "price": "50 gp",
+            "mechanical": "1d10 piercing",
             "weight": "18 lb",
             "properties": "Ammunition (range 100/400), heavy, loading, two-handed",
             "amount": ""
         },
         {
-            "strdweapId": 35,
+            "strditemId": 35,
             "type": "Martial Ranged Weapon ",
-            "name": "Longbow",
-            "cost": "50 gp",
-            "damage": "18 piercing",
+            "itemName": "Longbow",
+            "price": "50 gp",
+            "mechanical": "18 piercing",
             "weight": "2 lb",
             "properties": "Ammunition (range 150/600), heavy, two-handed",
             "amount": ""
         },
         {
-            "strdweapId": 36,
+            "strditemId": 36,
             "type": "Martial Ranged Weapon ",
-            "name": "Net",
-            "cost": "1 gp",
-            "damage": "",
+            "itemName": "Net",
+            "price": "1 gp",
+            "mechanical": "",
             "weight": "3 lb",
             "properties": "Special, thrown (range 5/15)",
             "amount": ""
-        }
+        },
         //</editor-fold>
-    ];
 
-    armor = [
         //<editor-fold desc="light armor">
         {
-            "strdarmId": 0,
+            "strditemId": 37,
             "type": "Light armor",
-            "name": "Padded",
-            "cost": "5 gp",
-            "armor_class": "11 + Dex modifier",
-            "strength": "",
-            "stealth": "Disadvantage",
+            "itemName": "Padded",
+            "price": "5 gp",
+            "mechanical": "11 + Dex modifier",
             "weight": "8 lb",
             "amount": ""
         },
         {
-            "strdarmId": 1,
+            "strditemId": 38,
             "type": "Light armor",
-            "name": "Leather",
-            "cost": "10 gp",
-            "armor_class": "11 + Dex modifier",
-            "strenght": "",
-            "stealth": "",
+            "itemName": "Leather",
+            "price": "10 gp",
+            "mechanical": "11 + Dex modifier",
             "weight": "10 lb",
             "amount": ""
         },
         {
-            "strdarmId": 2,
+            "strditemId": 39,
             "type": "Light armor",
-            "name": "Studded leather",
-            "cost": "45 gp",
-            "armor_class": "12 + Dex modifier",
-            "strenght": "",
-            "stealth": "",
+            "itemName": "Studded leather",
+            "price": "45 gp",
+            "mechanical": "12 + Dex modifier",
             "weight": "13 lb",
             "amount": ""
         },
@@ -432,57 +425,47 @@ export class StandarditemPage {
 
         //<editor-fold desc="medium armor">
         {
-            "strdarmId": 3,
+            "strditemId": 40,
             "type": "Medium armor",
-            "name": "Hide",
-            "cost": "10 gp",
-            "armor_class": "12 + Dex modifier (max 2)",
-            "strenght": "",
-            "stealth": "",
+            "itemName": "Hide",
+            "price": "10 gp",
+            "mechanical": "12 + Dex modifier (max 2)",
             "weight": "12 lb",
             "amount": ""
         },
         {
-            "strdarmId": 4,
+            "strditemId": 41,
             "type": "Medium armor",
-            "name": "Chain shirt",
-            "cost": "50 gp",
-            "armor_class": "13 + Dex modifier (max 2)",
-            "strenght": "",
-            "stealth": "",
+            "itemName": "Chain shirt",
+            "price": "50 gp",
+            "mechanical": "13 + Dex modifier (max 2)",
             "weight": "20 lb",
             "amount": ""
         },
         {
-            "strdarmId": 5,
+            "strditemId": 42,
             "type": "Medium armor",
-            "name": "Scale mail",
-            "cost": "50 gp",
-            "armor_class": "14 + Dex modifier (max 2)",
-            "strenght": "",
-            "stealth": "Disadvantage",
+            "itemName": "Scale mail",
+            "price": "50 gp",
+            "mechanical": "14 + Dex modifier (max 2)",
             "weight": "45 lb",
             "amount": ""
         },
         {
-            "strdarmId": 6,
+            "strditemId": 43,
             "type": "Medium armor",
-            "name": "Breastplate",
-            "cost": "400 gp",
-            "armor_class": "14 + Dex modifier (max 2)",
-            "strenght": "",
-            "stealth": "",
+            "itemName": "Breastplate",
+            "price": "400 gp",
+            "mechanical": "14 + Dex modifier (max 2)",
             "weight": "20 lb",
             "amount": ""
         },
         {
-            "strdarmId": 7,
+            "strditemId": 44,
             "type": "Medium armor",
-            "name": "Half plate",
-            "cost": "750 gp",
-            "armor_class": "15 + Dex modifier (max 2)",
-            "strenght": "",
-            "stealth": "Disadvantage",
+            "itemName": "Half plate",
+            "price": "750 gp",
+            "mechanical": "15 + Dex modifier (max 2)",
             "weight": "40 lb",
             "amount": ""
         },
@@ -490,46 +473,38 @@ export class StandarditemPage {
 
         //<editor-fold desc="heavy armor">
         {
-            "strdarmId": 8,
+            "strditemId": 45,
             "type": "Heavy armor",
-            "name": "Ring mail",
-            "cost": "30 gp",
-            "armor_class": "14",
-            "strenght": "",
-            "stealth": "Disadvantage",
+            "itemName": "Ring mail",
+            "price": "30 gp",
+            "mechanical": "14",
             "weight": "40 lb",
             "amount": ""
         },
         {
-            "strdarmId": 9,
+            "strditemId": 46,
             "type": "Heavy armor",
-            "name": "Chain mail",
-            "cost": "75 gp",
-            "armor_class": "16",
-            "strenght": "Str 13",
-            "stealth": "Disadvantage",
+            "itemName": "Chain mail",
+            "price": "75 gp",
+            "mechanical": "16",
             "weight": "55 lb",
             "amount": ""
         },
         {
-            "strdarmId": 10,
+            "strdarmId": 47,
             "type": "Heavy armor",
-            "name": "Splint",
-            "cost": "200 gp",
-            "armor_class": "17",
-            "strenght": "Str 15",
-            "stealth": "Disadvantage",
+            "itemName": "Splint",
+            "price": "200 gp",
+            "mechanical": "17",
             "weight": "60 lb",
             "amount": ""
         },
         {
-            "strdarmId": 11,
+            "strditemId": 48,
             "type": "Heavy armor",
-            "name": "Plate",
-            "cost": "1.500 gp",
-            "armor_class": "18",
-            "strenght": "Str 15",
-            "stealth": "Disadvantage",
+            "itemName": "Plate",
+            "price": "1.500 gp",
+            "mechanical": "18",
             "weight": "65 lb",
             "amount": ""
         },
@@ -537,972 +512,964 @@ export class StandarditemPage {
 
         //<editor-fold desc="shields">
         {
-            "strdarmId": 12,
+            "strditemId": 49,
             "type": "Shield",
-            "name": "Shield",
+            "itemName": "Shield",
             "cost": "10 gp",
-            "armor_class": "+2",
-            "strenght": "",
-            "stealth": "",
+            "mechanical": "+2",
             "weight": "6 lb",
             "amount": ""
-        }
+        },
         //</editor-fold>
-    ];
 
-    gear = [
         //<editor-fold desc="Adventuring Gear">
         {
-            "strgearId": 0,
+            "strditemId": 50,
             "type": "Adventuring Gear",
-            "name": "Abacus",
-            "cost": "2 gp",
+            "itemName": "Abacus",
+            "price": "2 gp",
             "weight": "2 lb",
             "amount": ""
         },
         {
-            "strgearId": 1,
+            "strditemId": 51,
             "type": "Adventuring Gear",
-            "name": "Acid (vial)",
-            "cost": "25 gp",
+            "itemName": "Acid (vial)",
+            "price": "25 gp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strgearId": 2,
+            "strditemId": 52,
             "type": "Adventuring Gear",
-            "name": "Alechemist's fire",
-            "cost": "50 gp",
+            "itemName": "Alechemist's fire",
+            "price": "50 gp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strgearId": 3,
+            "strditemId": 53,
             "type": "Adventuring Gear",
-            "name": "Antitoxin (vial)",
-            "cost": "50 gp",
+            "itemName": "Antitoxin (vial)",
+            "price": "50 gp",
             "weight": "",
             "amount": ""
         },
         {
-            "strgearId": 4,
+            "strditemId": 54,
             "type": "Adventuring Gear",
-            "name": "Crystal",
-            "cost": "10 gp",
+            "itemName": "Crystal",
+            "price": "10 gp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strgearId": 5,
+            "strditemId": 55,
             "type": "Adventuring Gear",
-            "name": "Orb",
-            "cost": "20 gp",
+            "itemName": "Orb",
+            "price": "20 gp",
             "weight": "3 lb",
             "amount": ""
         },
         {
-            "strgearId": 6,
+            "strditemId": 56,
             "type": "Adventuring Gear",
-            "name": "Rod",
-            "cost": "10 gp",
+            "itemName": "Rod",
+            "price": "10 gp",
             "weight": "2 lb",
             "amount": ""
         },
         {
-            "strgearId": 7,
+            "strditemId": 57,
             "type": "Adventuring Gear",
-            "name": "Staff",
-            "cost": "5 gp",
+            "itemName": "Staff",
+            "price": "5 gp",
             "weight": "4 lb",
             "amount": ""
         },
         {
-            "strgearId": 8,
+            "strditemId": 58,
             "type": "Adventuring Gear",
-            "name": "Wand",
-            "cost": "10 gp",
+            "itemName": "Wand",
+            "price": "10 gp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strgearId": 9,
+            "strditemId": 59,
             "type": "Adventuring Gear",
-            "name": "Backpack",
-            "cost": "2 gp",
+            "itemName": "Backpack",
+            "price": "2 gp",
             "weight": "5 lb",
             "amount": ""
         },
         {
-            "strgearId": 10,
+            "strditemId": 60,
             "type": "Adventuring Gear",
-            "name": "Ball bearings",
-            "cost": "1 gp",
+            "itemName": "Ball bearings",
+            "price": "1 gp",
             "weight": "2 lb",
             "amount": ""
         },
         {
-            "strgearId": 11,
+            "strditemId": 61,
             "type": "Adventuring Gear",
-            "name": "Barrel",
-            "cost": "2 gp",
+            "itemName": "Barrel",
+            "price": "2 gp",
             "weight": "70 lb",
             "amount": ""
         },
         {
-            "strgearId": 12,
+            "strditemId": 62,
             "type": "Adventuring Gear",
-            "name": "Basket",
-            "cost": "2 sp",
+            "itemName": "Basket",
+            "price": "2 sp",
             "weight": "2 lb",
             "amount": ""
         },
         {
-            "strgearId": 13,
+            "strditemId": 63,
             "type": "Adventuring Gear",
-            "name": "Bedroll",
-            "cost": "1 gp",
+            "itemName": "Bedroll",
+            "price": "1 gp",
             "weight": "7 lb",
             "amount": ""
         },
         {
-            "strgearId": 14,
+            "strditemId": 64,
             "type": "Adventuring Gear",
-            "name": "Bell",
-            "cost": "1 gp",
+            "itemName": "Bell",
+            "price": "1 gp",
             "weight": "",
             "amount": ""
         },
         {
-            "strgearId": 15,
+            "strditemId": 65,
             "type": "Adventuring Gear",
-            "name": "Blanket",
-            "cost": "5 sp",
+            "itemName": "Blanket",
+            "price": "5 sp",
             "weight": "3 lb",
             "amount": ""
         },
         {
-            "strgearId": 16,
+            "strditemId": 66,
             "type": "Adventuring Gear",
-            "name": "Block and tackle",
-            "cost": "1 gp",
+            "itemName": "Block and tackle",
+            "price": "1 gp",
             "weight": "5 lb",
             "amount": ""
         },
         {
-            "strgearId": 17,
+            "strditemId": 67,
             "type": "Adventuring Gear",
-            "name": "Book",
-            "cost": "25 gp",
+            "itemName": "Book",
+            "price": "25 gp",
             "weight": "5 lb",
             "amount": ""
         },
         {
-            "strgearId": 18,
+            "strditemId": 68,
             "type": "Adventuring Gear",
-            "name": "Bottle, glass",
-            "cost": "2 gp",
+            "itemName": "Bottle, glass",
+            "price": "2 gp",
             "weight": "2 lb",
             "amount": ""
         },
         {
-            "strgearId": 19,
+            "strditemId": 69,
             "type": "Adventuring Gear",
-            "name": "Bucket",
-            "cost": "5 cp",
+            "itemName": "Bucket",
+            "price": "5 cp",
             "weight": "2 lb",
             "amount": ""
         },
         {
-            "strgearId": 20,
+            "strditemId": 70,
             "type": "Adventuring Gear",
-            "name": "caltrops",
-            "cost": "1 gp",
+            "itemName": "caltrops",
+            "price": "1 gp",
             "weight": "2 lb",
             "amount": ""
         },
         {
-            "strgearId": 21,
+            "strditemId": 71,
             "type": "Adventuring Gear",
-            "name": "Candle",
-            "cost": "1 cp",
+            "itemName": "Candle",
+            "price": "1 cp",
             "weight": "",
             "amount": ""
         },
         {
-            "strgearId": 22,
+            "strditemId": 72,
             "type": "Adventuring Gear",
-            "name": "Case, crossbow bolt",
-            "cost": "1 gp",
+            "itemName": "Case, crossbow bolt",
+            "price": "1 gp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strgearId": 23,
+            "strditemId": 73,
             "type": "Adventuring Gear",
-            "name": "Case, map or scroll",
-            "cost": "1 gp",
+            "itemName": "Case, map or scroll",
+            "price": "1 gp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strgearId": 24,
+            "strditemId": 74,
             "type": "Adventuring Gear",
-            "name": "chain (10 feet)",
-            "cost": "5 gp",
+            "itemName": "chain (10 feet)",
+            "price": "5 gp",
             "weight": "10 lb",
             "amount": ""
         },
         {
-            "strgearId": 25,
+            "strditemId": 75,
             "type": "Adventuring Gear",
-            "name": "Chalk (1 piece)",
-            "cost": "1 cp",
+            "itemName": "Chalk (1 piece)",
+            "price": "1 cp",
             "weight": "",
             "amount": ""
         },
         {
-            "strgearId": 26,
+            "strditemId": 76,
             "type": "Adventuring Gear",
-            "name": "Chest",
-            "cost": "5 gp",
+            "itemName": "Chest",
+            "price": "5 gp",
             "weight": "25 lb",
             "amount": ""
         },
         {
-            "strgearId": 27,
+            "strditemId": 77,
             "type": "Adventuring Gear",
-            "name": "Climber's kit",
-            "cost": "25 gp",
+            "itemName": "Climber's kit",
+            "price": "25 gp",
             "weight": "12 lb",
             "amount": ""
         },
         {
-            "strgearId": 28,
+            "strditemId": 78,
             "type": "Adventuring Gear",
-            "name": "Clothes, common",
-            "cost": "5 sp",
+            "itemName": "Clothes, common",
+            "price": "5 sp",
             "weight": "3 lb",
             "amount": ""
         },
         {
-            "strgearId": 29,
+            "strditemId": 79,
             "type": "Adventuring Gear",
-            "name": "Clothes, costume",
-            "cost": "5 gp",
+            "itemName": "Clothes, costume",
+            "price": "5 gp",
             "weight": "4 lb",
             "amount": ""
         },
         {
-            "strgearId": 30,
+            "strditemId": 80,
             "type": "Adventuring Gear",
-            "name": "Clothes, fine",
-            "cost": "15 gp",
+            "itemName": "Clothes, fine",
+            "price": "15 gp",
             "weight": "6 lb",
             "amount": ""
         },
         {
-            "strgearId": 31,
+            "strditemId": 81,
             "type": "Adventuring Gear",
-            "name": "Clothes, traveler's",
-            "cost": "2 gp",
+            "itemName": "Clothes, traveler's",
+            "price": "2 gp",
             "weight": "4 lb",
             "amount": ""
         },
         {
-            "strgearId": 32,
+            "strditemId": 82,
             "type": "Adventuring Gear",
-            "name": "Component pouch",
-            "cost": "25 gp",
+            "itemName": "Component pouch",
+            "price": "25 gp",
             "weight": "2 lb",
             "amount": ""
         },
         {
-            "strgearId": 33,
+            "strditemId": 83,
             "type": "Adventuring Gear",
-            "name": "Crowbar",
-            "cost": "2 gp",
+            "itemName": "Crowbar",
+            "price": "2 gp",
             "weight": "5 lb",
             "amount": ""
         },
         {
-            "strgearId": 34,
+            "strditemId": 84,
             "type": "Adventuring Gear",
-            "name": "Sprig of mistletoe",
-            "cost": "1 gp",
+            "itemName": "Sprig of mistletoe",
+            "price": "1 gp",
             "weight": "",
             "amount": ""
         },
         {
-            "strgearId": 35,
+            "strditemId": 85,
             "type": "Adventuring Gear",
-            "name": "Totem",
-            "cost": "1 gp",
+            "itemName": "Totem",
+            "price": "1 gp",
             "weight": "",
             "amount": ""
         },
         {
-            "strgearId": 36,
+            "strditemId": 86,
             "type": "Adventuring Gear",
-            "name": "Wooden staff",
-            "cost": "5 gp",
+            "itemName": "Wooden staff",
+            "price": "5 gp",
             "weight": "4 lb",
             "amount": ""
         },
         {
-            "strgearId": 37,
+            "strditemId": 87,
             "type": "Adventuring Gear",
-            "name": "Yew wand",
-            "cost": "10 gp",
+            "itemName": "Yew wand",
+            "price": "10 gp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strgearId": 38,
+            "strditemId": 88,
             "type": "Adventuring Gear",
-            "name": "Fishing tackle",
-            "cost": "1 gp",
+            "itemName": "Fishing tackle",
+            "price": "1 gp",
             "weight": "4 lb",
             "amount": ""
         },
         {
-            "strgearId": 39,
+            "strditemId": 89,
             "type": "Adventuring Gear",
-            "name": "Flask or tankard",
-            "cost": "2 cp",
+            "itemName": "Flask or tankard",
+            "price": "2 cp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strgearId": 40,
+            "strditemId": 90,
             "type": "Adventuring Gear",
-            "name": "Grappling hook",
-            "cost": "2 gp",
+            "itemName": "Grappling hook",
+            "price": "2 gp",
             "weight": "4 lb",
             "amount": ""
         },
         {
-            "strgearId": 41,
+            "strditemId": 91,
             "type": "Adventuring Gear",
-            "name": "Hammer",
-            "cost": "1 gp",
+            "itemName": "Hammer",
+            "price": "1 gp",
             "weight": "3 lb",
             "amount": ""
         },
         {
-            "strgearId": 42,
+            "strditemId": 92,
             "type": "Adventuring Gear",
-            "name": "Hammer, sledge",
-            "cost": "2 gp",
+            "itemName": "Hammer, sledge",
+            "price": "2 gp",
             "weight": "10 lb",
             "amount": ""
         },
         {
-            "strgearId": 43,
+            "strditemId": 93,
             "type": "Adventuring Gear",
-            "name": "Healer's kit",
-            "cost": "5 gp",
+            "itemName": "Healer's kit",
+            "price": "5 gp",
             "weight": "3 lb",
             "amount": ""
         },
         {
-            "strgearId": 44,
+            "strditemId": 94,
             "type": "Adventuring Gear",
-            "name": "Amulet",
-            "cost": "5 gp",
+            "itemName": "Amulet",
+            "price": "5 gp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strgearId": 45,
+            "strditemId": 95,
             "type": "Adventuring Gear",
-            "name": "Emblem",
-            "cost": "5 gp",
+            "itemName": "Emblem",
+            "price": "5 gp",
             "weight": "",
             "amount": ""
         },
         {
-            "strgearId": 46,
+            "strditemId": 96,
             "type": "Adventuring Gear",
-            "name": "Reliquary",
-            "cost": "5 gp",
+            "itemName": "Reliquary",
+            "price": "5 gp",
             "weight": "2 lb",
             "amount": ""
         },
         {
-            "strgearId": 47,
+            "strditemId": 97,
             "type": "Adventuring Gear",
-            "name": "Holy water (flask)",
-            "cost": "25 gp",
+            "itemName": "Holy water (flask)",
+            "price": "25 gp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strgearId": 48,
+            "strditemId": 98,
             "type": "Adventuring Gear",
-            "name": "Hourglass",
-            "cost": "25 gp",
+            "itemName": "Hourglass",
+            "price": "25 gp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strgearId": 49,
+            "strditemId": 99,
             "type": "Adventuring Gear",
-            "name": "Hunting trap",
-            "cost": "5 gp",
+            "itemName": "Hunting trap",
+            "price": "5 gp",
             "weight": "25 lb",
             "amount": ""
         },
         {
-            "strgearId": 50,
+            "strditemId": 100,
             "type": "Adventuring Gear",
-            "name": "Ink (1 ounce bottle)",
-            "cost": "10 gp",
+            "itemName": "Ink (1 ounce bottle)",
+            "price": "10 gp",
             "weight": "",
             "amount": ""
         },
         {
-            "strgearId": 51,
+            "strditemId": 101,
             "type": "Adventuring Gear",
-            "name": "Ink pen",
-            "cost": "2 cp",
+            "itemName": "Ink pen",
+            "price": "2 cp",
             "weight": "",
             "amount": ""
         },
         {
-            "strgearId": 52,
+            "strditemId": 102,
             "type": "Adventuring Gear",
-            "name": "Jug or pitcher",
-            "cost": "2 cp",
+            "itemName": "Jug or pitcher",
+            "price": "2 cp",
             "weight": "4 lb",
             "amount": ""
         },
         {
-            "strgearId": 53,
+            "strditemId": 103,
             "type": "Adventuring Gear",
-            "name": "Ladder (10-foot)",
-            "cost": "1 sp",
+            "itemName": "Ladder (10-foot)",
+            "price": "1 sp",
             "weight": "25 lb",
             "amount": ""
         },
         {
-            "strgearId": 54,
+            "strditemId": 104,
             "type": "Adventuring Gear",
-            "name": "Lamp",
-            "cost": "5 sp",
+            "itemName": "Lamp",
+            "price": "5 sp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strgearId": 55,
+            "strditemId": 105,
             "type": "Adventuring Gear",
-            "name": "Latern, bullseye",
-            "cost": "10 gp",
+            "itemName": "Latern, bullseye",
+            "price": "10 gp",
             "weight": "2 lb",
             "amount": ""
         },
         {
-            "strgearId": 56,
+            "strditemId": 106,
             "type": "Adventuring Gear",
-            "name": "Latern, hooded",
-            "cost": "5 gp",
+            "itemName": "Latern, hooded",
+            "price": "5 gp",
             "weight": "2 lb",
             "amount": ""
         },
         {
-            "strgearId": 57,
+            "strditemId": 107,
             "type": "Adventuring Gear",
-            "name": "Lock",
-            "cost": "10 gp",
+            "itemName": "Lock",
+            "price": "10 gp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strgearId": 58,
+            "strditemId": 108,
             "type": "Adventuring Gear",
-            "name": "Magnifying glass",
-            "cost": "100 gp",
+            "itemName": "Magnifying glass",
+            "price": "100 gp",
             "weight": "",
             "amount": ""
         },
         {
-            "strgearId": 59,
+            "strditemId": 109,
             "type": "Adventuring Gear",
-            "name": "Manacles",
-            "cost": "2 gp",
+            "itemName": "Manacles",
+            "price": "2 gp",
             "weight": "6 lb",
             "amount": ""
         },
         {
-            "strgearId": 60,
+            "strditemId": 110,
             "type": "Adventuring Gear",
-            "name": "Mess kit",
-            "cost": "2 sp",
+            "itemName": "Mess kit",
+            "price": "2 sp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strgearId": 61,
+            "strditemId": 111,
             "type": "Adventuring Gear",
-            "name": "Mirror, steel",
-            "cost": "5 gp",
+            "itemName": "Mirror, steel",
+            "price": "5 gp",
             "weight": "0,5 lb",
             "amount": ""
         },
         {
-            "strgearId": 62,
+            "strditemId": 112,
             "type": "Adventuring Gear",
-            "name": "Oil (flask)",
-            "cost": "1 sp",
+            "itemName": "Oil (flask)",
+            "price": "1 sp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strgearId": 63,
+            "strditemId": 113,
             "type": "Adventuring Gear",
-            "name": "Paper (one sheet)",
-            "cost": "2 sp",
+            "itemName": "Paper (one sheet)",
+            "price": "2 sp",
             "weight": "",
             "amount": ""
         },
         {
-            "strgearId": 64,
+            "strditemId": 114,
             "type": "Adventuring Gear",
-            "name": "Parchment (one sheet)",
-            "cost": "1 sp",
+            "itemName": "Parchment (one sheet)",
+            "price": "1 sp",
             "weight": "",
             "amount": ""
         },
         {
-            "strgearId": 65,
+            "strditemId": 115,
             "type": "Adventuring Gear",
-            "name": "Perfume (vial)",
-            "cost": "5 gp",
+            "itemName": "Perfume (vial)",
+            "price": "5 gp",
             "weight": "",
             "amount": ""
         },
         {
-            "strgearId": 66,
+            "strditemId": 116,
             "type": "Adventuring Gear",
-            "name": "Pick, miner's",
-            "cost": "2 gp",
+            "itemName": "Pick, miner's",
+            "price": "2 gp",
             "weight": "10 lb",
             "amount": ""
         },
         {
-            "strgearId": 67,
+            "strditemId": 117,
             "type": "Adventuring Gear",
-            "name": "Piton",
-            "cost": "5 cp",
+            "itemName": "Piton",
+            "price": "5 cp",
             "weight": "0,25 lb",
             "amount": ""
         },
         {
-            "strgearId": 68,
+            "strditemId": 118,
             "type": "Adventuring Gear",
-            "name": "Posion, basic (vial)",
-            "cost": "100 gp",
+            "itemName": "Posion, basic (vial)",
+            "price": "100 gp",
             "weight": "",
             "amount": ""
         },
         {
-            "strgearId": 69,
+            "strditemId": 119,
             "type": "Adventuring Gear",
-            "name": "Pole (10-foot)",
-            "cost": "5 cp",
+            "itemName": "Pole (10-foot)",
+            "price": "5 cp",
             "weight": "7 lb",
             "amount": ""
         },
         {
-            "strgearId": 70,
+            "strditemId": 120,
             "type": "Adventuring Gear",
-            "name": "Pot, iron",
-            "cost": "2 gp",
+            "itemName": "Pot, iron",
+            "price": "2 gp",
             "weight": "10 lb",
             "amount": ""
         },
         {
-            "strgearId": 71,
+            "strditemId": 121,
             "type": "Adventuring Gear",
-            "name": "Potion of healing",
-            "cost": "50 gp",
+            "itemName": "Potion of healing",
+            "price": "50 gp",
             "weight": "0,5 lb",
             "amount": ""
         },
         {
-            "strgearId": 72,
+            "strditemId": 122,
             "type": "Adventuring Gear",
-            "name": "Pouch",
-            "cost": "5 sp",
+            "itemName": "Pouch",
+            "price": "5 sp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strgearId": 73,
+            "strditemId": 123,
             "type": "Adventuring Gear",
-            "name": "Quiver",
-            "cost": "1 gp",
+            "itemName": "Quiver",
+            "price": "1 gp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strgearId": 74,
+            "strditemId": 124,
             "type": "Adventuring Gear",
-            "name": "Ram, portable",
-            "cost": "4 gp",
+            "itemName": "Ram, portable",
+            "price": "4 gp",
             "weight": "35 lb",
             "amount": ""
         },
         {
-            "strgearId": 75,
+            "strditemId": 125,
             "type": "Adventuring Gear",
-            "name": "Rations (1 day)",
-            "cost": "5 sp",
+            "itemName": "Rations (1 day)",
+            "price": "5 sp",
             "weight": "2 lb",
             "amount": ""
         },
         {
-            "strgearId": 76,
+            "strditemId": 126,
             "type": "Adventuring Gear",
-            "name": "Robes",
-            "cost": "1 gp",
+            "itemName": "Robes",
+            "price": "1 gp",
             "weight": "4 lb",
             "amount": ""
         },
         {
-            "strgearId": 77,
+            "strditemId": 127,
             "type": "Adventuring Gear",
-            "name": "Rope, hempen (50 feet)",
-            "cost": "1 gp",
+            "itemName": "Rope, hempen (50 feet)",
+            "price": "1 gp",
             "weight": "10 lb",
             "amount": ""
         },
         {
-            "strgearId": 78,
+            "strditemId": 128,
             "type": "Adventuring Gear",
-            "name": "Rope, silk (50 feet)",
-            "cost": "10 gp",
+            "itemName": "Rope, silk (50 feet)",
+            "price": "10 gp",
             "weight": "5 lb",
             "amount": ""
         },
         {
-            "strgearId": 79,
+            "strditemId": 129,
             "type": "Adventuring Gear",
-            "name": "Sack",
-            "cost": "1 cp",
+            "itemName": "Sack",
+            "price": "1 cp",
             "weight": "0,5 lb",
             "amount": ""
         },
         {
-            "strgearId": 80,
+            "strditemId": 130,
             "type": "Adventuring Gear",
-            "name": "Scale, merchant's",
-            "cost": "5 gp",
+            "itemName": "Scale, merchant's",
+            "price": "5 gp",
             "weight": "3 lb",
             "amount": ""
         },
         {
-            "strgearId": 81,
+            "strditemId": 131,
             "type": "Adventuring Gear",
-            "name": "Sealing wax",
-            "cost": "1 sp",
+            "itemName": "Sealing wax",
+            "price": "1 sp",
             "weight": "",
             "amount": ""
         },
         {
-            "strgearId": 82,
+            "strditemId": 132,
             "type": "Adventuring Gear",
-            "name": "Shovel",
-            "cost": "2 gp",
+            "itemName": "Shovel",
+            "price": "2 gp",
             "weight": "5 lb",
             "amount": ""
         },
         {
-            "strgearId": 83,
+            "strditemId": 133,
             "type": "Adventuring Gear",
-            "name": "Signal Whistle",
-            "cost": "5 cp",
+            "itemName": "Signal Whistle",
+            "price": "5 cp",
             "weight": "",
             "amount": ""
         },
         {
-            "strgearId": 84,
+            "strditemId": 134,
             "type": "Adventuring Gear",
-            "name": "Signet ring",
-            "cost": "5 gp",
+            "itemName": "Signet ring",
+            "price": "5 gp",
             "weight": "",
             "amount": ""
         },
         {
-            "strgearId": 85,
+            "strditemId": 135,
             "type": "Adventuring Gear",
-            "name": "Soap",
-            "cost": "1 cp",
+            "itemName": "Soap",
+            "price": "1 cp",
             "weight": "",
             "amount": ""
         },
         {
-            "strgearId": 86,
+            "strditemId": 136,
             "type": "Adventuring Gear",
-            "name": "Spellbook",
-            "cost": "50 gp",
+            "itemName": "Spellbook",
+            "price": "50 gp",
             "weight": "3 lb",
             "amount": ""
         },
         {
-            "strgearId": 87,
+            "strditemId": 137,
             "type": "Adventuring Gear",
-            "name": "Spikes, iron",
-            "cost": "1 sp",
+            "itemName": "Spikes, iron",
+            "price": "1 sp",
             "weight": "5 lb",
             "amount": ""
         },
         {
-            "strgearId": 88,
+            "strditemId": 138,
             "type": "Adventuring Gear",
-            "name": "Spyglass",
-            "cost": "1000 gp",
+            "itemName": "Spyglass",
+            "price": "1000 gp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strgearId": 89,
+            "strditemId": 139,
             "type": "Adventuring Gear",
-            "name": "Tent, two-person",
-            "cost": "2 gp",
+            "itemName": "Tent, two-person",
+            "price": "2 gp",
             "weight": "20 lb",
             "amount": ""
         },
         {
-            "strgearId": 90,
+            "strditemId": 140,
             "type": "Adventuring Gear",
-            "name": "Tinderbox",
-            "cost": "5 sp",
+            "itemName": "Tinderbox",
+            "price": "5 sp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strgearId": 91,
+            "strditemId": 141,
             "type": "Adventuring Gear",
-            "name": "Torch",
-            "cost": "1 cp",
+            "itemName": "Torch",
+            "price": "1 cp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strgearId": 92,
+            "strditemId": 142,
             "type": "Adventuring Gear",
-            "name": "Vial",
-            "cost": "1 gp",
+            "itemName": "Vial",
+            "price": "1 gp",
             "weight": "",
             "amount": ""
         },
         {
-            "strgearId": 93,
+            "strditemId": 143,
             "type": "Adventuring Gear",
-            "name": "Waterskin",
-            "cost": "2 sp",
+            "itemName": "Waterskin",
+            "price": "2 sp",
             "weight": "5 lb",
             "amount": ""
         },
         {
-            "strgearId": 94,
+            "strditemId": 144,
             "type": "Adventuring Gear",
-            "name": "Whetstone",
-            "cost": "1 cp",
+            "itemName": "Whetstone",
+            "price": "1 cp",
             "weight": "1 lb",
             "amount": ""
-        }
+        },
         //</editor-fold>
-    ];
 
-    ammunition = [
         //<editor-fold desc="Ammunition">
-            {
-                "str]ammoId": 0,
-                "type": "Ammunition",
-                "name": "Arrow",
-                "cost": "",
-                "weight": "",
-                "amount": ""
-            },
-            {
-                "strgearId": 1,
-                "type": "Ammunition",
-                "name": "Blowgun needles",
-                "cost": "",
-                "weight": "",
-                "amount": ""
-            },
-            {
-                "strgearId": 2,
-                "type": "Ammunition",
-                "name": "Crossbow bolts",
-                "cost": "",
-                "weight": "",
-                "amount": ""
-            },
-            {
-                "strgearId": 3,
-                "type": "Ammunition",
-                "name": "Sling bullets",
-                "cost": "",
-                "weight": "",
-                "amount": ""
-            }
+        {
+            "strditemId": 145,
+            "type": "Ammunition",
+            "itemName": "Arrow",
+            "price": "1 gp",
+            "weight": "1",
+            "amount": "20"
+        },
+        {
+            "strditemId": 146,
+            "type": "Ammunition",
+            "itemName": "Blowgun needles",
+            "price": "1 gp",
+            "weight": "1",
+            "amount": "20"
+        },
+        {
+            "strditemId": 147,
+            "type": "Ammunition",
+            "itemName": "Crossbow bolts",
+            "price": "1 gp",
+            "weight": "1",
+            "amount": "20"
+        },
+        {
+            "strditemId": 148,
+            "type": "Ammunition",
+            "itemName": "Sling bullets",
+            "price": "1 gp",
+            "weight": "1",
+            "amount": "20"
+        },
         //</editor-fold>
-    ];
 
-    tools = [
         //<editor-fold desc="artisan's tools">
         {
-            "strtoolId": 0,
+            "strditemId": 149,
             "type": "Tools",
-            "name": "Alchemist's supplies",
-            "cost": "50 gp",
+            "itemName": "Alchemist's supplies",
+            "price": "50 gp",
             "weight": "8 lb",
             "amount": ""
         },
         {
-            "strtoolId": 1,
+            "strditemId": 150,
             "type": "Tools",
-            "name": "Brewer's supplies",
-            "cost": "20 gp",
+            "itemName": "Brewer's supplies",
+            "price": "20 gp",
             "weight": "9 lb",
             "amount": ""
         },
         {
-            "strtoolId": 2,
+            "strditemId": 151,
             "type": "Tools",
-            "name": "Calligrapher's supplies",
-            "cost": "10 gp",
+            "itemName": "Calligrapher's supplies",
+            "price": "10 gp",
             "weight": "5 lb",
             "amount": ""
         },
         {
-            "strtoolId": 3,
+            "strditemId": 152,
             "type": "Tools",
-            "name": "Carpenter's supplies",
-            "cost": "8 gp",
+            "itemName": "Carpenter's supplies",
+            "price": "8 gp",
             "weight": "6 lb",
             "amount": ""
         },
         {
-            "strtoolId": 4,
+            "strditemId": 153,
             "type": "Tools",
-            "name": "Cartographer's tools",
-            "cost": " 8",
+            "itemName": "Cartographer's tools",
+            "price": " 8",
             "weight": "6 lb",
             "amount": ""
         },
         {
-            "strtoolId": 5,
+            "strditemId": 154,
             "type": "Tools",
-            "name": "Cobbler's tools",
-            "cost": "5 gp",
+            "itemName": "Cobbler's tools",
+            "price": "5 gp",
             "weight": "5 lb",
             "amount": ""
         },
         {
-            "strtoolId": 6,
+            "strditemId": 155,
             "type": "Tools",
-            "name": "Cook's utensils",
-            "cost": "1 gp",
+            "itemName": "Cook's utensils",
+            "price": "1 gp",
             "weight": "8 lb",
             "amount": ""
         },
         {
-            "strtoolId": 7,
+            "strditemId": 156,
             "type": "Tools",
-            "name": "Glassblower's2 tools",
-            "cost": "30 gp",
+            "itemName": "Glassblower's2 tools",
+            "price": "30 gp",
             "weight": "5 lb",
             "amount": ""
         },
         {
-            "strtoolId": 8,
+            "strditemId": 157,
             "type": "Tools",
-            "name": "Jeweler's tools",
-            "cost": "25 gp",
+            "itemName": "Jeweler's tools",
+            "price": "25 gp",
             "weight": "2 lb",
             "amount": ""
         },
         {
-            "strtoolId": 9,
+            "strditemId": 158,
             "type": "Tools",
-            "name": "Leatherworker's tools",
-            "cost": "5 gp",
+            "itemName": "Leatherworker's tools",
+            "price": "5 gp",
             "weight": "5 lb",
             "amount": ""
         },
         {
-            "strtoolId": 10,
+            "strditemId": 159,
             "type": "Tools",
-            "name": "Mason's tools",
-            "cost": "10 gp",
+            "itemName": "Mason's tools",
+            "price": "10 gp",
             "weight": "8 lb",
             "amount": ""
         },
         {
-            "strtoolId": 11,
+            "strditemId": 160,
             "type": "Tools",
-            "name": "Painter's supplies",
-            "cost": "10 gp",
+            "itemName": "Painter's supplies",
+            "price": "10 gp",
             "weight": "5 lb",
             "amount": ""
         },
         {
-            "strtoolId": 12,
+            "strditemId": 161,
             "type": "Tools",
-            "name": "Potter's tools",
-            "cost": "10 gp",
+            "itemName": "Potter's tools",
+            "price": "10 gp",
             "weight": "3 lb",
             "amount": ""
         },
         {
-            "strtoolId": 13,
+            "strditemId": 162,
             "type": "Tools",
-            "name": "Smith's tools",
-            "cost": "20 gp",
+            "itemName": "Smith's tools",
+            "price": "20 gp",
             "weight": "8 lb",
             "amount": ""
         },
         {
-            "strtoolId": 14,
+            "strditemId": 163,
             "type": "Tools",
-            "name": "Tinker's tools",
-            "cost": "50 gp",
+            "itemName": "Tinker's tools",
+            "price": "50 gp",
             "weight": "10 lb",
             "amount": ""
         },
         {
-            "strtoolId": 15,
+            "strditemId": 164,
             "type": "Tools",
-            "name": "Weaver's tools",
-            "cost": "1 gp",
+            "itemName": "Weaver's tools",
+            "price": "1 gp",
             "weight": "5 lb",
             "amount": ""
         },
         {
-            "strtoolId": 16,
+            "strditemId": 165,
             "type": "Tools",
-            "name": "Woodcarver's tools",
-            "cost": "1 gp",
+            "itemName": "Woodcarver's tools",
+            "price": "1 gp",
             "weight": "5 lb",
             "amount": ""
         },
         {
-            "strtoolId": 17,
+            "strditemId": 166,
             "type": "Tools",
-            "name": "Disguise kit",
-            "cost": "25 gp",
+            "itemName": "Disguise kit",
+            "price": "25 gp",
             "weight": "3 lb",
             "amount": ""
         },
         {
-            "strtoolId": 18,
+            "strditemId": 167,
             "type": "Tools",
-            "name": "Forgery kut",
-            "cost": "15 gp",
+            "itemName": "Forgery kut",
+            "price": "15 gp",
             "weight": "5 lb",
             "amount": ""
         },
@@ -1510,42 +1477,42 @@ export class StandarditemPage {
 
         //<editor-fold desc="gaming set">
         {
-            "strtoolId": 19 ,
+            "strditemId": 168 ,
             "type": "Tools",
-            "name": "Dice set",
-            "cost": "1 sp",
+            "itemName": "Dice set",
+            "price": "1 sp",
             "weight": "",
             "amount": ""
         },
         {
-            "strtoolId": 20 ,
+            "strditemId": 169 ,
             "type": "Tools",
-            "name": "Dragonchess set",
-            "cost": "1 gp",
+            "itemName": "Dragonchess set",
+            "price": "1 gp",
             "weight": "0,5 lb",
             "amount": ""
         },
         {
-            "strtoolId": 21 ,
+            "strditemId": 170 ,
             "type": "Tools",
-            "name": "Playing card set",
-            "cost": "5 sp",
+            "itemName": "Playing card set",
+            "price": "5 sp",
             "weight": "",
             "amount": ""
         },
         {
-            "strtoolId": 22 ,
+            "strditemId": 171 ,
             "type": "Tools",
-            "name": "Three-Dragon Ante set",
-            "cost": "1 gp",
+            "itemName": "Three-Dragon Ante set",
+            "price": "1 gp",
             "weight": "",
             "amount": ""
         },
         {
-            "strtoolId": 23 ,
+            "strditemId": 172 ,
             "type": "Tools",
-            "name": "Herbalism kit",
-            "cost": "5 gp",
+            "itemName": "Herbalism kit",
+            "price": "5 gp",
             "weight": "3 lb",
             "amount": ""
         },
@@ -1553,82 +1520,82 @@ export class StandarditemPage {
 
         //<editor-fold desc="musical instrument">
         {
-            "strtoolId": 24 ,
+            "strtoolId": 173 ,
             "type": "Tools",
-            "name": "Bagpipes",
-            "cost": "30 gp",
+            "itemName": "Bagpipes",
+            "price": "30 gp",
             "weight": "6 lb",
             "amount": ""
         },
         {
-            "strtoolId": 25 ,
+            "strditemId": 174 ,
             "type": "Tools",
-            "name": "Drum",
-            "cost": "6 gp",
+            "itemName": "Drum",
+            "price": "6 gp",
             "weight": "3 lb",
             "amount": ""
         },
         {
-            "strtoolId": 26 ,
+            "strditemId": 175 ,
             "type": "Tools",
-            "name": "Dulcimer",
-            "cost": "25 gp",
+            "itemName": "Dulcimer",
+            "price": "25 gp",
             "weight": "10 lb",
             "amount": ""
         },
         {
-            "strtoolId": 27 ,
+            "strditemId": 176 ,
             "type": "Tools",
-            "name": "Flute",
-            "cost": "2 gp",
+            "itemName": "Flute",
+            "price": "2 gp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strtoolId": 28 ,
+            "strditemId": 177 ,
             "type": "Tools",
-            "name": "Lute",
-            "cost": "35 gp",
+            "itemName": "Lute",
+            "price": "35 gp",
             "weight": "2 lb",
             "amount": ""
         },
         {
-            "strtoolId": 29 ,
+            "strditemId": 178 ,
             "type": "Tools",
-            "name": "Lyre",
-            "cost": "30 gp",
+            "itemName": "Lyre",
+            "price": "30 gp",
             "weight": "2 lb",
             "amount": ""
         },
         {
-            "strtoolId": 30 ,
+            "strditemId": 179 ,
             "type": "Tools",
-            "name": "Horn",
-            "cost": "3 gp",
+            "itemName": "Horn",
+            "price": "3 gp",
             "weight": "2 lb",
             "amount": ""
         },
         {
-            "strtoolId": 31 ,
+            "strditemId": 180 ,
             "type": "Tools",
-            "name": "Pan flute",
-            "cost": "12 gp",
+            "itemName": "Pan flute",
+            "price": "12 gp",
             "weight": "2 lb",
             "amount": ""
         },
         {
-            "strtoolId": 32 ,
+            "strditemId": 181 ,
             "type": "Tools",
-            "name": "Shawn",
-            "cost": "2 gp",
+            "itemName": "Shawn",
+            "price": "2 gp",
             "weight": "1 lb",
             "amount": ""
         },
         {
-            "strtoolId": 33 ,
+            "strditemId": 182 ,
             "type": "Tools",
-            "name": "Viol",
-            "cost": "30 gp",
+            "itemName": "Violin",
+            "price": "30 gp",
             "weight": "1 lb",
             "amount": ""
         },
@@ -1636,37 +1603,80 @@ export class StandarditemPage {
 
         //<editor-fold desc="tools">
         {
-            "strtoolId": 34 ,
+            "strditemId": 183 ,
             "type": "Tools",
-            "name": "Navigator's tools",
-            "cost": "25 gp",
+            "itemName": "Navigator's tools",
+            "price": "25 gp",
             "weight": "2 lb",
             "amount": ""
         },
         {
-            "strtoolId": 35 ,
+            "strditemId": 184 ,
             "type": "Tools",
-            "name": "Poisoner's kit",
-            "cost": "50 gp",
+            "itemName": "Poisoner's kit",
+            "price": "50 gp",
             "weight": "2 lb",
             "amount": ""
         },
         {
-            "strtoolId": 36 ,
+            "strditemId": 185 ,
             "type": "Tools",
-            "name": "Thieves tools",
-            "cost": "25 gp",
+            "itemName": "Thieves tools",
+            "price": "25 gp",
             "weight": "1 lb",
             "amount": ""
         }
         //</editor-fold>
     ];
+    //</editor-fold>
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    //<editor-fold desc="variables">
+    public backpack;
 
+    items = [];
+
+    strditems: any [];
+
+    strdweapons: any = [];
+    strdarmor: any = [];
+    strdgear: any = [];
+    strdammunition: any = [];
+    strdtools: any = [];
+
+    itemKey;
+    //</editor-fold>
+
+    constructor(public navCtrl: NavController,
+                public navParams: NavParams,
+                private storage: Storage) {
+        //<editor-fold desc="getting the selected backpack and setting default values">
+        this.backpack = this.navParams.get('backpack');
+
+        this.strditems = this.standardItems;
+
+        //set backpack key items for the items in individual inventories.
+        this.itemKey = 'item: ' + this.backpack.name + this.backpack.HardLimit;
+
+        //console.log(this.itemKey);
+        // this.storage.get(this.itemKey).then((val) =>{
+        //
+        // });
+        //</editor-fold>
     }
 
-    clickable(index) {
-        console.log("Clicked id: ", index);
+    addStandarditem(index) {
+        //<editor-fold desc="Adding standard items">
+        let data = this.standardItems[index];
+
+        this.storage.get(this.itemKey).then((val) => {
+            val.push(data);
+            this.items = val;
+            this.storage.set(this.itemKey, val);
+        }).catch((err) => {
+            this.storage.set(this.itemKey, [data]);
+            this.items = [data];
+        });
+        this.navCtrl.pop();
+        //</editor-fold>
     }
 }
