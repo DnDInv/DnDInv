@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController, NavController, NavParams } from 'ionic-angular';
 import { Storage } from "@ionic/storage";
+import { WalletPage } from "../wallet/wallet";
 import { CustomitemPage } from "../customitem/customitem";
 import { StandarditemPage } from "../standarditem/standarditem";
 import { EdititemPage } from "../edititem/edititem";
@@ -61,8 +62,16 @@ export class InventoryPage {
          this.items = val;
       });
   }
+  
+  wallet() {
+      this.storage.get('backpacks').then((val) => {
+          this.info = val;
+          this.navCtrl.push(WalletPage, { backpack: this.backpack });
 
-
+      }).catch((err) => {
+          console.log("backpack not found!");
+      });
+  }
   //function for opening a item.
   openItem(index) {
       //<editor-fold desc="Pushing the selected backpack to the Item page.">
