@@ -8,6 +8,7 @@ import { BackPackPage} from '../pages/backpack/backpack';
 import { SettingsPage} from "../pages/settings/settings";
 import { AboutPage} from "../pages/about/about";
 import { InventoryPage } from "../pages/inventory/inventory";
+import { WalletPage } from  "../pages/wallet/wallet";
 import { StandarditemPage } from "../pages/standarditem/standarditem";
 import { CustomitemPage } from "../pages/customitem/customitem";
 import { EdititemPage } from "../pages/edititem/edititem";
@@ -31,6 +32,7 @@ import { StorageProvider } from '../providers/storage/storage';
     SettingsPage,
     AboutPage,
     InventoryPage,
+    WalletPage,
     StandarditemPage,
     CustomitemPage,
     EdititemPage
@@ -50,6 +52,7 @@ import { StorageProvider } from '../providers/storage/storage';
     SettingsPage,
     AboutPage,
     InventoryPage,
+    WalletPage,
     StandarditemPage,
     CustomitemPage,
     EdititemPage
@@ -62,7 +65,7 @@ import { StorageProvider } from '../providers/storage/storage';
     SettingsProvider,
     AboutProvider,
     Insomnia,
-    StorageProvider
+    Storage
 
   ]
 })
