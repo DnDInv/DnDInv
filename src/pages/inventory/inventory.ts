@@ -71,10 +71,14 @@ export class InventoryPage {
           let data = {
               item: val[index]
           };
-          console.log("Val: ", data);
+          let selectedIndex = {
+              index: index
+          }
+          console.log('stuff ', selectedIndex);
+          //console.log("Val: ", data);
 
           this.info = val;
-          this.navCtrl.push(EdititemPage, { item: data, backpack: this.backpack } );
+          this.navCtrl.push(EdititemPage, { index: selectedIndex, item: data, backpack: this.backpack } );
       }).catch((err) => {
           console.log("backpack not found!");
       });

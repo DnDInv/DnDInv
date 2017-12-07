@@ -54,13 +54,26 @@
       <input id="CustomItem" [(ngModel)]="weight" placeholder="weight lbs" type="text" />
     </ion-col>
     <ion-col>
-      <input id="CustomItem" [(ngModel)]="price" placeholder="price" type="number" />
+      <input id="CustomItem" [(ngModel)]="price" placeholder="price" type="text" />
     </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-item>
+      <ion-label class="size">Attunement</ion-label>
+      <ion-checkbox [(ngModel)]="attune" ></ion-checkbox>
+    </ion-item>
   </ion-row>
 
   <ion-row>
     <ion-col>
       <input placeholder="Mechanical Text" [(ngModel)]="mechanical" id="Mechanical" type="text">
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <input placeholder="Flavor / Lore text / Notes" [(ngModel)]="flavor" id="Flavor" type="text" />
     </ion-col>
   </ion-row>
 
