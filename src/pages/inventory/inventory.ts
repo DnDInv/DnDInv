@@ -19,12 +19,28 @@ export class InventoryPage {
     //variable for selected item for the Edit page
     public item;
 
+    plat: any = 0;
+    gold: any = 0;
+    elec: any = 0;
+    silv: any = 0;
+    copp: any = 0;
+
+    coins: any = {
+        "pp": this.plat,
+        "gp": this.gold,
+        "ep": this.elec,
+        "sp": this.silv,
+        "cp": this.copp,
+    };
+
     //info array for getting all the backpacks
     info = [];
     //item to sync all the objects in this.itemKey and get them on the screen.
     items = [];
     //itemKey to get the items from the individual backpacks.
     itemKey;
+    //coinKey for the wallet inside the selected backpack
+    coinKey;
     //</editor-fold
 
     constructor(public navCtrl: NavController,
@@ -38,6 +54,26 @@ export class InventoryPage {
 
         //set backpack key items for the items in individual inventories.
         this.itemKey = 'item: ' + this.backpack.name + this.backpack.HardLimit;
+        //console.log("itemkey@inv: ", this.itemKey)
+        //</editor-fold>
+
+
+        //<editor-fold desc="get Wallet">
+
+        this.coinKey = 'coins: ' + this.backpack.name + this.backpack.HardLimit;
+        this.storage.get(this.coinKey).then((val) => {
+            if (val == null) {
+                this.storage.set(this.coinKey, this.coins);
+            }else {
+                this.coins = val;
+            }
+            this.plat = this.coins.pp;
+            this.gold = this.coins.gp;
+            this.elec = this.coins.ep;
+            this.silv = this.coins.sp;
+            this.copp = this.coins.cp;
+            //console.log("Val: ", this.coins);
+        });
         //</editor-fold>
 
         //<editor-fold desc="Getting items from itemKey">
@@ -57,6 +93,10 @@ export class InventoryPage {
       // this.platform.ready().then(() => {
       //     Keyboard.disableScroll(true);
       // });
+      this.storage.get(this.coinKey).then((val) => {
+          this.coins = val;
+          //console.log("Val: ", val);
+      });
 
       this.storage.get(this.itemKey).then ((val) => {
          this.items = val;
@@ -82,8 +122,8 @@ export class InventoryPage {
           };
           let selectedIndex = {
               index: index
-          }
-          console.log('stuff ', selectedIndex);
+          };
+          //console.log('stuff ', selectedIndex);
           //console.log("Val: ", data);
 
           this.info = val;

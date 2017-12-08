@@ -18,6 +18,14 @@ export class BackPackPage {
     //storageKey for setting a storageKey for deleting the backpack
     storageKey;
     coinKey;
+    //coins to transfer coins after edit.
+    coins: any = {
+        "pp": 0,
+        "gp": 0,
+        "ep": 0,
+        "sp": 0,
+        "cp": 0,
+    };
     //info for the access to the backpack local storage.
     info: any = [];
     //item for the access to the items per inventory
@@ -106,7 +114,7 @@ export class BackPackPage {
                       }
                       else {
                           //push the input of all the fields that are required into an JSON object.
-                          console.log(data);
+                          // console.log(data);
                           this.storage.get('backpacks').then((val) => {
                               // val.filter(x => {return x.name == data.name}).length() > 0
                               val.push(data);
@@ -132,15 +140,27 @@ export class BackPackPage {
         //<editor-fold desc="Setting itemKey and storageKey to get the right inventory to rename it.">
         //itemKey and storageKey requirements for editing backpacks so that the item
         //transfers (previous problem that when you edit a backpack the items where all gone and still in the old backpack (name))
-        this.itemKey = 'items:' + backpack.name + backpack.HardLimit;
-        this.coinKey = 'coins:' + backpack.name + backpack.HardLimit;
+        this.itemKey = 'item: ' + backpack.name + backpack.HardLimit;
+        this.coinKey = 'coins: ' + backpack.name + backpack.HardLimit;
         this.storageKey = 'Storage:' + backpack.name + backpack.Carrying_Size + backpack.strength + backpack.RuleVariants + backpack.HardLimit;
         //</editor-fold>
 
         //<editor-fold desc="Getting the items in the selected backpack so they transfer on rename.">
         //getting all the items in a certain backpack.
         this.storage.get(this.itemKey).then(val => {
+            if (val == null)
+                return;
+            //console.log("itemKey: ", this.itemKey);
             this.item = val;
+            //console.log("Val: ", val);
+        });
+        this.storage.get(this.coinKey).then(val => {
+            //console.log("edit coins", this.coinKey, val)
+            if (val == null)
+                return;
+            //console.log("coinKey: ", this.coinKey);
+            this.coins = val;
+            //console.log("Val: ", val);
         });
         //</editor-fold>
 
@@ -182,11 +202,8 @@ export class BackPackPage {
                 {
                   text: 'Delete',
                   handler: data => {
-
-                      //console.log('Delete clicked!');
                       //getting the backpack to delete it.
                       this.storage.get('backpacks').then((val) => {
-                          console.log("herpederp",this.coinKey)
                           this.storage.remove(this.itemKey);
                           this.storage.remove(this.coinKey);
                           //splice 1 to delete one element and there for delete the whole array.
@@ -222,18 +239,31 @@ export class BackPackPage {
                             this.storage.get('backpacks').then((val) => {
                                 // val.filter(x => {return x.name == data.name}).length() > 0
                                 /*data = backpack + data;*/
+                                //console.log("edit backpack --------------")
                                 val[index] = data;
                                 this.info = val;
+                                //console.log("all backpacks: ", this.info);
                                 this.storage.set("backpacks", val);
 
-                                let oldKey = this.itemKey.toString();
 
-                                this.itemKey = 'items:' + val[index].name + val[index].HardLimit;
-                                //console.log(this.itemKey, this.item);
+                                let oldKey = this.itemKey.toString();
+                                //console.log("oldKey: ", oldKey);
+                                let oldCoins = this.coinKey.toString();
+                                //console.log("oldCoins: ", oldCoins);
+
+                                this.itemKey = 'item: ' + val[index].name + val[index].HardLimit;
+                                // console.log("new ItemKey: ",this.itemKey);
+
+                                // console.log("item: ", this.item);
+                                this.coinKey = 'coins: ' + val[index].name + val[index].HardLimit;
+                                //console.log(this.coinKey, this.coins);
                                 this.storage.set(this.itemKey, this.item);
+                                // console.log(this.coinKey, this.coins)
+                                this.storage.set(this.coinKey, this.coins);
                                 //console.log("old key :", oldKey);
                                 this.storage.remove(oldKey);
-                                //this.itemKey = 'items:' + val.name + val.HardLimit;
+                                this.storage.remove(oldCoins);
+                                //this.itemKey = 'item: ' + val.name + val.HardLimit;
                             });
 
                         }
@@ -258,7 +288,7 @@ export class BackPackPage {
             //console.log('Data', index);
             this.info = val;
             this.navCtrl.push(InventoryPage, data);
-            //storage.push(backpack.name, {items: [], dat: {}, dit: 5})
+            //storage.push(backpack.name, {item:  [], dat: {}, dit: 5})
 
         }).catch((err) => {
             console.log("backpack not found!");
