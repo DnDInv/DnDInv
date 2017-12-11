@@ -181,9 +181,13 @@ export class InventoryPage {
                 return this.encumbranceCalculator();
             case("None"):
                 console.log("No Rules, no limits.");
+                this.encumbrance="";
+                this.totalWeightMSG="";
                 break;
             default :
                 console.log("Which RulesVariants went wrong.");
+                this.encumbrance="";
+                this.totalWeightMSG="";
                 break;
         }
     }
