@@ -19,6 +19,8 @@ export class InventoryPage {
     //variable for selected item for the Edit page
     public item;
 
+    public audio;
+
     plat: any = 0;
     gold: any = 0;
     elec: any = 0;
@@ -80,7 +82,13 @@ export class InventoryPage {
         //get items in the selected backpack
         this.storage.get(this.itemKey).then((val) => {
             this.items = val;
-            //console.log("Storage items: ", val);
+            console.log("Storage items: ", val);
+            //goose easter egg
+            if(val.itemName == "goose"||"Goose"){
+                //console.log("THERE'S A GOOSE IN YOUR INVENTORY!!!")
+                this.audio = new Audio('assets/QuackSound.mp3');
+                this.audio.play();
+            }
         }).catch((err) => {
 
         });
