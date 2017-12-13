@@ -12,6 +12,7 @@ import { WalletPage } from  "../pages/wallet/wallet";
 import { StandarditemPage } from "../pages/standarditem/standarditem";
 import { CustomitemPage } from "../pages/customitem/customitem";
 import { EdititemPage } from "../pages/edititem/edititem";
+import { AddbackpackPage } from "../pages/addbackpack/addbackpack";
 //import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -21,7 +22,6 @@ import { AboutProvider } from '../providers/about/about';
 import { Insomnia } from "@ionic-native/insomnia";
 
 import { IonicStorageModule } from '@ionic/storage';
-import { StorageProvider } from '../providers/storage/storage';
 
 
 @NgModule({
@@ -35,7 +35,8 @@ import { StorageProvider } from '../providers/storage/storage';
     WalletPage,
     StandarditemPage,
     CustomitemPage,
-    EdititemPage
+    EdititemPage,
+    AddbackpackPage
     //ListPage
 
   ],
@@ -55,7 +56,8 @@ import { StorageProvider } from '../providers/storage/storage';
     WalletPage,
     StandarditemPage,
     CustomitemPage,
-    EdititemPage
+    EdititemPage,
+    AddbackpackPage
     //ListPage
   ],
   providers: [

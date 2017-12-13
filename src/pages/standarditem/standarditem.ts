@@ -14,7 +14,7 @@ export class StandarditemPage {
         //<editor-fold desc="simple melee weapons">
         {
             "strditemId": 0,
-            "type": "Simple Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Club",
             "price": "1 SP",
             "mechanical": "1d4 bludgeoning",
@@ -24,7 +24,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 1,
-            "type": "Simple Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Dagger",
             "price": "2 gp",
             "mechanical": "1d4 piercing",
@@ -34,7 +34,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 2,
-            "type": "Simple Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Greatclub",
             "price": "2 sp",
             "mechanical": "1d8 bludgeoning",
@@ -44,7 +44,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 3,
-            "type": "Simple Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Handaxe",
             "price": "5 gp",
             "mechanical": "1d6 slashing",
@@ -54,7 +54,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 4,
-            "type": "Simple Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Javelin",
             "price": "5 sp",
             "mechanical": "1d6 piercing",
@@ -64,8 +64,8 @@ export class StandarditemPage {
         },
         {
             "strditemId": 5,
-            "itemName": "Simple Melee Weapon ",
-            "name": "Light hammer",
+            "itemName": "Light hammer",
+            "type": "Weapon",
             "price": "2 gp",
             "mechanical": "1d4 bludgeoning",
             "weight": "2 lb",
@@ -74,7 +74,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 6,
-            "type": "Simple Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Mace",
             "price": "5 gp",
             "mechanical": "1d6 bludgeoning",
@@ -84,7 +84,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 7,
-            "type": "Simple Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Quarterstaff",
             "price": "2 sp",
             "mechanical": "1d6 bludgeoning",
@@ -94,7 +94,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 8,
-            "type": "Simple Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Sickle",
             "price": "1 gp",
             "mechanical": "1d4 slashing",
@@ -104,7 +104,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 9,
-            "type": "Simple Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Spear",
             "price": "1 gp",
             "mechanical": "1d6 piercing",
@@ -117,7 +117,7 @@ export class StandarditemPage {
         //<editor-fold desc="simple ranged weapons">
         {
             "strditemId": 10,
-            "type": "Simple Ranged Weapon ",
+            "type": "Weapon",
             "itemName": "Crossbow, light",
             "price": "25 gp",
             "mechanical": "1d8 piercing",
@@ -127,7 +127,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 11,
-            "type": "Simple Ranged Weapon ",
+            "type": "Weapon",
             "itemName": "Dart",
             "price": "5 cp",
             "mechanical": "1d4 piercing",
@@ -137,7 +137,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 12,
-            "type": "Simple Ranged Weapon ",
+            "type": "Weapon",
             "itemName": "Shortbow",
             "price": "25 gp",
             "mechanical": "1d6 piercing",
@@ -147,7 +147,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 13,
-            "type": "Simple Ranged Weapon ",
+            "type": "Weapon",
             "itemName": "Sling",
             "price": "1 sp",
             "mechanical": "1d4 bludgeoning",
@@ -160,7 +160,7 @@ export class StandarditemPage {
         //<editor-fold desc="martial melee weapons">
         {
             "strditemId": 14,
-            "type": "Martial Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Battleaxe",
             "price": "10 gp",
             "mechanical": "1d8 slashing",
@@ -170,7 +170,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 15,
-            "type": "Martial Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Flail",
             "price": "10 gp",
             "mechanical": "1d8 bludgeoning",
@@ -180,7 +180,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 16,
-            "type": "Martial Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Glaive",
             "price": "20 gp",
             "mechanical": "1d10 slashing",
@@ -190,7 +190,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 17,
-            "type": "Martial Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Greataxe",
             "price": "30 gp",
             "mechanical": "1d12 slashing",
@@ -200,7 +200,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 18,
-            "type": "Martial Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Greatsword",
             "price": "50 gp",
             "mechanical": "2d6 slashing",
@@ -210,7 +210,7 @@ export class StandarditemPage {
         },
         {
             "strdweapId": 19,
-            "type": "Martial Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Halberd",
             "price": "20 gp",
             "mechanical": "1d19 slashing",
@@ -220,7 +220,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 20,
-            "type": "Martial Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Lance",
             "price": "10 gp",
             "mechanical": "1d12 bludgeoning",
@@ -230,7 +230,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 21,
-            "type": "Martial Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Longsword",
             "price": "15 gp",
             "mechanical": "1d8 slashing",
@@ -240,7 +240,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 22,
-            "type": "Martial Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Maul",
             "price": "10 gp",
             "mechanical": "2d6 bludgeoning",
@@ -250,7 +250,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 23,
-            "type": "Martial Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Morningstar",
             "price": "15 gp",
             "mechanical": "1d8 piercing",
@@ -260,7 +260,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 24,
-            "type": "Martial Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Pike",
             "price": "5 gp",
             "mechanical": "1d10 piercing",
@@ -270,7 +270,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 25,
-            "type": "Martial Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Rapier",
             "price": "25 gp",
             "mechanical": "1d8 piercing",
@@ -280,7 +280,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 26,
-            "type": "Martial Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Scimitar",
             "price": "25 gp",
             "mechanical": "1d6 slashing",
@@ -290,7 +290,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 27,
-            "type": "Martial Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Shortsword",
             "price": "10 gp",
             "mechanical": "1d6 piercing",
@@ -300,7 +300,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 28,
-            "type": "Martial Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Trident",
             "price": "5 gp",
             "mechanical": "1d6 piercing",
@@ -310,7 +310,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 29,
-            "type": "Martial Melee Weapon ",
+            "type": "Weapon",
             "itemName": "War pick",
             "price": "5 gp",
             "mechanical": "1d8 piercing",
@@ -320,7 +320,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 30,
-            "type": "Martial Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Warhammer",
             "price": "15 gp",
             "mechanical": "1d8 bludgeoning",
@@ -330,7 +330,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 31,
-            "type": "Martial Melee Weapon ",
+            "type": "Weapon",
             "itemName": "Whip",
             "price": "2 gp",
             "mechanical": "1d4 slashing",
@@ -343,7 +343,7 @@ export class StandarditemPage {
         //<editor-fold desc="martial ranged weapons">
         {
             "strditemId": 32,
-            "type": "Martial Ranged Weapon ",
+            "type": "Weapon",
             "itemName": "Blowgun",
             "price": "10 gp",
             "mechanical": "1 piercing",
@@ -353,7 +353,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 33,
-            "type": "Martial Ranged Weapon ",
+            "type": "Weapon",
             "itemName": "Crossbow, hand",
             "price": "75 gp",
             "mechanical": "1d6 piercing",
@@ -363,7 +363,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 34,
-            "type": "Martial Ranged Weapon ",
+            "type": "Weapon",
             "itemName": "Crossbow, heavy",
             "price": "50 gp",
             "mechanical": "1d10 piercing",
@@ -373,7 +373,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 35,
-            "type": "Martial Ranged Weapon ",
+            "type": "Weapon",
             "itemName": "Longbow",
             "price": "50 gp",
             "mechanical": "18 piercing",
@@ -383,7 +383,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 36,
-            "type": "Martial Ranged Weapon ",
+            "type": "Weapon",
             "itemName": "Net",
             "price": "1 gp",
             "mechanical": "",
@@ -393,10 +393,10 @@ export class StandarditemPage {
         },
         //</editor-fold>
 
-        //<editor-fold desc="light armor">
+        //<editor-fold desc="Light Armor">
         {
             "strditemId": 37,
-            "type": "Light armor",
+            "type": "Armor",
             "itemName": "Padded",
             "price": "5 gp",
             "mechanical": "11 + Dex modifier",
@@ -405,7 +405,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 38,
-            "type": "Light armor",
+            "type": "Armor",
             "itemName": "Leather",
             "price": "10 gp",
             "mechanical": "11 + Dex modifier",
@@ -414,7 +414,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 39,
-            "type": "Light armor",
+            "type": "Armor",
             "itemName": "Studded leather",
             "price": "45 gp",
             "mechanical": "12 + Dex modifier",
@@ -423,10 +423,10 @@ export class StandarditemPage {
         },
         //</editor-fold>
 
-        //<editor-fold desc="medium armor">
+        //<editor-fold desc="Medium Armor">
         {
             "strditemId": 40,
-            "type": "Medium armor",
+            "type": "Armor",
             "itemName": "Hide",
             "price": "10 gp",
             "mechanical": "12 + Dex modifier (max 2)",
@@ -435,7 +435,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 41,
-            "type": "Medium armor",
+            "type": "Armor",
             "itemName": "Chain shirt",
             "price": "50 gp",
             "mechanical": "13 + Dex modifier (max 2)",
@@ -444,7 +444,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 42,
-            "type": "Medium armor",
+            "type": "Armor",
             "itemName": "Scale mail",
             "price": "50 gp",
             "mechanical": "14 + Dex modifier (max 2)",
@@ -453,7 +453,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 43,
-            "type": "Medium armor",
+            "type": "Armor",
             "itemName": "Breastplate",
             "price": "400 gp",
             "mechanical": "14 + Dex modifier (max 2)",
@@ -462,7 +462,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 44,
-            "type": "Medium armor",
+            "type": "Armor",
             "itemName": "Half plate",
             "price": "750 gp",
             "mechanical": "15 + Dex modifier (max 2)",
@@ -471,10 +471,10 @@ export class StandarditemPage {
         },
         //</editor-fold>
 
-        //<editor-fold desc="heavy armor">
+        //<editor-fold desc="Heavy Armor">
         {
             "strditemId": 45,
-            "type": "Heavy armor",
+            "type": "Armor",
             "itemName": "Ring mail",
             "price": "30 gp",
             "mechanical": "14",
@@ -483,7 +483,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 46,
-            "type": "Heavy armor",
+            "type": "Armor",
             "itemName": "Chain mail",
             "price": "75 gp",
             "mechanical": "16",
@@ -492,7 +492,7 @@ export class StandarditemPage {
         },
         {
             "strdarmId": 47,
-            "type": "Heavy armor",
+            "type": "Armor",
             "itemName": "Splint",
             "price": "200 gp",
             "mechanical": "17",
@@ -501,7 +501,7 @@ export class StandarditemPage {
         },
         {
             "strditemId": 48,
-            "type": "Heavy armor",
+            "type": "Armor",
             "itemName": "Plate",
             "price": "1.500 gp",
             "mechanical": "18",

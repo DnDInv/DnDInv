@@ -13,15 +13,14 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content scroll="false" padding>
   <h3>D&D Inventory App</h3>
 
   <!--backpacks loading-->
     <li class="listAttr" *ngFor="let b of info; let i = index" >
       <div class="buttons">
         <button (tap)="EditInventory(i, b)" ion-button class="button-backpacks-icon" [attr.id]="i"><img src="assets/img/BackpackIcon-outline.png" height="30" width="30"/></button>
-        <button (tap)="openInventory(i)" ion-button icon-left class="button-backpacks" [attr.id]="i">
-          {{ b.name }}</button>
+        <button (tap)="openInventory(i)" ion-button icon-left class="button-backpacks" [attr.id]="i"> {{ b.name }} </button>
       </div>
     </li>
 

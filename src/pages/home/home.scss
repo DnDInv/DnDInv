@@ -1,5 +1,19 @@
 page-home {
 
+  .addBtn {
+    border-radius: 11px;
+    text-shadow: 1px 2px 3px #996633;
+    -webkit-box-shadow: 1px 2px 3px #996633;
+    -moz-box-shadow: 1px 2px 3px #996633;
+    box-shadow: 1px 2px 3px #996633;
+    color: #996633;
+    font-size: 41px;
+    padding: 1vh 2vh 0.75vh 2vh;
+    border: solid #996633 4px;
+    text-decoration: none;
+    background: transparent;
+  }
+
   .scroll-content {
     display: flex;
     flex-direction: column;

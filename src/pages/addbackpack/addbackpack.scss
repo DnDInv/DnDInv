@@ -1,0 +1,30 @@
+page-addbackpack {
+
+  .addButton {
+    position: relative;
+    left: 80%;
+  }
+
+  ion-select {
+    max-width: 100%;
+    font-size: medium;
+    height: 45px;
+    -webkit-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+    -moz-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+    box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+  }
+
+  input#createBackpack {
+    width: 100%;
+    font-size: medium;
+    height: 45px;
+    text-align: center;
+    box-sizing: border-box;
+    background: transparent;
+    color: black;
+    border: 0px;
+    -webkit-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+    -moz-box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+    box-shadow: 2px 2px 8px 2px rgba(135,135,135,0.75);
+  }
+}

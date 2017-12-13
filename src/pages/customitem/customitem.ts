@@ -54,7 +54,7 @@ export class CustomitemPage {
         this.backpack = this.navParams.get("backpack");
         //console.log("last backpack: ", this.backpack.name);
         //set backpack key items for the items in individual inventories.
-        this.itemKey = "item:" + this.backpack.name + this.backpack.HardLimit;
+        this.itemKey = "item: " + this.backpack.name + this.backpack.HardLimit;
         //console.log("itemKey: ", this.itemKey);
         //</editor-fold
     }
