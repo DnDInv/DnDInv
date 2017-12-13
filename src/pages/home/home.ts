@@ -10,13 +10,30 @@ import { AddbackpackPage } from "../addbackpack/addbackpack";
     templateUrl: 'home.html'
 })
 export class HomePage {
+
+    //splash screen animate stuff
+    splash = true;
+    //tabBarElement: any;
+
+
     //info for the access to the backpack local storage.
     info: any = [];
 
     constructor(public navCtrl: NavController,
                 public alertCtrl: AlertController,
                 public storage: Storage) {
+        //this.tabBarElement = document.querySelector('.tabbar');
+
         this.navCtrl = navCtrl;
+    }
+
+    ionViewDidLoad(){
+        //this.tabBarElement.style.display = 'none';
+        setTimeout(()=>{
+            this.splash = false;
+            //this.tabBarElement.style.display = 'flex';
+
+        }, 4000);
     }
 
     //open setting menu with a push
