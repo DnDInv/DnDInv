@@ -1,8 +1,17 @@
 page-addbackpack {
 
-  .addButton {
+  .addBtn {
     position: relative;
-    left: 80%;
+    left: 84%;
+    border-radius: 11px;
+    color: #333333;
+    height: 45px;
+    font-size: medium;
+    font-weight: bold;
+    padding: 1vh 1vh 0.75vh 1vh;
+    border: solid #333333 3px;
+    text-decoration: none;
+    background: transparent;
   }
 
   ion-select {

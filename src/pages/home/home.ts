@@ -15,7 +15,6 @@ export class HomePage {
     splash = true;
     //tabBarElement: any;
 
-
     //info for the access to the backpack local storage.
     info: any = [];
 
@@ -29,7 +28,7 @@ export class HomePage {
 
     ionViewDidLoad(){
         //this.tabBarElement.style.display = 'none';
-        setTimeout(()=>{
+        setTimeout(() => {
             this.splash = false;
             //this.tabBarElement.style.display = 'flex';
 
