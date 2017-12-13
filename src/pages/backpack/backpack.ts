@@ -3,6 +3,7 @@ import { AlertController, NavController, NavParams} from 'ionic-angular';
 import { AboutPage} from "../about/about";
 import { Storage } from '@ionic/storage';
 import { InventoryPage } from "../inventory/inventory";
+import {AddbackpackPage} from "../addbackpack/addbackpack";
 
 @Component({
   selector: 'page-backpack',
@@ -47,91 +48,99 @@ export class BackPackPage {
     //</editor-fold>
     }
 
+
+    ionViewDidEnter() {
+        this.storage.get('backpacks').then ((val) => {
+            this.info = val;
+        });
+    }
+
     //open about Page with a push
     openaboutPage() {
         this.navCtrl.push(AboutPage);
     }
     //function for the modal confirmation for the Adding backpack
     addBackpack() {
+        this.navCtrl.push(AddbackpackPage);
       //<editor-fold desc="function for adding backpacks.">
-      let addBackpack = this.alertCtrl.create({
-          //fields that are shown in the alert modal.
-          title: "Add Backpack",
-          message: "Please enter the following requirements.",
-          inputs: [
-              {
-                  name: 'name',
-                  placeholder: 'Enter backpack name here...'
-              },
-              {
-                  name: 'strength',
-                  placeholder: 'Enter strength of the backpack...',
-                  type: "number",
-                  min: 1,
-                  max: 50
-              },
-              {
-                  name: 'Carrying_Size',
-                  placeholder: 'Tiny,Small,Medium,Large,Huge...'
-              },
-              {
-                  name: 'HardLimit',
-                  placeholder: 'Enter hard limit (if wanted)'
-              },
-              {
-                  name: 'RuleVariants',
-                  placeholder: 'Standard,Encumbrance,No rules...'
-              }
-          ],
-          buttons: [
-              {
-                  text: 'Cancel',
-                  role: 'cancel',
-                  handler: data => {
-
-                  }
-              },
-              {
-                  text: 'Save',
-                  role: 'submit',
-                  handler: data => {
-                    //save into object
-                      if (data.name.length              == 0 ||
-                          data.strength                 > 50 ||
-                          data.strength                 < 1  ||
-                          data.Carrying_Size.length     == 0 ||
-                          data.RuleVariants.length      == 0 ||
-                          data.RuleVariants             != "Standard" &&
-                          data.RuleVariants             != "Encumbrance" &&
-                          data.RuleVariants             != "No rules" &&
-                          data.Carrying_Size            != "Tiny" &&
-                          data.Carrying_Size            != "Small" &&
-                          data.Carrying_Size            != "Medium" &&
-                          data.Carrying_Size            != "Large" &&
-                          data.Carrying_Size            != "Huge") {
-                          console.log("Incorrect Values");
-                          return false;
-                      }
-                      else {
-                          //push the input of all the fields that are required into an JSON object.
-                          // console.log(data);
-                          this.storage.get('backpacks').then((val) => {
-                              // val.filter(x => {return x.name == data.name}).length() > 0
-                              val.push(data);
-                              this.info = val;
-                              this.storage.set("backpacks", val);
-                          }).catch((err) => {
-                              this.storage.set("backpacks", [data]);
-                              this.info = [data];
-                          });
-                      }
-                  }
-              }
-          ]
-      });
-      //materialize the popup
-      addBackpack.present();
-      //</editor-fold>
+      // let addBackpack = this.alertCtrl.create({
+      //     //fields that are shown in the alert modal.
+      //     title: "Add Backpack",
+      //     message: "Please enter the following requirements.",
+      //     inputs: [
+      //         {
+      //             name: 'name',
+      //             placeholder: 'Enter backpack name here...'
+      //         },
+      //         {
+      //             name: 'strength',
+      //             placeholder: 'Enter strength of the backpack...',
+      //             type: "number",
+      //             min: 1,
+      //             max: 50
+      //         },
+      //         {
+      //             name: 'Carrying_Size',
+      //             placeholder: 'Tiny,Small,Medium,Large,Huge...'
+      //         },
+      //         {
+      //             name: 'HardLimit',
+      //             placeholder: 'Enter hard limit (if wanted)'
+      //         },
+      //         {
+      //             name: 'RuleVariants',
+      //             placeholder: 'Standard,Encumbrance,No rules...'
+      //         }
+      //     ],
+      //     buttons: [
+      //         {
+      //             text: 'Cancel',
+      //             role: 'cancel',
+      //             handler: data => {
+      //
+      //             }
+      //         },
+      //         {
+      //             text: 'Save',
+      //             role: 'submit',
+      //             handler: data => {
+      //               //save into object
+      //                 if (data.name.length              == 0 ||
+      //                     data.strength                 > 50 ||
+      //                     data.strength                 < 1  ||
+      //                     data.Carrying_Size.length     == 0 ||
+      //                     data.RuleVariants.length      == 0 ||
+      //                     data.RuleVariants             != "Standard" &&
+      //                     data.RuleVariants             != "Encumbrance" &&
+      //                     data.RuleVariants             != "No rules" &&
+      //                     data.Carrying_Size            != "Tiny" &&
+      //                     data.Carrying_Size            != "Small" &&
+      //                     data.Carrying_Size            != "Medium" &&
+      //                     data.Carrying_Size            != "Large" &&
+      //                     data.Carrying_Size            != "Huge") {
+      //                     console.log("Incorrect Values");
+      //                     return false;
+      //                 }
+      //                 else {
+      //                     //push the input of all the fields that are required into an JSON object.
+      //                     // console.log(data);
+      //                     this.storage.get('backpacks').then((val) => {
+      //                         // val.filter(x => {return x.name == data.name}).length() > 0
+      //                         val.push(data);
+      //                         this.info = val;
+      //                         this.storage.set("backpacks", val);
+      //                     }).catch((err) => {
+      //                         this.storage.set("backpacks", [data]);
+      //                         this.info = [data];
+      //                     });
+      //                 }
+      //             }
+      //         }
+      //     ]
+      // });
+      // //materialize the popup
+      // addBackpack.present();
+      // //</editor-fold>
     }
 
     //function editing

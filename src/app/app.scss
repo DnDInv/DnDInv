@@ -19,6 +19,15 @@
 //COMMENT MADE BY JEFF
 //everytime you make a new page you have to add the @import scss here in this file :)
 @import "../pages/backpack/backpack";
+@import "../pages/addbackpack/addbackpack";
+@import "../pages/home/home.scss";
+@import "../pages/customitem/customitem.scss";
+@import "../pages/edititem/edititem";
+@import "../pages/inventory/inventory.scss";
+@import "../pages/settings/settings.scss";
+@import "../pages/standarditem/standarditem.scss";
+@import "../pages/wallet/wallet.scss";
+
 
 .getstart {
   background-image: url('../assets/img/backgrounddnd.jpg') ;
@@ -26,3 +35,4 @@
   background-repeat: no-repeat;
 
 }
+

@@ -1,0 +1,73 @@
+<!--
+  Generated template for the AddbackpackPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>addbackpack</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-row>
+    <ion-col class="centeredText">
+    <img src="assets/img/BackpackIcon.png" height="100" width="100"/>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col class="centeredText">
+      <input id="createBackpack" placeholder="Backpack Name" [(ngModel)]="name" type="text"/>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <input id="createBackpack" placeholder="Strength" [(ngModel)]="strength" type="number" />
+    </ion-col>
+
+    <ion-col>
+      <input id="createBackpack" [(ngModel)]="HardLimit" placeholder="HardLimit lbs" type="text" />
+    </ion-col>
+  </ion-row>
+
+
+  <ion-row>
+    <ion-col>
+      <!--<ion-item id="Test" class="styled-select slate">-->
+      <ion-select [(ngModel)]="Carrying_Size" placeholder="Carrying Size">
+        <!--<ion-option value="" disabled hidden>Select Type of Item</ion-option>-->
+        <ion-option value="Tiny">Tiny</ion-option>
+        <ion-option value="Small">Small</ion-option>
+        <ion-option value="Medium">Medium</ion-option>
+        <ion-option value="Large">Large</ion-option>
+        <ion-option value="Huge">Huge</ion-option>
+        <ion-option value="Gigantic">Gigantic</ion-option>
+      </ion-select>
+      <!--</ion-item>-->
+    </ion-col>
+    <ion-col>
+      <!--<ion-item id="Test" class="styled-select slate">-->
+      <ion-select [(ngModel)]="RuleVariants" placeholder="Rule Variants">
+        <!--<ion-option value="" disabled hidden>Select Type of Item</ion-option>-->
+        <ion-option value="Standard">Standard</ion-option>
+        <ion-option value="Encumbrance">Encumbrance</ion-option>
+        <ion-option value="No rules">No rules</ion-option>
+      </ion-select>
+      <!--</ion-item>-->
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <button (tap)="addBackpack()" ion-button round class="addButton">Add</button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
