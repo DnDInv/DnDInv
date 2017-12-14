@@ -11,6 +11,7 @@ import {EdititemPage} from "../edititem/edititem";
     selector: 'page-inventory',
     templateUrl: 'inventory.html',
 })
+
 export class InventoryPage {
 
     //<editor-fold desc="variables">
@@ -46,6 +47,7 @@ export class InventoryPage {
         //set backpack key items for the items in individual inventories.
         this.itemKey = 'item: ' + this.backpack.name + this.backpack.HardLimit;
         //</editor-fold>
+        console.log("paco: ", this.itemslist);
 
         //<editor-fold desc="Getting items from itemKey">
         //get items in the selected backpack
@@ -57,6 +59,7 @@ export class InventoryPage {
         });
         //</editor-fold>
         this.whichRules();
+        this.currentWeight();
     }
 
     ionViewDidEnter() {
@@ -227,7 +230,7 @@ export class InventoryPage {
         }
 
         this.encumbrance = "Encumbered: " + this.capacity + " lbs. " +
-            " Push, Drag & Lift: " + this.capacity * 2 + " lbs. " + this.currentWeight();
+            " Push, Drag & Lift: " + this.capacity * 2 + " lbs. ";
     }
 
     // encumbrance
@@ -257,7 +260,7 @@ export class InventoryPage {
 
         }
         this.encumbrance = "Encumbered: " + this.capacity + "lbs. Heavily Encumbered: " + this.capacity * 2 + "lbs. Push Drag & Lift: " +
-            this.capacity * 6 + "lbs. " + this.currentWeight();
+            this.capacity * 6 + "lbs. ";
     }
 
     currentWeight() {
@@ -281,6 +284,7 @@ export class InventoryPage {
             this.totalWeightMSG = " Current: " + this.totalWeight + "lbs. ";
             }
         ).catch((err) => {
+
         });
     }
 }
