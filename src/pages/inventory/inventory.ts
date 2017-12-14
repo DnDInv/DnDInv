@@ -12,9 +12,6 @@ import { EdititemPage } from "../edititem/edititem";
   templateUrl: 'inventory.html',
 })
 export class InventoryPage {
-
-    easterEgg = "goose";
-
     //<editor-fold desc="variables">
     //backpack variable for the selected backpack
     public backpack;
@@ -211,4 +208,113 @@ export class InventoryPage {
       //</editor-fold>
   }
 
+}
+
+    // Deel waarin de encumbrance rules tevoorschijn komen.
+    whichRules() {
+        switch (this.backpack.RuleVariants) {
+            case("Standard"):
+                console.log("To Standard");
+                return this.standardrules();
+            case("Encumbrance"):
+                console.log("To Encumbrance");
+                return this.encumbranceCalculator();
+            case("None"):
+                console.log("No Rules, no limits.");
+                this.encumbrance="";
+                this.totalWeightMSG="";
+                break;
+            default :
+                console.log("Which RulesVariants went wrong.");
+                this.encumbrance="";
+                this.totalWeightMSG="";
+                break;
+        }
+    }
+
+    // standard rules
+    standardrules() {
+        switch (this.backpack.Carrying_Size) {
+            case "Tiny":
+                this.capacity = (this.backpack.strength * 15) / 2;
+                break;
+            case "Small":
+                this.capacity = this.backpack.strength * 15;
+                break;
+            case "Medium" :
+                this.capacity = this.backpack.strength * 15;
+                break;
+            case "Large" :
+                this.capacity = (this.backpack.strength * 15) * 2;
+                break;
+            case "Huge" :
+                this.capacity = (this.backpack.strength * 15) * 4;
+                break;
+            case "Gigantic":
+                this.capacity = (this.backpack.strength * 15) * 8;
+                break;
+            default :
+                console.log("Size is not supported");
+                break;
+
+        }
+
+        this.encumbrance = "Encumbered: " + this.capacity + " lbs. " +
+            " Push, Drag & Lift: " + this.capacity * 2 + " lbs. ";
+    }
+
+    // encumbrance
+    encumbranceCalculator() {
+        switch (this.backpack.Carrying_Size) {
+            case("Tiny"):
+                this.capacity = this.backpack.strength * 5 / 2;
+                break;
+            case ("Small"):
+                this.capacity = this.backpack.strength * 5;
+                break;
+            case ("Medium"):
+                this.capacity = this.backpack.strength * 5;
+                break;
+            case("Large"):
+                this.capacity = this.backpack.strength * 5 * 2;
+                break;
+            case("Huge"):
+                this.capacity = this.backpack.strength * 5 * 4;
+                break;
+            case("Gigantic"):
+                this.capacity = this.backpack.strength * 5 * 8;
+                break;
+            default :
+                console.log("Size is not supported");
+                break;
+
+        }
+        this.encumbrance = "Encumbered: " + this.capacity + "lbs. Heavily Encumbered: " + this.capacity * 2 + "lbs. Push Drag & Lift: " +
+            this.capacity * 6 + "lbs. ";
+    }
+
+    currentWeight() {
+        this.backpack = this.navParams.get('backpack');
+        this.itemKey = 'item: ' + this.backpack.name + this.backpack.HardLimit;
+
+        let totalweight = this.storage.get(this.itemKey).then((val) => {
+                this.itemslist = val;
+                console.log("itemslist=val: ", this.itemslist);
+                console.log("itemslist[0].amount: ", this.itemslist[0].amount);
+
+                this.totalWeight = 0;
+
+                for (const item of this.itemslist.map((item) => (item))) {
+                    console.log(item);
+                    console.log(item.amount);
+                    console.log(item.weight);
+                    this.totalWeight += item.amount * item.weight;
+                    console.log("iterations with totalweight: ",this.totalWeight);
+                }
+            this.totalWeightMSG = " Current: " + this.totalWeight + "lbs. ";
+            }
+        ).catch((err) => {
+
+        });
+    }
 }
