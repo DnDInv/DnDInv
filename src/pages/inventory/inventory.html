@@ -10,10 +10,22 @@
 
     <ion-row>
         <ion-col style="text-align: center; width: 49%">
-            <button (tap)="addstandardItem()" round ion-button>Add Standard</button>
+            <button (tap)="addstandardItem()" class="InvBtns" round ion-button>Add Standard</button>
         </ion-col>
         <ion-col style="text-align: center; width: 49%">
-            <button (tap)="createcustomItem(backpack)" round ion-button>Create Custom</button>
+            <button (tap)="createcustomItem(backpack)" class="InvBtns" round ion-button>Create Custom</button>
+        </ion-col>
+        <ion-col id="FixedWallet">
+            <ion-list>
+                <ion-item (tap)="wallet()">
+                    <h2 class="StandardWallet">Wallet</h2>
+                    <p class="Standard">pp: {{ coins.pp }}
+                                        gp: {{ coins.gp }}
+                                        ep: {{ coins.ep }}
+                                        sp: {{ coins.sp }}
+                                        cp: {{ coins.cp }}</p>
+                </ion-item>
+            </ion-list>
         </ion-col>
     </ion-row>
     <label>{{encumbrance}}{{totalWeightMSG}}</label>

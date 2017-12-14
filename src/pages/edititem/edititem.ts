@@ -33,7 +33,7 @@ export class EdititemPage {
     this.item = this.navParams.get('item');
       this.index = this.navParams.get('index');
 
-    console.log("index: ", this.index);
+    //console.log("index: ", this.index);
     //console.log("itemName: ", this.item.item.itemName);
     this.itemKey = 'item: ' + this.backpack.name + this.backpack.HardLimit;
     //</editor-fold>
@@ -53,7 +53,7 @@ export class EdititemPage {
     //<editor-fold desc="get the selected item">
     // this.storage.get('item').then((val) => {
     //
-       console.log("Values: ", this.item);
+    //    console.log("Values: ", this.item);
     // });
       //</editor-fold>
   }

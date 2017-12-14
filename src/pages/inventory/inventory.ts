@@ -1,29 +1,38 @@
-import {Component} from '@angular/core';
-import {AlertController, NavController, NavParams} from 'ionic-angular';
-import {Storage} from "@ionic/storage";
-import {WalletPage} from "../wallet/wallet";
-import {CustomitemPage} from "../customitem/customitem";
-import {StandarditemPage} from "../standarditem/standarditem";
-import {EdititemPage} from "../edititem/edititem";
+import { Component } from '@angular/core';
+import { AlertController, NavController, NavParams } from 'ionic-angular';
+import { Storage } from "@ionic/storage";
+import { WalletPage } from "../wallet/wallet";
+import { CustomitemPage } from "../customitem/customitem";
+import { StandarditemPage } from "../standarditem/standarditem";
+import { EdititemPage } from "../edititem/edititem";
 //import {StorageProvider} from "../../providers/storage/storage";
 
 @Component({
-    selector: 'page-inventory',
-    templateUrl: 'inventory.html',
+  selector: 'page-inventory',
+  templateUrl: 'inventory.html',
 })
-
 export class InventoryPage {
-
     //<editor-fold desc="variables">
     //backpack variable for the selected backpack
     public backpack;
     //variable for selected item for the Edit page
     public item;
-    public itemslist;
-    public capacity;
-    public totalWeight;
-    public encumbrance;
 
+    public audio;
+
+    plat: any = 0;
+    gold: any = 0;
+    elec: any = 0;
+    silv: any = 0;
+    copp: any = 0;
+
+    coins: any = {
+        "pp": this.plat,
+        "gp": this.gold,
+        "ep": this.elec,
+        "sp": this.silv,
+        "cp": this.copp,
+    };
 
     //info array for getting all the backpacks
     info = [];
@@ -31,7 +40,8 @@ export class InventoryPage {
     items = [];
     //itemKey to get the items from the individual backpacks.
     itemKey;
-    private totalWeightMSG: string;
+    //coinKey for the wallet inside the selected backpack
+    coinKey;
     //</editor-fold
 
     constructor(public navCtrl: NavController,
@@ -41,75 +51,100 @@ export class InventoryPage {
                 /*private storageProvider: StorageProvider*/) {
         //<editor-fold desc="getting the backpack thats been tapped on.">
         //get the selected backpack
-
         this.backpack = this.navParams.get('backpack');
 
         //set backpack key items for the items in individual inventories.
         this.itemKey = 'item: ' + this.backpack.name + this.backpack.HardLimit;
+        //console.log("itemkey@inv: ", this.itemKey)
         //</editor-fold>
-        console.log("paco: ", this.itemslist);
+
+
+        //<editor-fold desc="get Wallet">
+
+        this.coinKey = 'coins: ' + this.backpack.name + this.backpack.HardLimit;
+        this.storage.get(this.coinKey).then((val) => {
+            if (val == null) {
+                this.storage.set(this.coinKey, this.coins);
+            }else {
+                this.coins = val;
+            }
+            this.plat = this.coins.pp;
+            this.gold = this.coins.gp;
+            this.elec = this.coins.ep;
+            this.silv = this.coins.sp;
+            this.copp = this.coins.cp;
+            //console.log("Val: ", this.coins);
+        });
+        //</editor-fold>
 
         //<editor-fold desc="Getting items from itemKey">
         //get items in the selected backpack
         this.storage.get(this.itemKey).then((val) => {
             this.items = val;
             //console.log("Storage items: ", val);
+            //goose easter egg
+            if(val[val.indexOf(val.find(x => x.itemName == "goose" || x.itemName == "Goose"))]){
+                console.log("THERE'S A GOOSE IN YOUR INVENTORY!!!");
+                this.audio = new Audio('assets/QuackSound.mp3');
+                this.audio.play();
+            }
         }).catch((err) => {
 
         });
         //</editor-fold>
-        this.whichRules();
-        this.currentWeight();
     }
 
-    ionViewDidEnter() {
-        //this.items = this.storageProvider.get(this.itemKey);
-        //console.log(this.items);
-        // this.platform.ready().then(() => {
-        //     Keyboard.disableScroll(true);
-        // });
+  ionViewDidEnter() {
+      //this.items = this.storageProvider.get(this.itemKey);
+      //console.log(this.items);
+      // this.platform.ready().then(() => {
+      //     Keyboard.disableScroll(true);
+      // });
+      this.storage.get(this.coinKey).then((val) => {
+          this.coins = val;
+          //console.log("Val: ", val);
+      });
 
-        this.storage.get(this.itemKey).then((val) => {
-            this.items = val;
-        });
-    }
+      this.storage.get(this.itemKey).then ((val) => {
+         this.items = val;
+      });
+  }
+  
+  wallet() {
+      this.storage.get('backpacks').then((val) => {
+          this.info = val;
+          this.navCtrl.push(WalletPage, { backpack: this.backpack });
 
-    wallet() {
-        this.storage.get('backpacks').then((val) => {
-            this.info = val;
-            this.navCtrl.push(WalletPage, {backpack: this.backpack});
+      }).catch((err) => {
+          console.log("backpack not found!");
+      });
+  }
+  //function for opening a item.
+  openItem(index) {
+      //<editor-fold desc="Pushing the selected backpack to the Item page.">
+      //getting all backpacks
+      this.storage.get(this.itemKey).then((val) => {
+          let data = {
+              item: val[index]
+          };
+          let selectedIndex = {
+              index: index
+          };
+          //console.log('stuff ', selectedIndex);
+          //console.log("Val: ", data);
 
-        }).catch((err) => {
-            console.log("backpack not found!");
-        });
-    }
+          this.info = val;
+          this.navCtrl.push(EdititemPage, { index: selectedIndex, item: data, backpack: this.backpack } );
+      }).catch((err) => {
+          console.log("backpack not found!");
+      });
+      //</editor-fold>*/
+  }
 
-    //function for opening a item.
-    openItem(index) {
-        //<editor-fold desc="Pushing the selected backpack to the Item page.">
-        //getting all backpacks
-        this.storage.get(this.itemKey).then((val) => {
-            let data = {
-                item: val[index]
-            };
-            let selectedIndex = {
-                index: index
-            };
-            console.log('stuff ', selectedIndex);
-            //console.log("Val: ", data);
-
-            this.info = val;
-            this.navCtrl.push(EdititemPage, {index: selectedIndex, item: data, backpack: this.backpack});
-        }).catch((err) => {
-            console.log("backpack not found!");
-        });
-        //</editor-fold>*/
-    }
-
-    //delete items
-    deleteItem(index, item) {
-        //<editor-fold desc="Creating the modal for deleting only">
-        //create the modal for deleting the selected item.
+  //delete items
+  deleteItem(index, item) {
+      //<editor-fold desc="Creating the modal for deleting only">
+      //create the modal for deleting the selected item.
         let editorDelete = this.alertCtrl.create({
             title: "Are you sure you want to delete the item: " + item.itemName,
             message: "here you can delete the Item: " + item.itemName,
@@ -142,36 +177,38 @@ export class InventoryPage {
             ]
         });
         editorDelete.present();
-        //</editor-fold>
-    }
+      //</editor-fold>
+  }
 
-    //Creating custom item
-    createcustomItem() {
-        //<editor-fold desc="Pushing the selected backpack to the next page.">
-        //getting all backpacks
-        this.storage.get('backpacks').then((val) => {
-            this.info = val;
-            this.navCtrl.push(CustomitemPage, {backpack: this.backpack});
+  //Creating custom item
+  createcustomItem() {
+      //<editor-fold desc="Pushing the selected backpack to the next page.">
+      //getting all backpacks
+      this.storage.get('backpacks').then((val) => {
+          this.info = val;
+          this.navCtrl.push(CustomitemPage, { backpack: this.backpack });
 
-        }).catch((err) => {
-            console.log("backpack not found!");
-        });
-        //</editor-fold>
-    }
+      }).catch((err) => {
+          console.log("backpack not found!");
+      });
+      //</editor-fold>
+  }
 
-    //adding standard items
-    addstandardItem() {
-        //<editor-fold desc="Pushing the selected backpack to the add Standard Item page.">
-        //getting all backpacks
-        this.storage.get('backpacks').then((val) => {
-            this.info = val;
-            this.navCtrl.push(StandarditemPage, {backpack: this.backpack});
+  //adding standard items
+  addstandardItem() {
+      //<editor-fold desc="Pushing the selected backpack to the add Standard Item page.">
+      //getting all backpacks
+      this.storage.get('backpacks').then((val) => {
+          this.info = val;
+          this.navCtrl.push(StandarditemPage, { backpack: this.backpack });
 
-        }).catch((err) => {
-            console.log("backpack not found!");
-        });
-        //</editor-fold>
-    }
+      }).catch((err) => {
+          console.log("backpack not found!");
+      });
+      //</editor-fold>
+  }
+
+}
 
     // Deel waarin de encumbrance rules tevoorschijn komen.
     whichRules() {
@@ -199,30 +236,23 @@ export class InventoryPage {
     standardrules() {
         switch (this.backpack.Carrying_Size) {
             case "Tiny":
-
                 this.capacity = (this.backpack.strength * 15) / 2;
                 break;
-
             case "Small":
                 this.capacity = this.backpack.strength * 15;
                 break;
-
             case "Medium" :
                 this.capacity = this.backpack.strength * 15;
                 break;
-
             case "Large" :
                 this.capacity = (this.backpack.strength * 15) * 2;
                 break;
-
             case "Huge" :
                 this.capacity = (this.backpack.strength * 15) * 4;
                 break;
-
             case "Gigantic":
                 this.capacity = (this.backpack.strength * 15) * 8;
                 break;
-
             default :
                 console.log("Size is not supported");
                 break;

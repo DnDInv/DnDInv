@@ -1,29 +1,31 @@
+<div id="custom-overlay" [style.display]="splash ? 'flex': 'none'">
+    <div class="flb">
+        <div class="Aligner-item Aligner-item--top"></div>
+        <img src="assets/fighterwithgoose.svg">
+        <div class="Aligner-item Aligner-item--bottom"></div>
+    </div>
+</div>
+
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
-    <button ion-button menuToggle class="setting" (tap)="opensettingPage()">
-      <ion-icon name="settings"></ion-icon>
-    </button>
-    <button ion-button menuToggle class="about" (tap)="openaboutPage()">
-      <ion-icon name="information-circle"></ion-icon>
-    </button>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>DnD Inventory</ion-title>
+        <button ion-button menuToggle class="setting" (tap)="opensettingPage()">
+            <ion-icon name="settings"></ion-icon>
+        </button>
+        <button ion-button menuToggle class="about" (tap)="openaboutPage()">
+            <ion-icon name="information-circle"></ion-icon>
+        </button>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>D&D Inventory App</h3>
-
-  <p>
-    Welcome to the D&D Inventory App.
-    go to the menu to manage your backpacks.
-    Tap on the button below to start with your backpacks.
-  </p>
-<ion-row>
-  <ion-col>
-    <button class="button-pos" round ion-button (tap)="addBackpack()">   +   </button>
-  </ion-col>
-</ion-row>
+    <p class="centeredText">Tap on the + button to start your adventure</p>
+    <ion-row>
+        <ion-col>
+            <button class="addBtn" round ion-button (tap)="addBackpack()"> +</button>
+        </ion-col>
+    </ion-row>
 </ion-content>
