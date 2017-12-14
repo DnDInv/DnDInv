@@ -13,6 +13,8 @@ import { EdititemPage } from "../edititem/edititem";
 })
 export class InventoryPage {
 
+    easterEgg = "goose";
+
     //<editor-fold desc="variables">
     //backpack variable for the selected backpack
     public backpack;
@@ -82,10 +84,10 @@ export class InventoryPage {
         //get items in the selected backpack
         this.storage.get(this.itemKey).then((val) => {
             this.items = val;
-            console.log("Storage items: ", val);
+            //console.log("Storage items: ", val);
             //goose easter egg
-            if(val.itemName == "goose"||"Goose"){
-                //console.log("THERE'S A GOOSE IN YOUR INVENTORY!!!")
+            if(val[val.indexOf(val.find(x => x.itemName == "goose" || x.itemName == "Goose"))]){
+                console.log("THERE'S A GOOSE IN YOUR INVENTORY!!!");
                 this.audio = new Audio('assets/QuackSound.mp3');
                 this.audio.play();
             }
