@@ -5,16 +5,12 @@ import { WalletPage } from "../wallet/wallet";
 import { CustomitemPage } from "../customitem/customitem";
 import { StandarditemPage } from "../standarditem/standarditem";
 import { EdititemPage } from "../edititem/edititem";
-//import {StorageProvider} from "../../providers/storage/storage";
 
 @Component({
   selector: 'page-inventory',
   templateUrl: 'inventory.html',
 })
 export class InventoryPage {
-
-    easterEgg = "goose";
-
     //<editor-fold desc="variables">
     //backpack variable for the selected backpack
     public backpack;
@@ -57,17 +53,13 @@ export class InventoryPage {
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 public alertCtrl: AlertController,
-                public storage: Storage
-                /*private storageProvider: StorageProvider*/) {
+                public storage: Storage) {
         //<editor-fold desc="getting the backpack thats been tapped on.">
         //get the selected backpack
         this.backpack = this.navParams.get('backpack');
-
         //set backpack key items for the items in individual inventories.
         this.itemKey = 'item: ' + this.backpack.name + this.backpack.HardLimit;
-        //console.log("itemkey@inv: ", this.itemKey)
         //</editor-fold>
-
 
         //<editor-fold desc="get Wallet">
 
@@ -91,10 +83,8 @@ export class InventoryPage {
         //get items in the selected backpack
         this.storage.get(this.itemKey).then((val) => {
             this.items = val;
-            //console.log("Storage items: ", val);
             //goose easter egg
-            if(val[val.indexOf(val.find(x => x.itemName == "goose" || x.itemName == "Goose"))]){
-                console.log("THERE'S A GOOSE IN YOUR INVENTORY!!!");
+            if(val[val.indexOf(val.find(x => x.itemName.toLowerCase() == "goose" ))]){
                 this.audio = new Audio('assets/QuackSound.mp3');
                 this.audio.play();
             }
@@ -102,23 +92,13 @@ export class InventoryPage {
 
         });
         //</editor-fold>
-
-        //initializing weight calculations:
-        //this.whichRules();
-        //this.currentWeight();
     }
 
   ionViewDidEnter() {
-      //this.items = this.storageProvider.get(this.itemKey);
-      //console.log(this.items);
-      // this.platform.ready().then(() => {
-      //     Keyboard.disableScroll(true);
-      // });
       this.whichRules();
       this.currentWeight();
       this.storage.get(this.coinKey).then((val) => {
           this.coins = val;
-          //console.log("Val: ", val);
       });
 
       this.storage.get(this.itemKey).then ((val) => {
@@ -146,8 +126,6 @@ export class InventoryPage {
           let selectedIndex = {
               index: index
           };
-          //console.log('stuff ', selectedIndex);
-          //console.log("Val: ", data);
 
           this.info = val;
           this.navCtrl.push(EdititemPage, { index: selectedIndex, item: data, backpack: this.backpack } );
@@ -159,8 +137,6 @@ export class InventoryPage {
 
   //delete items
   deleteItem(index, item) {
-      this.whichRules();
-      this.currentWeight();
       //<editor-fold desc="Creating the modal for deleting only">
       //create the modal for deleting the selected item.
         let editorDelete = this.alertCtrl.create({
@@ -183,11 +159,9 @@ export class InventoryPage {
                             //splicing the val that has the selected item and delete one element so the object gets removed.
                             val.splice(index, 1);
 
-
                             //set the storage itemKey to val so that the selected item will stay removed and will not be shown on the list.
                             this.storage.set(this.itemKey, val);
                             this.storage.get(this.itemKey).then((val) => {
-                                console.log("HUUUUURDYUUUUUUUUR");
                                 this.whichRules();
                                 this.currentWeight();
                             });
@@ -237,18 +211,14 @@ export class InventoryPage {
     whichRules() {
         switch (this.backpack.RuleVariants) {
             case("Standard"):
-                console.log("To Standard");
                 return this.standardrules();
             case("Encumbrance"):
-                console.log("To Encumbrance");
                 return this.encumbranceCalculator();
             case("None"):
-                console.log("No Rules, no limits.");
                 this.encumbrance="";
                 this.totalWeightMSG="";
                 break;
             default :
-                console.log("Which RulesVariants went wrong.");
                 this.encumbrance="";
                 this.totalWeightMSG="";
                 break;
@@ -312,30 +282,23 @@ export class InventoryPage {
                 break;
 
         }
-        this.encumbrance = "Encumbered: " + this.capacity + "lbs. Heavily Encumbered: " + this.capacity * 2 + "lbs. Push Drag & Lift: " +
+        this.encumbrance = "Capacity: " + this.capacity + "lbs. Heavily Encumbered: " + this.capacity * 2 + "lbs. Power: " +
             this.capacity * 6 + "lbs. ";
     }
 
     currentWeight() {
-        console.log('im here ;D');
         this.backpack = this.navParams.get('backpack');
         this.itemKey = 'item: ' + this.backpack.name + this.backpack.HardLimit;
 
         this.storage.get(this.itemKey).then((val) => {
                 this.itemslist = val;
-                console.log("itemslist=val: ", this.itemslist);
-                //console.log("itemslist[0].amount: ", this.itemslist[0].amount);
 
                 this.totalWeight = 0;
 
                 for (const item of this.itemslist.map((item) => (item))) {
-                    console.log(item);
-                    console.log(item.amount);
-                    console.log(item.weight);
                     this.totalWeight += item.amount * item.weight;
-                    console.log("iterations with totalweight: ",this.totalWeight);
                 }
-                this.totalWeightMSG = " Current Capacity: " + this.totalWeight + "lbs. ";
+                this.totalWeightMSG = " Current Weight: " + this.totalWeight + "lbs. ";
             }
         ).catch((err) => {
 

@@ -36,7 +36,6 @@ export class AddbackpackPage {
         };
 
         this.storage.get('backpacks').then((val) => {
-            // val.filter(x => {return x.name == data.name}).length() > 0
             val.push(data);
             this.info = val;
             this.storage.set("backpacks", val);
@@ -44,6 +43,7 @@ export class AddbackpackPage {
             this.storage.set("backpacks", [data]);
             this.info = [data];
         });
+
         this.navCtrl.pop();
     }
 

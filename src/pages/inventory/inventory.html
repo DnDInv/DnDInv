@@ -28,7 +28,6 @@
             </ion-list>
         </ion-col>
     </ion-row>
-
     <li class="listAttr" *ngFor="let b of items; let i = index">
         <button (tap)="deleteItem(i, b)" ion-button class="button-items-icon" [attr.id]="i"><ion-icon name="trash"></ion-icon></button>
         <button (tap)="openItem(i)" class="button-inventory" ion-button [attr.id]="i">{{ b.itemName }}</button>

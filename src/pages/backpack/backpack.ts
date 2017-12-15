@@ -3,7 +3,8 @@ import { AlertController, NavController, NavParams} from 'ionic-angular';
 import { AboutPage} from "../about/about";
 import { Storage } from '@ionic/storage';
 import { InventoryPage } from "../inventory/inventory";
-import {AddbackpackPage} from "../addbackpack/addbackpack";
+import { AddbackpackPage } from "../addbackpack/addbackpack";
+import { SettingsPage } from "../settings/settings";
 
 @Component({
   selector: 'page-backpack',
@@ -43,7 +44,6 @@ export class BackPackPage {
         //function for getting all the backpacks in the JSON array
         this.storage.get('backpacks').then((val) => {
             this.info = val;
-            //console.log(val);
         });
     //</editor-fold>
     }
@@ -62,90 +62,10 @@ export class BackPackPage {
     //function for the modal confirmation for the Adding backpack
     addBackpack() {
         this.navCtrl.push(AddbackpackPage);
-      //<editor-fold desc="function for adding backpacks.">
-      // let addBackpack = this.alertCtrl.create({
-      //     //fields that are shown in the alert modal.
-      //     title: "Add Backpack",
-      //     message: "Please enter the following requirements.",
-      //     inputs: [
-      //         {
-      //             name: 'name',
-      //             placeholder: 'Enter backpack name here...'
-      //         },
-      //         {
-      //             name: 'strength',
-      //             placeholder: 'Enter strength of the backpack...',
-      //             type: "number",
-      //             min: 1,
-      //             max: 50
-      //         },
-      //         {
-      //             name: 'Carrying_Size',
-      //             placeholder: 'Tiny,Small,Medium,Large,Huge...'
-      //         },
-      //         {
-      //             name: 'HardLimit',
-      //             placeholder: 'Enter hard limit (if wanted)'
-      //         },
-      //         {
-      //             name: 'RuleVariants',
-      //             placeholder: 'Standard,Encumbrance,No rules...'
-      //         }
-      //     ],
-      //     buttons: [
-      //         {
-      //             text: 'Cancel',
-      //             role: 'cancel',
-      //             handler: data => {
-      //
-      //             }
-      //         },
-      //         {
-      //             text: 'Save',
-      //             role: 'submit',
-      //             handler: data => {
-      //               //save into object
-      //                 if (data.name.length              == 0 ||
-      //                     data.strength                 > 50 ||
-      //                     data.strength                 < 1  ||
-      //                     data.Carrying_Size.length     == 0 ||
-      //                     data.RuleVariants.length      == 0 ||
-      //                     data.RuleVariants             != "Standard" &&
-      //                     data.RuleVariants             != "Encumbrance" &&
-      //                     data.RuleVariants             != "No rules" &&
-      //                     data.Carrying_Size            != "Tiny" &&
-      //                     data.Carrying_Size            != "Small" &&
-      //                     data.Carrying_Size            != "Medium" &&
-      //                     data.Carrying_Size            != "Large" &&
-      //                     data.Carrying_Size            != "Huge") {
-      //                     console.log("Incorrect Values");
-      //                     return false;
-      //                 }
-      //                 else {
-      //                     //push the input of all the fields that are required into an JSON object.
-      //                     // console.log(data);
-      //                     this.storage.get('backpacks').then((val) => {
-      //                         // val.filter(x => {return x.name == data.name}).length() > 0
-      //                         val.push(data);
-      //                         this.info = val;
-      //                         this.storage.set("backpacks", val);
-      //                     }).catch((err) => {
-      //                         this.storage.set("backpacks", [data]);
-      //                         this.info = [data];
-      //                     });
-      //                 }
-      //             }
-      //         }
-      //     ]
-      // });
-      // //materialize the popup
-      // addBackpack.present();
-      // //</editor-fold>
     }
 
     //function editing
     EditInventory(index, backpack){
-
         //<editor-fold desc="Setting itemKey and storageKey to get the right inventory to rename it.">
         //itemKey and storageKey requirements for editing backpacks so that the item
         //transfers (previous problem that when you edit a backpack the items where all gone and still in the old backpack (name))
@@ -159,17 +79,13 @@ export class BackPackPage {
         this.storage.get(this.itemKey).then(val => {
             if (val == null)
                 return;
-            //console.log("itemKey: ", this.itemKey);
             this.item = val;
-            //console.log("Val: ", val);
         });
         this.storage.get(this.coinKey).then(val => {
             //console.log("edit coins", this.coinKey, val)
             if (val == null)
                 return;
-            //console.log("coinKey: ", this.coinKey);
             this.coins = val;
-            //console.log("Val: ", val);
         });
         //</editor-fold>
 
@@ -246,33 +162,21 @@ export class BackPackPage {
                         else {
                             //push the input of all the fields that are required into an JSON object.
                             this.storage.get('backpacks').then((val) => {
-                                // val.filter(x => {return x.name == data.name}).length() > 0
-                                /*data = backpack + data;*/
-                                //console.log("edit backpack --------------")
                                 val[index] = data;
                                 this.info = val;
-                                //console.log("all backpacks: ", this.info);
                                 this.storage.set("backpacks", val);
 
-
                                 let oldKey = this.itemKey.toString();
-                                //console.log("oldKey: ", oldKey);
                                 let oldCoins = this.coinKey.toString();
-                                //console.log("oldCoins: ", oldCoins);
 
                                 this.itemKey = 'item: ' + val[index].name + val[index].HardLimit;
-                                // console.log("new ItemKey: ",this.itemKey);
-
-                                // console.log("item: ", this.item);
                                 this.coinKey = 'coins: ' + val[index].name + val[index].HardLimit;
-                                //console.log(this.coinKey, this.coins);
+
                                 this.storage.set(this.itemKey, this.item);
-                                // console.log(this.coinKey, this.coins)
                                 this.storage.set(this.coinKey, this.coins);
-                                //console.log("old key :", oldKey);
+
                                 this.storage.remove(oldKey);
                                 this.storage.remove(oldCoins);
-                                //this.itemKey = 'item: ' + val.name + val.HardLimit;
                             });
 
                         }
@@ -284,21 +188,23 @@ export class BackPackPage {
         //</editor-fold>
     }
 
+    //open setting menu with a push
+    opensettingPage() {
+        this.navCtrl.push(SettingsPage);
+    }
+
+
     //function for opening backpacks
     openInventory(index) {
         //<editor-fold desc="Opening the inventory with the right items.">
         //getting all backpacks
         this.storage.get('backpacks').then((val) => {
-            //console.log('Backpack with ID: ', val, index);
             //getting the id of the backpack that is tapped.
             let data = {
                 backpack: val[index]
             };
-            //console.log('Data', index);
             this.info = val;
             this.navCtrl.push(InventoryPage, data);
-            //storage.push(backpack.name, {item:  [], dat: {}, dit: 5})
-
         }).catch((err) => {
             console.log("backpack not found!");
         });

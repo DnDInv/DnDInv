@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
-import {Storage} from '@ionic/storage';
+import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 @Component({
     selector: 'page-wallet',
@@ -30,14 +30,12 @@ export class WalletPage {
     constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
 
         this.backpack = this.navParams.get('backpack');
-        //console.log(" The backpack: ", this.backpack);
         this.coinKey = 'coins: ' + this.backpack.name + this.backpack.HardLimit;
 
         //attempt to fill the input with the old numbers when loading the page
         this.storage.get(this.coinKey).then(val => {
             this.coins = val;
             //check wth is in coins.
-            //console.log(this.coins);
             //set the old coins in the input.
             this.plat = this.coins.pp;
             this.gold = this.coins.gp;

@@ -1656,11 +1656,6 @@ export class StandarditemPage {
 
         //set backpack key items for the items in individual inventories.
         this.itemKey = 'item: ' + this.backpack.name + this.backpack.HardLimit;
-
-        //console.log(this.itemKey);
-        // this.storage.get(this.itemKey).then((val) =>{
-        //
-        // });
         //</editor-fold>
     }
 

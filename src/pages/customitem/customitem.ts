@@ -52,10 +52,8 @@ export class CustomitemPage {
         //<editor-fold desc="getting the selected backpack.">
         //get the selected backpacks
         this.backpack = this.navParams.get("backpack");
-        //console.log("last backpack: ", this.backpack.name);
         //set backpack key items for the items in individual inventories.
         this.itemKey = "item: " + this.backpack.name + this.backpack.HardLimit;
-        //console.log("itemKey: ", this.itemKey);
         //</editor-fold
     }
 
@@ -80,20 +78,15 @@ export class CustomitemPage {
 
         //<editor-fold desc="Save and Add Custom item.">
         this.storage.get(this.itemKey).then((val) => {
-            // val.filter(x => {return x.name == data.name}).length() > 0
             val.push(data);
-            //console.log(this.itemKey);
+
             this.item = val;
-            //console.log("Val: ", val);
-            //console.log("Data: ", data);
-            // this.storage.remove(this.itemKey)
             this.storage.set(this.itemKey, val);
         }).catch((err) => {
             this.storage.set(this.itemKey, [data]);
             this.item = [data];
         });
         this.navCtrl.pop();
-
         //</editor-fold>
     }
 }

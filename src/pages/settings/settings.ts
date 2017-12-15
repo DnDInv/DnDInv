@@ -17,7 +17,6 @@ export class SettingsPage {
 
 //function for changing theme
   toggleAppTheme() {
-    //console.log(this.selectedTheme);
     if(this.selectedTheme === 'light-theme')
       this.settings.setActiveTheme('dark-theme');
     else
@@ -26,7 +25,6 @@ export class SettingsPage {
 
 //function for turning Awake mode on and off
   toggleAwakemode(event) {
-    //console.log("toggle: ", event.checked);
       if (event.checked == false)
           this.insomnia.allowSleepAgain();
       else

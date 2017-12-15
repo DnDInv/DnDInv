@@ -27,10 +27,8 @@ export class HomePage {
     }
 
     ionViewDidLoad(){
-        //this.tabBarElement.style.display = 'none';
         setTimeout(() => {
             this.splash = false;
-            //this.tabBarElement.style.display = 'flex';
 
         }, 4000);
     }

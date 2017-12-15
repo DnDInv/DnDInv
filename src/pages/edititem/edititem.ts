@@ -49,13 +49,6 @@ export class EdititemPage {
     this.weight = this.item.item.weight;
     this.flavor = this.item.item.flavor;
     //</editor-fold>
-
-    //<editor-fold desc="get the selected item">
-    // this.storage.get('item').then((val) => {
-    //
-    //    console.log("Values: ", this.item);
-    // });
-      //</editor-fold>
   }
 
   //editing the selected item
@@ -73,13 +66,7 @@ export class EdititemPage {
       };
       //push the input of all the fields that are required into an JSON object.
        this.storage.get(this.itemKey).then((val) => {
-           // val.filter(x => {return x.name == data.name}).length() > 0
-           /*data = backpack + data;*/
-           //console.log("REEEEEEE: ", val[this.index.index]);
-           //console.log("some data: ", data)
            val[this.index.index] = data;
-           //this.info = val;
-           //console.log("itemkey ", this.itemKey);
            this.storage.set(this.itemKey, val);
            this.navCtrl.pop();
        });
