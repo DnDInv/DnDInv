@@ -43,6 +43,7 @@ export class BackPackPage {
         //<editor-fold desc="fetching all the backpacks from local storage">
         //function for getting all the backpacks in the JSON array
         this.storage.get('backpacks').then((val) => {
+            //after you get the backpacks set the val to this.info.
             this.info = val;
         });
     //</editor-fold>
@@ -51,6 +52,7 @@ export class BackPackPage {
 
     ionViewDidEnter() {
         this.storage.get('backpacks').then ((val) => {
+            //after you get the backpacks set the val to this.info.
             this.info = val;
         });
     }
@@ -82,7 +84,6 @@ export class BackPackPage {
             this.item = val;
         });
         this.storage.get(this.coinKey).then(val => {
-            //console.log("edit coins", this.coinKey, val)
             if (val == null)
                 return;
             this.coins = val;

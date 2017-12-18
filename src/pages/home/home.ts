@@ -44,7 +44,7 @@ export class HomePage {
     }
 
     //function for the modal confirmation for the Adding backpack
-    addBackpack() {
+    openaddBackpackPage() {
         this.navCtrl.push(AddbackpackPage);
     }
 }

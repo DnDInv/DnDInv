@@ -60,7 +60,6 @@ export class CustomitemPage {
     createCustom() {
         //<editor-fold desc="set itemKey for the selected backpack">
          this.itemKey = "item: " + this.backpack.name + this.backpack.HardLimit;
-        // console.log("ItemKey: ", this.itemKey);
         //</editor-fold>
 
         //<editor-fold desc="input data">
@@ -77,10 +76,14 @@ export class CustomitemPage {
         //</editor-fold>
 
         //<editor-fold desc="Save and Add Custom item.">
+        //get the items from the selected backpack thats been retrieved within the constructor.
         this.storage.get(this.itemKey).then((val) => {
+            //pushes the new data that has been filled into the fields into the old array thats been retrieved in the constructor
+            //and add the new one item to the old array
             val.push(data);
-
+            //set this.item to val so that the push can validate.
             this.item = val;
+            //set the new array to into the old one replacing everything except the new item thats been created.
             this.storage.set(this.itemKey, val);
         }).catch((err) => {
             this.storage.set(this.itemKey, [data]);

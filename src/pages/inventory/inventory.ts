@@ -11,6 +11,7 @@ import { EdititemPage } from "../edititem/edititem";
   templateUrl: 'inventory.html',
 })
 export class InventoryPage {
+
     //<editor-fold desc="variables">
     //backpack variable for the selected backpack
     public backpack;
@@ -209,6 +210,7 @@ export class InventoryPage {
   }
     // Deel waarin de encumbrance rules tevoorschijn komen.
     whichRules() {
+        //<editor-fold desc="get the rule of the selected backpack">
         switch (this.backpack.RuleVariants) {
             case("Standard"):
                 return this.standardrules();
@@ -223,10 +225,12 @@ export class InventoryPage {
                 this.totalWeightMSG="";
                 break;
         }
+        //</editor-fold>
     }
 
     // standard rules
     standardrules() {
+        //<editor-fold desc="calculations for the Standard Rule">
         switch (this.backpack.Carrying_Size) {
             case "Tiny":
                 this.capacity = (this.backpack.strength * 15) / 2;
@@ -249,15 +253,16 @@ export class InventoryPage {
             default :
                 console.log("Size is not supported");
                 break;
-
         }
 
          this.encumbrance = "Capacity: " + this.capacity + " lbs.        " +
              "Power: " + this.capacity * 2 + " lbs.";
+        //</editor-fold>
     }
 
     // encumbrance
     encumbranceCalculator() {
+        //<editor-fold desc="calculations for the encumbrance rule">
         switch (this.backpack.Carrying_Size) {
             case("Tiny"):
                 this.capacity = this.backpack.strength * 5 / 2;
@@ -284,9 +289,11 @@ export class InventoryPage {
         }
         this.encumbrance = "Capacity: " + this.capacity + "lbs. Heavily Encumbered: " + this.capacity * 2 + "lbs. Power: " +
             this.capacity * 6 + "lbs. ";
+        //</editor-fold>
     }
 
     currentWeight() {
+        //<editor-fold desc="Total Weight">
         this.backpack = this.navParams.get('backpack');
         this.itemKey = 'item: ' + this.backpack.name + this.backpack.HardLimit;
 
@@ -303,6 +310,7 @@ export class InventoryPage {
         ).catch((err) => {
 
         });
+        //</editor-fold>
     }
 
 }

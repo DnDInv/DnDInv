@@ -1633,16 +1633,13 @@ export class StandarditemPage {
     //<editor-fold desc="variables">
     public backpack;
 
+    //array for all the items in a storage.
     items = [];
 
+    //array for all the standard items
     strditems: any [];
 
-    strdweapons: any = [];
-    strdarmor: any = [];
-    strdgear: any = [];
-    strdammunition: any = [];
-    strdtools: any = [];
-
+    //itemKey for the storage to get the items for a certain backpack.
     itemKey;
     //</editor-fold>
 
